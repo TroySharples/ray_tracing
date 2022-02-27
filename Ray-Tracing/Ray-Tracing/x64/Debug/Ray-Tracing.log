@@ -1,0 +1,5 @@
+﻿  Ray-Tracing.cpp
+D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Vec3.h(14,29): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Vec3.h(15,29): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Vec3.h(16,29): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+  Ray-Tracing.vcxproj -> D:\Code\Ray-Tracing\Ray-Tracing\x64\Debug\Ray-Tracing.exe
