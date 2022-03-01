@@ -1,63 +1,17 @@
-#include <iostream>
-#include <cstdint>
-#include <array>
-#include <fstream>
-
-#include "Vector3.h"
 #include "Ray.h"
-#include "ObjLoader.h"
+#include "Utils.h"
+#include "Config.h"
+#include "Polygon.h"
+#include "Sphere.h"
 
-// Image.
-static constexpr float ASPECT_RATIO = 16.0 / 9.0;
-static constexpr size_t IMAGE_WIDTH = 1920;
-static constexpr size_t IMAGE_HEIGHT = IMAGE_WIDTH / ASPECT_RATIO/*1080*/;
-
-template <typename _T>
-static size_t unsigned_max() { return std::pow(2, 8 * sizeof(_T)) - 1; }
-
-typedef uint16_t colour_t;
-typedef unstd::Vector3<colour_t> pixel_t;
-typedef std::array<pixel_t, IMAGE_WIDTH * IMAGE_HEIGHT> image_t;
-std::ostream& operator << (std::ostream& os, const image_t& image) 
-{  
-	os << "P3\n" << IMAGE_WIDTH << " " << IMAGE_HEIGHT << "\n" << unsigned_max<colour_t>() << "\n";
-
-	for (const pixel_t& i : image) { os << i << " "; }
-
-	os << "\n";
-
-	return os;
-}
+#include <cstdint>
+#include <fstream>
 
 static image_t image;
 
-bool hit(const unstd::Vector3<float>& centre, float radius, const unstd::Ray r);
-unstd::Vector3<float> ray_colour(const unstd::Ray& r);
-void render();
-
-int main()
+unstd::Vector3<float> ray_colour(const unstd::Ray& r, const unstd::Object& obj)
 {
-	//render();
-
-	unstd::Objloader bob;
-	bob.readFile("cube.obj");
-
-	return 0;
-}
-
-bool hit(const unstd::Vector3<float>& centre, float radius, const unstd::Ray r)
-{
-	unstd::Vector3<float> oc = r.origin() - centre;
-	float a = dot(r.direction(), r.direction());
-	float b = 2.0 * dot(oc, r.direction());
-	float c = dot(oc, oc) - radius * radius;
-	float discriminant = (b * b) - (4 * a * c);
-	return (discriminant > 0);
-}
-
-unstd::Vector3<float> ray_colour(const unstd::Ray& r)
-{
-	if (hit(unstd::Vector3<float>(0.0, 0.0, -1.0), 0.5, r)) { return unstd::Vector3<float>(1.0, 0.0, 0.0); }
+	if (obj.hit(unstd::Vector3<float>(0.0, 0.0, -2.5), r)) { return unstd::Vector3<float>(1.0, 0.0, 0.0); }
 
 	unstd::Vector3<> unit_dir = unit_vector(r.direction());
 	float t = 0.5f * (unit_dir.y() + 1.0f);
@@ -65,8 +19,11 @@ unstd::Vector3<float> ray_colour(const unstd::Ray& r)
 		t * unstd::Vector3<float>(0.0, 0.0, 0.0); // black
 }
 
+// render(scene, camera) { return image; }
 void render()
 {
+	unstd::Sphere bob(0.5f);	
+
 	// Camera.
 	float cam_height = 2.0;
 	float cam_width = ASPECT_RATIO * cam_height;
@@ -94,15 +51,27 @@ void render()
 			float v = float(h) / (IMAGE_HEIGHT - 1);
 
 			unstd::Ray r = unstd::Ray(origin, lower_left_corner + u * horizontal + v * vertical - origin);
-			unstd::Vector3<float> pixel_colour = ray_colour(r);
+			unstd::Vector3<float> pixel_colour = ray_colour(r, bob);
 
 			pixel_t& pixel = image[IMAGE_WIDTH * h + w];
-			pixel.e[0] = pixel_colour.x() * unsigned_max<colour_t>();
-			pixel.e[1] = pixel_colour.y() * unsigned_max<colour_t>();
-			pixel.e[2] = pixel_colour.z() * unsigned_max<colour_t>();
+			pixel.e[0] = pixel_colour.x() * unstd::unsigned_max<colour_t>();
+			pixel.e[1] = pixel_colour.y() * unstd::unsigned_max<colour_t>();
+			pixel.e[2] = pixel_colour.z() * unstd::unsigned_max<colour_t>();
 		}
 	}
 
 	std::ofstream of("Render_Output.ppm");
 	of << image;
+}
+
+int main()
+{
+	render();
+
+	unstd::Polygon p;
+	std::ifstream is("cube.obj");
+	if (!is) { std::cerr << "File not found.\n"; return 1; }
+	is >> p;
+
+	return 0;
 }

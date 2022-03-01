@@ -7,11 +7,9 @@ namespace unstd
 	class Ray
 	{
 	public:
-		Ray() = default;
 		Ray(const unstd::Vector3<float>& origin,
 			const unstd::Vector3<float>& direction)
 			: r_orig(origin), r_dir(direction) {}
-		~Ray() = default;
 
 		unstd::Vector3<float> r_orig;
 		unstd::Vector3<float> r_dir;

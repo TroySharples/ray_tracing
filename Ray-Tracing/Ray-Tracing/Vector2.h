@@ -9,7 +9,7 @@ namespace unstd
 	public:
 		typename _T value_type;
 		Vector2() = default;
-		Vector2<_T>(_T e0, _T e1)
+		Vector2(_T e0, _T e1)
 			: e{ e0, e1 } {}
 
 		_T x() const { return e[0]; }
