@@ -2,8 +2,10 @@
 #include <cstdint>
 #include <array>
 #include <fstream>
+
 #include "Vector3.h"
 #include "Ray.h"
+#include "ObjLoader.h"
 
 // Image.
 static constexpr float ASPECT_RATIO = 16.0 / 9.0;
@@ -29,6 +31,20 @@ std::ostream& operator << (std::ostream& os, const image_t& image)
 
 static image_t image;
 
+bool hit(const unstd::Vector3<float>& centre, float radius, const unstd::Ray r);
+unstd::Vector3<float> ray_colour(const unstd::Ray& r);
+void render();
+
+int main()
+{
+	//render();
+
+	unstd::Objloader bob;
+	bob.readFile("cube.obj");
+
+	return 0;
+}
+
 bool hit(const unstd::Vector3<float>& centre, float radius, const unstd::Ray r)
 {
 	unstd::Vector3<float> oc = r.origin() - centre;
@@ -46,10 +62,10 @@ unstd::Vector3<float> ray_colour(const unstd::Ray& r)
 	unstd::Vector3<> unit_dir = unit_vector(r.direction());
 	float t = 0.5f * (unit_dir.y() + 1.0f);
 	return (1.0f - t) * unstd::Vector3<float>(1.0, 1.0, 1.0) + // white
-					t * unstd::Vector3<float>(0.0, 0.0, 0.0); // black
+		t * unstd::Vector3<float>(0.0, 0.0, 0.0); // black
 }
 
-int main()
+void render()
 {
 	// Camera.
 	float cam_height = 2.0;
@@ -61,9 +77,9 @@ int main()
 	unstd::Vector3<float> vertical = unstd::Vector3<float>(0, cam_height, 0);
 	unstd::Vector3<float> lower_left_corner = origin - horizontal / 2.0f - vertical / 2.0f - unstd::Vector3<float>(0, 0, focal_length);
 
-	 //Render.
-	 //For each pixel I need an RGB value.
-	 //Each pixel will be an RGB triplet.
+	//Render.
+	//For each pixel I need an RGB value.
+	//Each pixel will be an RGB triplet.
 
 	for (size_t h = 0; h < IMAGE_HEIGHT; h++)
 	{
@@ -89,6 +105,4 @@ int main()
 
 	std::ofstream of("Render_Output.ppm");
 	of << image;
-
-	return 0;
 }

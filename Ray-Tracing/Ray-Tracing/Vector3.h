@@ -38,7 +38,7 @@ namespace unstd
 		Vector3& operator*=(const Vector3& v2);
 		Vector3& operator/=(const Vector3& v2);
 
-		// scalers
+		// Scalers.
 		Vector3& operator*=(_T t);
 		Vector3& operator/=(_T t);
 
@@ -75,6 +75,8 @@ namespace unstd
 
 		_T e[3] = { 0 };
 	};
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	template <typename _T = float>
 	std::istream& operator>>(std::istream& is, Vector3<_T>& t)
