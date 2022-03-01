@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\</FILEPATH>
+      <FILENAME>Vector3.h</FILENAME>
+      <LINE>21</LINE>
+      <COLUMN>2</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'unstd::Vector3&lt;unsigned short&gt;::value_type' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>unstd::Vector3&lt;unsigned short&gt;::{ctor}</FUNCTION>
+    <DECORATED>??0?$Vector3@G@unstd@@QEAA@XZ</DECORATED>
+    <FUNCLINE>21</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>unstd::Vector3&lt;unsigned short&gt;::value_type</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

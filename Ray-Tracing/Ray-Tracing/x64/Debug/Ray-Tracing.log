@@ -1,5 +1,19 @@
 ﻿  Ray-Tracing.cpp
-D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Vec3.h(14,29): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Vec3.h(15,29): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Vec3.h(16,29): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Ray-Tracing.cpp(59,60): warning C4267: '=': conversion from 'size_t' to '_T', possible loss of data
+          with
+          [
+              _T=colour_t
+          ]
+D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Ray-Tracing.cpp(60,59): warning C4267: '=': conversion from 'size_t' to '_T', possible loss of data
+          with
+          [
+              _T=colour_t
+          ]
+D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Ray-Tracing.cpp(61,22): warning C4244: '=': conversion from 'double' to '_T', possible loss of data
+          with
+          [
+              _T=colour_t
+          ]
+D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Ray-Tracing.cpp(14,37): warning C4244: 'return': conversion from 'double' to 'size_t', possible loss of data
+D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Ray-Tracing.cpp(28): message : see reference to function template instantiation 'size_t unsigned_max<colour_t>(void)' being compiled
   Ray-Tracing.vcxproj -> D:\Code\Ray-Tracing\Ray-Tracing\x64\Debug\Ray-Tracing.exe
