@@ -27,9 +27,7 @@ std::istream& unstd::operator>>(std::istream& is, Polygon& p)
 	std::string prefix = "";
 	unstd::Vector3<float> temp_Vector3;
 	unstd::Vector2<float> temp_Vector2;
-	int temp_int = 0;
-
-	
+	int temp_int = 0;	
 
 	// Read one line at a time.
 	while (std::getline(is, line))
@@ -80,9 +78,24 @@ std::istream& unstd::operator>>(std::istream& is, Polygon& p)
 		}
 
 		// Debug.
-		std::cout << line << "\n";
+		//std::cout << line << "\n";
 
 	}
 
+	//p.loadPgonInfo(vertex_positions, vertex_texcoords, vertex_normals);
+
 	return is;
 }
+
+//void unstd::Polygon::loadPgonInfo(	
+//	std::vector<unstd::Vector3<float>>& v_pos, 
+//	std::vector<unstd::Vector2<float>>& v_txcord, 
+//	std::vector<unstd::Vector3<float>>& v_norm)
+//{
+//	std::cout << "Loading polygon info...\n";
+//	vertex_positions = v_pos;
+//	vertex_texcoords = v_txcord;
+//	vertex_normals = v_norm;
+//
+//	//foo();
+//}

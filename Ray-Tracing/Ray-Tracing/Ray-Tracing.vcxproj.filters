@@ -13,7 +13,16 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include=".obj files">
+    <Filter Include="Header Files\Characters">
+      <UniqueIdentifier>{88c381af-e6d6-4d3a-89d4-666a729cae5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Vector">
+      <UniqueIdentifier>{bf5b03cd-7c1d-4bc1-a5e0-6892d717303e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Useful">
+      <UniqueIdentifier>{a7bfa2be-e5d6-4d49-9435-41c149be6720}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\.obj files">
       <UniqueIdentifier>{135b49c5-a607-489c-9db9-d0e704040d0f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -26,40 +35,43 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Vector3.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Vector2.h">
+      <Filter>Header Files\Vector</Filter>
     </ClInclude>
-    <ClInclude Include="Ray.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Vector3.h">
+      <Filter>Header Files\Vector</Filter>
     </ClInclude>
     <ClInclude Include="Virtex.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Vector</Filter>
     </ClInclude>
-    <ClInclude Include="Vector2.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Ray.h">
+      <Filter>Header Files\Vector</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Characters</Filter>
     </ClInclude>
     <ClInclude Include="Polygon.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Utils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Config.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Characters</Filter>
     </ClInclude>
     <ClInclude Include="Sphere.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Cube.h">
+      <Filter>Header Files\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>Header Files\Useful</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Header Files\Useful</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Object Include="cube.obj">
-      <Filter>.obj files</Filter>
+      <Filter>Resource Files\.obj files</Filter>
     </Object>
     <Object Include="teapot.obj">
-      <Filter>.obj files</Filter>
+      <Filter>Resource Files\.obj files</Filter>
     </Object>
   </ItemGroup>
 </Project>

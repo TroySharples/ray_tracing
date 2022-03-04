@@ -11,7 +11,7 @@ static image_t image;
 
 unstd::Vector3<float> ray_colour(const unstd::Ray& r, const unstd::Object& obj)
 {
-	if (obj.hit(unstd::Vector3<float>(0.0, 0.0, -2.5), r)) { return unstd::Vector3<float>(1.0, 0.0, 0.0); }
+	if (obj.hit(unstd::Vector3<float>(0.0, 0.0, -2.5), r)) { return unstd::Vector3<float>(1.0, 0.0, 1.0); }
 
 	unstd::Vector3<> unit_dir = unit_vector(r.direction());
 	float t = 0.5f * (unit_dir.y() + 1.0f);
@@ -22,7 +22,8 @@ unstd::Vector3<float> ray_colour(const unstd::Ray& r, const unstd::Object& obj)
 // render(scene, camera) { return image; }
 void render()
 {
-	unstd::Sphere bob(0.5f);	
+	//unstd::Sphere bob(0.5f);
+	unstd::Polygon bob;
 
 	// Camera.
 	float cam_height = 2.0;
@@ -66,12 +67,12 @@ void render()
 
 int main()
 {
-	render();
-
 	unstd::Polygon p;
 	std::ifstream is("cube.obj");
 	if (!is) { std::cerr << "File not found.\n"; return 1; }
 	is >> p;
+
+	render();
 
 	return 0;
 }
