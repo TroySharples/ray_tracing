@@ -11,7 +11,7 @@
 
 std::istream& unstd::operator>>(std::istream& is, Polygon& p)
 {
-	//std::cout << "Loading polygon info from file..." << std::endl;
+	std::cout << "Loading polygon info from file..." << std::endl;
 
 	// Vertex
 	std::vector<unstd::Vector3<float>> vertex_positions; // v
@@ -77,40 +77,63 @@ std::istream& unstd::operator>>(std::istream& is, Polygon& p)
 		}
 		else if (prefix == "f")
 		{
-			for (int i = 0; i < line.size(); i++)
+			for (int i = 0; i <= 2; i++)
 			{
-				// If evaluated character is not " ", "/" or "f".
-				if (line[i] != 102 &&
-					line[i] != 32 &&
-					line[i] != 47)
-				{
-					// If the next character is a number between 0 and 9.
-					if ((line[i + 1] % 48) < 9 &&
-						line[i + 1] % 48 >= 0)
-					{
-						int a;
-						int b = line[i + 1] % 48;
-						if (b == 0 && line[i + 1] != 48)
-						{
-							a = line[i] % 48;
-						}
-						else
-						{
-							// Multiply first number by 10.
-							a = line[i] % 48 * 10;
-						}						
-						test.push_back(a + b);
-						//std::cout << a + b << " ";
-						i++;
-					}
-					else
-					{
-						test.push_back(line[i] % 48);
-						//std::cout << line[i] % 48 << " ";
-					}
-										
-				}
+				int a, b, c;
+
+				ss >> a;
+				ss.get();
+				ss >> b;
+				ss.get();
+				ss >> c;
+
+				/*std::cout
+					<< a
+					<< b
+					<< c
+					<< " ";*/
+
+				test.push_back(a);
 			}
+
+			//std::cout << "\n";
+
+			
+
+			//for (int i = 0; i < line.size(); i++)
+			//{
+			//	// If evaluated character is not " ", "/" or "f".
+			//	if (line[i] != 102 &&
+			//		line[i] != 32 &&
+			//		line[i] != 47)
+			//	{
+			//		// If the next character is a number between 0 and 9.
+			//		if ((line[i + 1] % 48) < 9 &&
+			//			line[i + 1] % 48 >= 0)
+			//		{
+			//			int a;
+			//			int b = line[i + 1] % 48;
+			//			if (b == 0 && line[i + 1] != 48)
+			//			{
+			//				a = line[i] % 48;
+			//			}
+			//			else
+			//			{
+			//				// Multiply first number by 10.
+			//				a = line[i] % 48 * 10;
+			//			}						
+			//			test.push_back(a + b);
+			//			//std::cout << a + b << " ";
+			//			i++;
+			//		}
+			//		else
+			//		{
+			//			test.push_back(line[i] % 48);
+			//			//std::cout << line[i] % 48 << " ";
+			//		}
+			//							
+			//	}
+			//}
 		}
 		else
 		{
@@ -118,8 +141,18 @@ std::istream& unstd::operator>>(std::istream& is, Polygon& p)
 		}
 		// Debug.
 		//std::cout << line << "\n";
+
 	}
-	
+
+	//std::cout << test.size() << "\n";
+	////for (int i = 0; i < test.size(); i++)
+	//for (auto i : test)
+	//{
+	//	std::cout << i;
+	//}
+
+	//std::cout << "\n";
+	//
 	//std::cout << "Polygon info loaded." << std::endl;
 	
 
@@ -142,16 +175,13 @@ std::istream& unstd::operator>>(std::istream& is, Polygon& p)
 
 void unstd::Polygon::populateTriangles(std::vector<int>& v)
 {
-	//std::cout << "Populating triangles into polygon..." << "\n";
+	std::cout << "Populating triangles into polygon..." << "\n";
 
 	for (int i = 0; i < v.size(); i++)
 	{
-		if (i == 0 || i % 3 == 0)
-		{
-			//// Debug.
-			//std::cout << vertex_positions[v[i]] << "\n";
-			triangle_vertices.push_back(vertex_positions[v[i]]);
-		}		
+		// Debug.
+		//std::cout << vertex_positions[v[i]] << "\n";
+		triangle_vertices.push_back(vertex_positions[v[i]]);
 	}
 
 	std::cout << "There are " << triangle_vertices.size() << " vertices." << std::endl;
@@ -184,10 +214,6 @@ void unstd::Polygon::populateTriangles(std::vector<int>& v)
 	}
 	std::cout << "C is " << c.size() << "\n";
 
-	/*std::cout << "A is " << a.size() << "\n";
-	std::cout << "B is " << b.size() << "\n";
-	std::cout << "C is " << c.size() << "\n";*/
-
 	for (int i = 0; i < triangle_vertices.size() / 3; i++)
 	{		
 		unstd::Vector3<float> x = a[i];
@@ -197,7 +223,6 @@ void unstd::Polygon::populateTriangles(std::vector<int>& v)
 		unstd::Triangle temp_tri(vertices);
 		triangle_list.push_back(temp_tri);
 	}
-
 
 	//// Hard coded vertices positions.
 	//unstd::Vector3<float> a(0.5, 0.0, 0.0);

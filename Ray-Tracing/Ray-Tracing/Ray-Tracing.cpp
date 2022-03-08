@@ -9,7 +9,7 @@
 #include <chrono>
 
 static image_t image;
-unstd::Polygon bob(unstd::Vector3<float>(0.0, 0.0, -5.0));
+unstd::Polygon bob(unstd::Vector3<float>(0.0, 0.0, -10.0));
 
 unstd::Vector3<float> ray_colour(const unstd::Ray& r, unstd::Polygon& pgon)
 {
@@ -70,18 +70,18 @@ void render()
 
 int main()
 {
-	std::ifstream is("cube.obj");
+	std::ifstream is("teapot.obj");
 	if (!is) { std::cerr << "File not found.\n"; return 1; }
 	is >> bob;
 
-	//for (int i = 0; i < bob.triangle_list.size(); i++)
-	//{
-	//	std::cout << std::endl;
+	for (int i = 0; i < bob.triangle_list.size(); i++)
+	{
+		std::cout << std::endl;
 
-	//	std::cout << bob.triangle_list[i].a() << "\n";
-	//	std::cout << bob.triangle_list[i].b() << "\n";
-	//	std::cout << bob.triangle_list[i].c() << "\n";
-	//}
+		std::cout << bob.triangle_list[i].a() << "\n";
+		std::cout << bob.triangle_list[i].b() << "\n";
+		std::cout << bob.triangle_list[i].c() << "\n";
+	}
 
 	render();
 
