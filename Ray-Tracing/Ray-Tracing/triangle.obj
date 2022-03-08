@@ -1,0 +1,9 @@
+# Blender v2.76 (sub 0) OBJ File: ''
+# www.blender.org
+mtllib cube.mtl
+o Cube
+
+# Vertex positions
+v -1.000000 -1.000000 -5.000000
+v 1.000000 -1.000000 -5.000000
+v -1.000000 1.000000 -5.000000

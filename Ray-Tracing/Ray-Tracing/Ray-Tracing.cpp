@@ -6,12 +6,14 @@
 
 #include <cstdint>
 #include <fstream>
+#include <chrono>
 
 static image_t image;
+unstd::Polygon bob(unstd::Vector3<float>(0.0, 0.0, -5.0));
 
-unstd::Vector3<float> ray_colour(const unstd::Ray& r, const unstd::Object& obj)
+unstd::Vector3<float> ray_colour(const unstd::Ray& r, unstd::Polygon& pgon)
 {
-	if (obj.hit(unstd::Vector3<float>(0.0, 0.0, -2.5), r)) { return unstd::Vector3<float>(1.0, 0.0, 1.0); }
+	if (pgon.checkTrianglesHit(r)) { return unstd::Vector3<float>(1.0, 0.0, 1.0); }
 
 	unstd::Vector3<> unit_dir = unit_vector(r.direction());
 	float t = 0.5f * (unit_dir.y() + 1.0f);
@@ -23,13 +25,14 @@ unstd::Vector3<float> ray_colour(const unstd::Ray& r, const unstd::Object& obj)
 void render()
 {
 	//unstd::Sphere bob(0.5f);
-	unstd::Polygon bob;
+	
 
 	// Camera.
 	float cam_height = 2.0;
 	float cam_width = ASPECT_RATIO * cam_height;
 	float focal_length = 1.0;
 
+	// Camera looks towards -z
 	unstd::Vector3<float> origin = unstd::Vector3<float>(0, 0, 0);
 	unstd::Vector3<float> horizontal = unstd::Vector3<float>(cam_width, 0, 0);
 	unstd::Vector3<float> vertical = unstd::Vector3<float>(0, cam_height, 0);
@@ -67,10 +70,18 @@ void render()
 
 int main()
 {
-	unstd::Polygon p;
 	std::ifstream is("cube.obj");
 	if (!is) { std::cerr << "File not found.\n"; return 1; }
-	is >> p;
+	is >> bob;
+
+	//for (int i = 0; i < bob.triangle_list.size(); i++)
+	//{
+	//	std::cout << std::endl;
+
+	//	std::cout << bob.triangle_list[i].a() << "\n";
+	//	std::cout << bob.triangle_list[i].b() << "\n";
+	//	std::cout << bob.triangle_list[i].c() << "\n";
+	//}
 
 	render();
 
