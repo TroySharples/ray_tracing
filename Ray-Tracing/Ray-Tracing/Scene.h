@@ -14,12 +14,8 @@ namespace unstd
 		void addSphereElement(unstd::Sphere& s);
 		unstd::Vector3<float> renderScene(const unstd::Ray& r);
 
-
-
 	private:
 		std::vector<unstd::Polygon> pgon_list;
 		std::vector<unstd::Sphere> sphere_list;
-
-
 	};
 }
