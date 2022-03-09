@@ -14,7 +14,7 @@ namespace unstd
 	class Polygon
 	{
 	public:
-		Polygon(unstd::Vector3<float>ws_pos)
+		Polygon(unstd::Vector3<float> ws_pos)
 			: worldspace_position(ws_pos) {}
 		Polygon() = default;
 
@@ -28,5 +28,4 @@ namespace unstd
 	};
 
 	std::istream& operator>>(std::istream& is, Polygon& p);
-
 }

@@ -12,8 +12,6 @@ bool unstd::Triangle::hit(const unstd::Vector3<float>& worldspace_position, cons
 	const unstd::Vector3<float> v1 = vertices[1] + worldspace_position;
 	const unstd::Vector3<float> v2 = vertices[2] + worldspace_position;
 
-	
-
 	//////////////////////////
    //Ray triangle intersect//
   //////////////////////////			
@@ -70,7 +68,6 @@ bool unstd::Triangle::hit(const unstd::Vector3<float>& worldspace_position, cons
 
 	u /= denom;
 	v /= denom;
-
 	
 // If all discriminators fail, return true.
 	return true;

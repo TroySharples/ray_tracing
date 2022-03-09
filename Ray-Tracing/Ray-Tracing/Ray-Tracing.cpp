@@ -3,39 +3,46 @@
 #include "Config.h"
 #include "Polygon.h"
 #include "Sphere.h"
+#include "Scene.h"
 
 #include <cstdint>
 #include <fstream>
 #include <chrono>
 
 static image_t image;
-unstd::Polygon bob(unstd::Vector3<float>(0.0, 0.0, -10.0));
 
-unstd::Vector3<float> ray_colour(const unstd::Ray& r, unstd::Polygon& pgon)
-{
-	if (pgon.checkTrianglesHit(r)) 
-	{ 
-		return unstd::Vector3<float>(1.0, 0.0, 1.0); 
-	}
+unstd::Scene scene;
 
-	unstd::Vector3<> unit_dir = unit_vector(r.direction());
-	float t = 0.5f * (unit_dir.y() + 1.0f);
-	return (1.0f - t) * unstd::Vector3<float>(1.0, 1.0, 1.0) + // white
-		t * unstd::Vector3<float>(0.0, 0.0, 0.0); // black
-}
+unstd::Sphere ball(1.0f);
+unstd::Polygon pgon(unstd::Vector3<float>(0.0, 0.0, -5.0));
 
-// render(scene, camera) { return image; }
+//unstd::Vector3<float> ray_colour(const unstd::Ray& r, unstd::Polygon& pgon)
+//{
+//	const unstd::Vector3<float> background_colour_a = unstd::Vector3<float>(1.0, 1.0, 1.0);
+//	const unstd::Vector3<float> background_colour_b = unstd::Vector3<float>(0.0, 0.0, 0.0);
+//
+//	if (pgon.checkTrianglesHit(r)) 
+//	{ 
+//		return unstd::Vector3<float>(1.0, 0.0, 1.0); 
+//	}
+//
+//	unstd::Vector3<> unit_dir = unit_vector(r.direction());
+//	float t = 0.5f * (unit_dir.y() + 1.0f);
+//	return (1.0f - t) * background_colour_a + // white
+//					t * background_colour_b; // black
+//
+//
+//
+//}
+
 void render()
 {
-	//unstd::Sphere bob(0.5f);
-	
-
 	// Camera.
 	float cam_height = 2.0;
 	float cam_width = ASPECT_RATIO * cam_height;
 	float focal_length = 1.0;
 
-	// Camera looks towards -z
+	// Camera looks towards -z.
 	unstd::Vector3<float> origin = unstd::Vector3<float>(0, 0, 0);
 	unstd::Vector3<float> horizontal = unstd::Vector3<float>(cam_width, 0, 0);
 	unstd::Vector3<float> vertical = unstd::Vector3<float>(0, cam_height, 0);
@@ -44,7 +51,6 @@ void render()
 	//Render.
 	//For each pixel I need an RGB value.
 	//Each pixel will be an RGB triplet.
-
 	for (size_t h = 0; h < IMAGE_HEIGHT; h++)
 	{
 		for (size_t w = 0; w < IMAGE_WIDTH; w++)
@@ -58,7 +64,7 @@ void render()
 			float v = float(h) / (IMAGE_HEIGHT - 1);
 
 			unstd::Ray r = unstd::Ray(origin, lower_left_corner + u * horizontal + v * vertical - origin);
-			unstd::Vector3<float> pixel_colour = ray_colour(r, bob);
+			unstd::Vector3<float> pixel_colour = scene.renderScene(r);/*ray_colour(r, bob)*/;
 
 			pixel_t& pixel = image[IMAGE_WIDTH * h + w];
 			pixel.e[0] = pixel_colour.x() * unstd::unsigned_max<colour_t>();
@@ -75,7 +81,10 @@ int main()
 {
 	std::ifstream is("cow.obj");
 	if (!is) { std::cerr << "File not found.\n"; return 1; }
-	is >> bob;
+	is >> pgon;
+
+	scene.addPgonElement(pgon);
+	scene.addSphereElement(ball);
 
 	render();
 

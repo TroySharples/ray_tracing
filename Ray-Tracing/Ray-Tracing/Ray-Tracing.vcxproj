@@ -142,13 +142,17 @@
   <ItemGroup>
     <ClCompile Include="Polygon.cpp" />
     <ClCompile Include="Ray-Tracing.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Colour.h" />
     <ClInclude Include="Config.h" />
+    <ClInclude Include="Material.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Polygon.h" />
     <ClInclude Include="Ray.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="Triangle.h" />
     <ClInclude Include="Utils.h" />

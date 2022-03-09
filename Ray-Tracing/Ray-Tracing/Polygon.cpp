@@ -1,4 +1,4 @@
-// Pollygon.cpp
+// Polygon.cpp
 #include "Polygon.h"
 #include "Vector2.h"
 #include "Virtex.h"
@@ -58,9 +58,6 @@ std::istream& unstd::operator>>(std::istream& is, Polygon& p)
 		{
 			triangle.vertices[j] = vertexes[net[j] - 1];
 		}
-
-		// Make sure the centre was set beforehand
-		// triangle.centre = v.centre;
 	}
 
 	return is;
