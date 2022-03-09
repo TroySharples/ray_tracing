@@ -29,6 +29,7 @@ bool unstd::Triangle::hit(const unstd::Vector3<float>& worldspace_position, cons
 // STEP 1: Finding P.
 
 // Check if ray and plane are parallel.
+	//std::cout << N << " ";
 	float NdotRayDirection = dot(N, r.direction());
 
 	if (fabs(NdotRayDirection) < kEpsilon) { return false; } // They are paralell so hit is impossible.

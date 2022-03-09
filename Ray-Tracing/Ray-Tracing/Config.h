@@ -4,7 +4,7 @@
 
 // Image.
 constexpr float ASPECT_RATIO = 16.0 / 9.0;
-constexpr size_t IMAGE_WIDTH = 640;
+constexpr size_t IMAGE_WIDTH = 1920;
 constexpr size_t IMAGE_HEIGHT = IMAGE_WIDTH / ASPECT_RATIO;
 
 typedef uint16_t colour_t;

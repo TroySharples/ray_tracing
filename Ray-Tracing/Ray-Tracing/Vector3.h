@@ -93,11 +93,11 @@ namespace unstd
 	std::ostream& operator<<(std::ostream& os, const Vector3<_T>& t)
 	{
 		os 
-			<< (int)t.e[0] 
+			<< (_T)t.e[0] 
 			<< " " 
-			<< (int)t.e[1]
+			<< (_T)t.e[1]
 			<< " " 
-			<< (int)t.e[2];
+			<< (_T)t.e[2];
 
 		return os;
 	}
