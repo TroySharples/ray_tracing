@@ -24,6 +24,8 @@ namespace unstd
 		std::vector<unstd::Vector3<float>> triangle_vertices;
 		std::vector<unstd::Triangle> triangle_list;
 
+		int last_hit_tri;
+		int lastHitTri() { return last_hit_tri; }
 		bool checkTrianglesHit(const unstd::Ray& r);
 	};
 

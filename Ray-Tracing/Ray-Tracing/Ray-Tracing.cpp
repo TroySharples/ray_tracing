@@ -14,6 +14,7 @@ static image_t image;
 unstd::Scene scene;
 
 unstd::Sphere ball(1.0f);
+
 unstd::Polygon pgon(unstd::Vector3<float>(0.0, 0.0, -5.0));
 
 //unstd::Vector3<float> ray_colour(const unstd::Ray& r, unstd::Polygon& pgon)
@@ -55,16 +56,11 @@ void render()
 	{
 		for (size_t w = 0; w < IMAGE_WIDTH; w++)
 		{
-			//pixel_t& pixel = image[IMAGE_WIDTH * h + w];
-			//pixel.e[0] = h * unsigned_max<colour_t>() / IMAGE_HEIGHT;
-			//pixel.e[1] = w * unsigned_max<colour_t>() / IMAGE_WIDTH;
-			//pixel.e[2] = 0.25 * unsigned_max<colour_t>();
-
 			float u = float(w) / (IMAGE_WIDTH - 1);
 			float v = float(h) / (IMAGE_HEIGHT - 1);
 
 			unstd::Ray r = unstd::Ray(origin, lower_left_corner + u * horizontal + v * vertical - origin);
-			unstd::Vector3<float> pixel_colour = scene.renderScene(r);/*ray_colour(r, bob)*/;
+			unstd::Vector3<float> pixel_colour = scene.renderScene(r);
 
 			pixel_t& pixel = image[IMAGE_WIDTH * h + w];
 			pixel.e[0] = pixel_colour.x() * unstd::unsigned_max<colour_t>();

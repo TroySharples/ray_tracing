@@ -1,12 +1,12 @@
 ﻿  Polygon.cpp
-C:\Users\Charlie\Desktop\Ray-Tracing\Ray-Tracing\Ray-Tracing\Triangle.h(21,24): warning C4305: 'initializing': truncation from 'double' to 'const float'
+D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Triangle.h(21,24): warning C4305: 'initializing': truncation from 'double' to 'const float'
   Ray-Tracing.cpp
-C:\Users\Charlie\Desktop\Ray-Tracing\Ray-Tracing\Ray-Tracing\Config.h(6,42): warning C4305: 'initializing': truncation from 'double' to 'const float'
-C:\Users\Charlie\Desktop\Ray-Tracing\Ray-Tracing\Ray-Tracing\Config.h(8,31): warning C4244: 'initializing': conversion from 'float' to 'const size_t', possible loss of data
-C:\Users\Charlie\Desktop\Ray-Tracing\Ray-Tracing\Ray-Tracing\Triangle.h(21,24): warning C4305: 'initializing': truncation from 'double' to 'const float'
-C:\Users\Charlie\Desktop\Ray-Tracing\Ray-Tracing\Ray-Tracing\Sphere.h(17,24): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Charlie\Desktop\Ray-Tracing\Ray-Tracing\Ray-Tracing\Sphere.h(17,18): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
-C:\Users\Charlie\Desktop\Ray-Tracing\Ray-Tracing\Ray-Tracing\Ray-Tracing.cpp(70,34): warning C4244: '=': conversion from '_T' to '_T', possible loss of data
+D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Config.h(6,42): warning C4305: 'initializing': truncation from 'double' to 'const float'
+D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Config.h(8,31): warning C4244: 'initializing': conversion from 'float' to 'const size_t', possible loss of data
+D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Triangle.h(21,24): warning C4305: 'initializing': truncation from 'double' to 'const float'
+D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Sphere.h(17,24): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Sphere.h(17,18): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
+D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Ray-Tracing.cpp(66,34): warning C4244: '=': conversion from '_T' to '_T', possible loss of data
           with
           [
               _T=float
@@ -15,7 +15,7 @@ C:\Users\Charlie\Desktop\Ray-Tracing\Ray-Tracing\Ray-Tracing\Ray-Tracing.cpp(70,
           [
               _T=colour_t
           ]
-C:\Users\Charlie\Desktop\Ray-Tracing\Ray-Tracing\Ray-Tracing\Ray-Tracing.cpp(71,34): warning C4244: '=': conversion from '_T' to '_T', possible loss of data
+D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Ray-Tracing.cpp(67,34): warning C4244: '=': conversion from '_T' to '_T', possible loss of data
           with
           [
               _T=float
@@ -24,7 +24,7 @@ C:\Users\Charlie\Desktop\Ray-Tracing\Ray-Tracing\Ray-Tracing\Ray-Tracing.cpp(71,
           [
               _T=colour_t
           ]
-C:\Users\Charlie\Desktop\Ray-Tracing\Ray-Tracing\Ray-Tracing\Ray-Tracing.cpp(72,34): warning C4244: '=': conversion from '_T' to '_T', possible loss of data
+D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Ray-Tracing.cpp(68,34): warning C4244: '=': conversion from '_T' to '_T', possible loss of data
           with
           [
               _T=float
@@ -33,13 +33,13 @@ C:\Users\Charlie\Desktop\Ray-Tracing\Ray-Tracing\Ray-Tracing\Ray-Tracing.cpp(72,
           [
               _T=colour_t
           ]
-C:\Users\Charlie\Desktop\Ray-Tracing\Ray-Tracing\Ray-Tracing\Utils.h(6,61): warning C4244: 'return': conversion from 'double' to 'size_t', possible loss of data
-C:\Users\Charlie\Desktop\Ray-Tracing\Ray-Tracing\Ray-Tracing\Config.h(16): message : see reference to function template instantiation 'size_t unstd::unsigned_max<colour_t>(void)' being compiled
+D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Utils.h(6,61): warning C4244: 'return': conversion from 'double' to 'size_t', possible loss of data
+D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Config.h(16): message : see reference to function template instantiation 'size_t unstd::unsigned_max<colour_t>(void)' being compiled
   Scene.cpp
-C:\Users\Charlie\Desktop\Ray-Tracing\Ray-Tracing\Ray-Tracing\Triangle.h(21,24): warning C4305: 'initializing': truncation from 'double' to 'const float'
-C:\Users\Charlie\Desktop\Ray-Tracing\Ray-Tracing\Ray-Tracing\Sphere.h(17,24): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Charlie\Desktop\Ray-Tracing\Ray-Tracing\Ray-Tracing\Sphere.h(17,18): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
+D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Triangle.h(21,24): warning C4305: 'initializing': truncation from 'double' to 'const float'
+D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Sphere.h(17,24): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Sphere.h(17,18): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
   Triangle.cpp
-C:\Users\Charlie\Desktop\Ray-Tracing\Ray-Tracing\Ray-Tracing\Triangle.h(21,24): warning C4305: 'initializing': truncation from 'double' to 'const float'
+D:\Code\Ray-Tracing\Ray-Tracing\Ray-Tracing\Triangle.h(21,24): warning C4305: 'initializing': truncation from 'double' to 'const float'
   Generating Code...
-  Ray-Tracing.vcxproj -> C:\Users\Charlie\Desktop\Ray-Tracing\Ray-Tracing\x64\Debug\Ray-Tracing.exe
+  Ray-Tracing.vcxproj -> D:\Code\Ray-Tracing\Ray-Tracing\x64\Debug\Ray-Tracing.exe

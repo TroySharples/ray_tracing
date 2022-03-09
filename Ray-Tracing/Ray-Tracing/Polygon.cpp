@@ -69,6 +69,7 @@ bool unstd::Polygon::checkTrianglesHit(const unstd::Ray& r)
 	{
 		if (triangle_list[i].hit(worldspace_position, r))
 		{
+			last_hit_tri = i;
 			return true;
 		}
 	}

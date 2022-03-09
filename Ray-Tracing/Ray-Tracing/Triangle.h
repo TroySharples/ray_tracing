@@ -2,7 +2,7 @@
 
 #include "Ray.h"
 #include "Object.h"
-//#include "Colour.h"
+#include "Colour.h"
 #include <array>
 
 namespace unstd
@@ -17,7 +17,7 @@ namespace unstd
 		Triangle(const vertices_t& vertices_)
 			:vertices(vertices_) {};
 		
-		//unstd::Colour c = unstd::Colour(unstd::Vector3<float>(1, 0, 0));
+		unstd::Colour colour = unstd::Colour(unstd::Vector3<float>(1, 0, 0));
 		const float kEpsilon = 1e-8;
 		bool hit(const unstd::Vector3<float>& worldspace_position, const unstd::Ray r) const override;
 

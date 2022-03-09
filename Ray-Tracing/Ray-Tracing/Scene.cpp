@@ -1,4 +1,5 @@
 #include "Scene.h"
+#include "Colour.h"
 
 void unstd::Scene::addPgonElement(unstd::Polygon& p)
 {
@@ -19,7 +20,13 @@ unstd::Vector3<float> unstd::Scene::renderScene(const unstd::Ray& r)
 	{
 		if (pgon_list[i].checkTrianglesHit(r))
 		{
-			return unstd::Vector3<float>(1.0, 0.0, 1.0);
+			unstd::Colour colour = pgon_list[i].triangle_list[pgon_list[i].lastHitTri()].colour;
+
+			unstd::Vector3<float> _colour = colour.getColour();
+
+			return _colour;
+
+			// return unstd::Vector3<float>(1.0, 0.0, 1.0);			
 		}
 
 		unstd::Vector3<> unit_dir = unit_vector(r.direction());
