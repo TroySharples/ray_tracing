@@ -19,10 +19,11 @@ namespace unstd
 		
 		unstd::Colour colour = unstd::Colour(unstd::Vector3<float>(1, 0, 0));
 		const float kEpsilon = 1e-8;
-		bool hit(const unstd::Vector3<float>& worldspace_position, const unstd::Ray r) const override;
-
+		void setColour(unstd::Colour& c);
 		unstd::Vector3<float> a() const { return vertices[0]; }
 		unstd::Vector3<float> b() const { return vertices[1]; }
 		unstd::Vector3<float> c() const { return vertices[2]; }
+
+		bool hit(const unstd::Vector3<float>& worldspace_position, const unstd::Ray r) const override;
 	};
 }

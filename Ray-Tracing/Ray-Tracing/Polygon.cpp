@@ -2,6 +2,7 @@
 #include "Polygon.h"
 #include "Vector2.h"
 #include "Virtex.h"
+
 #include <string>
 #include <sstream>
 #include <vector>
@@ -60,7 +61,21 @@ std::istream& unstd::operator>>(std::istream& is, Polygon& p)
 		}
 	}
 
+	p.setTriangleColours();
+
 	return is;
+}
+
+void unstd::Polygon::setTriangleColours()
+{
+	for (int i = 0; i < triangle_list.size(); i++)
+	{
+		int r = rand() % 65536;
+		int g = rand() % 65536;
+		int b = rand() % 65536;
+		unstd::Colour colour = unstd::Vector3<float>(r, g, b);
+		triangle_list[i].setColour(colour);
+	}
 }
 
 bool unstd::Polygon::checkTrianglesHit(const unstd::Ray& r)

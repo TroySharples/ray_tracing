@@ -26,7 +26,9 @@ namespace unstd
 
 		int last_hit_tri;
 		int lastHitTri() { return last_hit_tri; }
+		void setTriangleColours();
 		bool checkTrianglesHit(const unstd::Ray& r);
+
 	};
 
 	std::istream& operator>>(std::istream& is, Polygon& p);

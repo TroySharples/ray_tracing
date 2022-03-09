@@ -6,6 +6,11 @@
 	https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-rendering-a-triangle/ray-triangle-intersection-geometric-solution
 */
 
+void unstd::Triangle::setColour(unstd::Colour& c)
+{
+	colour = c;
+}
+
 bool unstd::Triangle::hit(const unstd::Vector3<float>& worldspace_position, const unstd::Ray r) const
 {
 	const unstd::Vector3<float> v0 = vertices[0] + worldspace_position;
