@@ -1,0 +1,26 @@
+#pragma once
+
+#include "triangle.h"
+#include "parallelepiped.h"
+
+#include <vector>
+
+class polygon : public object
+{
+public:
+	std::optional<colour_t> get_colour(const ray_t& ray) const override;
+
+	void set_centre(const spacial_t& centre) override;
+
+private:
+	typedef std::vector<triangle> triangles_t;
+	triangles_t _triangles;
+
+	mutable std::optional<parallelepiped> _bounding_box;
+
+	friend std::istream& operator>>(std::istream& is, polygon& v);
+	friend std::ostream& operator<<(std::ostream& os, const polygon& v);
+
+private:
+	void make_bounding_box() const;
+};
