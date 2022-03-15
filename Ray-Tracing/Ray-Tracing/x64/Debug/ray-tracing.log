@@ -1,0 +1,4 @@
+﻿  main.cpp
+D:\Code\Ray-Tracing\source\main.cpp(24,12): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\Code\Ray-Tracing\source\main.cpp(25,35): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  ray-tracing.vcxproj -> D:\Code\Ray-Tracing\projects\ray-tracing\x64\Debug\ray-tracing.exe
