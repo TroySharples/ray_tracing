@@ -2,43 +2,12 @@
 #include "sphere.h"
 #include "camera.h"
 #include "timer.h"
+#include "renderer.h"
 
 #include <memory>
 #include <fstream>
 
 typedef std::vector<std::unique_ptr<object>> objects_t;
-
-static void render(const objects_t& objects, image_t& img, const camera cam)
-{
-	timer t("Render");
-	std::cout << "Starting render loop..." << std::endl;
-
-	// Render loop
-	for (size_t h = 0; h < IMAGE_HEIGHT; h++)
-	{
-		//std::cout << h << std::endl;
-		for (size_t w = 0; w < IMAGE_WIDTH; w++)
-		{
-			const floating_point_t u = floating_point_t(w) / floating_point_t(IMAGE_WIDTH - 1);
-			const floating_point_t v = floating_point_t(h) / floating_point_t(IMAGE_HEIGHT - 1);
-			const ray_t ray(cam.getOrigin(), cam.getLLC() + u * cam.getHorizontal() + v * cam.getVertical() - cam.getOrigin());
-			
-			img[IMAGE_WIDTH * h + w] = WHITE;
-			for (const auto& object : objects)
-			{
-				std::optional<colour_t> colour = object->get_colour(ray);
-				if (colour.has_value())
-				{
-					img[IMAGE_WIDTH * h + w] = colour.value();
-					break;
-				}
-
-			}
-		}
-	}
-
-	std::cout << "Render finished." << std::endl;
-}
 
 static bool load_objects(objects_t& objects)
 {
@@ -101,7 +70,8 @@ int main()
 	camera cam1;
 
 	// Does the rendering
-	render(objects, *img, cam1);
+	renderer r;
+	r.render(objects, *img, cam1);
 
 	// Outputs the rendered PPM
 	std::ofstream of("output.ppm");

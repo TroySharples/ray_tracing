@@ -158,6 +158,7 @@
     <ClInclude Include="parallelepiped.h" />
     <ClInclude Include="parallelogram.h" />
     <ClInclude Include="polygon.h" />
+    <ClInclude Include="renderer.h" />
     <ClInclude Include="sphere.h" />
     <ClInclude Include="triangle.h" />
     <ClInclude Include="utils.h" />
