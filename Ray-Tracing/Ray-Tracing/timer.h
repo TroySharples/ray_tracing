@@ -7,25 +7,31 @@ class timer
 {
 public:
 	timer(std::string str)
+		:s(str)
 	{
-		start_time = std::chrono::time_point<std::chrono::high_resolution_clock>.now();
+		start_time = std::chrono::system_clock::now();
 		std::cout
-			<< str
+			<< s
 			<< " -> "
 			<< "Timer started...\n"
+			<< std::endl;
 	}
 
 	~timer()
 	{
-		end_time = std::chrono::time_point<std::chrono::high_resolution_clock>.now();
-		std::chrono::time_point<std::chrono::high_resolution_clock> duration = end_time - start_time;
+		end_time = std::chrono::system_clock::now();
+		std::chrono::duration<double> diff = end_time - start_time;
 		std::cout
-			<< str
-			<< " -> "
-			<< "Timer finished."
+			<< "Timer "
+			<< s
+			<< " took "
+			<< diff
+			<< " to complete."
+			<< std::endl;
 	}
 
 private:
-	std::chrono::time_point<std::chrono::high_resolution_clock> start_time;
-	std::chrono::time_point<std::chrono::high_resolution_clock> end_time;
+	std::chrono::system_clock::time_point start_time;
+	std::chrono::system_clock::time_point end_time;
+	std::string s;
 };

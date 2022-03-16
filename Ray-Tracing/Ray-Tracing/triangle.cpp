@@ -17,8 +17,9 @@ std::optional<colour_t> triangle::get_colour(const ray_t& ray) const
 	const spacial_t side2 = absolute[2] - absolute[1];
 
 	// Calculate the normal if necessary
-	if (!_normal.has_value())
-		_normal = unstd::cross_product(side0, side1);
+	if (!_normal.has_value()) { make_normal(); }		
+	//_normal = unstd::cross_product(side0, side1);
+		
 	const spacial_t& normal = _normal.value();
 
 	// Compute how aligned the normal to the triangle and the direction of the ray are (their dot product)

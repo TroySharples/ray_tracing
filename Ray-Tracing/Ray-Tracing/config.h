@@ -12,8 +12,8 @@ typedef double floating_point_t;
 constexpr rgb_t RGB_MAX = unstd::unsigned_max<rgb_t>();
 
 // Image.
-constexpr size_t IMAGE_WIDTH = 640;
-constexpr size_t IMAGE_HEIGHT = 360;
+constexpr size_t IMAGE_WIDTH = 1920;
+constexpr size_t IMAGE_HEIGHT = 1080;
 constexpr floating_point_t ASPECT_RATIO = floating_point_t(IMAGE_WIDTH) / floating_point_t(IMAGE_HEIGHT);
 
 typedef unstd::line<floating_point_t, 3> ray_t;
