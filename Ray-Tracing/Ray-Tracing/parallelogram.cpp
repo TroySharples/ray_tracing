@@ -6,7 +6,7 @@ parallelogram::parallelogram(const vertices_t& vertices)
 
 }
 
-std::optional<colour_t> parallelogram::get_colour(const ray_t& ray) const
+std::optional<object::hit_info> parallelogram::get_hit_info(const ray_t& ray) const
 {
 	// The absolute position of the parallelogram
 	const vertices_t absolute = { _vertices[0] + _centre, _vertices[1] + _centre, _vertices[2] + _centre };
@@ -25,28 +25,28 @@ std::optional<colour_t> parallelogram::get_colour(const ray_t& ray) const
 
 	// The ray will never hit if its direction is orthoganal to the normal of the parallelogram
 	constexpr floating_point_t epsilon = 1e-8;
-	if (std::abs(alignment) < epsilon) return std::optional<colour_t>();
+	if (std::abs(alignment) < epsilon) return std::optional<hit_info>();
 
 	// Compute the distance along the ray which intersects with the plane
 	const floating_point_t t = -unstd::dot_product(normal, ray.origin - absolute[0]) / alignment;
 
 	// If t is negative the parallelogram is behind the camera
-	if (t < 0) return std::optional<colour_t>();
+	if (t < 0) return std::optional<hit_info>();
 
 	// Compute the actual point of interesection and the displacement vector to this point
 	const spacial_t intersection = ray[t];
 
 	// Are we right of the first side?
-	if (unstd::scalar_triple_product(normal, side0, intersection - absolute[2]) < 0) return std::optional<colour_t>();
+	if (unstd::scalar_triple_product(normal, side0, intersection - absolute[2]) < 0) return std::optional<hit_info>();
 
 	// Are we right of the second side?
-	if (unstd::scalar_triple_product(normal, side1, intersection - absolute[0]) < 0) return std::optional<colour_t>();
+	if (unstd::scalar_triple_product(normal, side1, intersection - absolute[0]) < 0) return std::optional<hit_info>();
 
 	// Are we right of the third side?
-	if (unstd::scalar_triple_product(normal, side0, intersection - absolute[1]) > 0) return std::optional<colour_t>();
+	if (unstd::scalar_triple_product(normal, side0, intersection - absolute[1]) > 0) return std::optional<hit_info>();
 
 	// Are we right of the fourth side?
-	if (unstd::scalar_triple_product(normal, side1, intersection - absolute[2]) > 0) return std::optional<colour_t>();
+	if (unstd::scalar_triple_product(normal, side1, intersection - absolute[2]) > 0) return std::optional<hit_info>();
 
 	return RED;
 }

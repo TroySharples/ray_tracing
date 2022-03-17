@@ -146,6 +146,7 @@
     <ClCompile Include="parallelepiped.cpp" />
     <ClCompile Include="parallelogram.cpp" />
     <ClCompile Include="polygon.cpp" />
+    <ClCompile Include="renderer.cpp" />
     <ClCompile Include="sphere.cpp" />
     <ClCompile Include="triangle.cpp" />
   </ItemGroup>

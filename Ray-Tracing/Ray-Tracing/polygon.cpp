@@ -2,7 +2,7 @@
 
 #include <sstream>
 
-std::optional<colour_t> polygon::get_colour(const ray_t& ray) const
+std::optional<object::hit_info> polygon::get_hit_info(const ray_t& ray) const
 {
 	// Make our bounding box if we haven't already
 	if (!_bounding_box.has_value())
@@ -10,17 +10,22 @@ std::optional<colour_t> polygon::get_colour(const ray_t& ray) const
 	const parallelepiped& bounding_box = _bounding_box.value();
 
 	// Return false straight away if we don't hit the bounding box
-	if (!bounding_box.get_colour(ray).has_value())
-		return std::optional<colour_t>();
+	if (!bounding_box.get_hit_info(ray).has_value())
+		return std::optional<hit_info>();
 
+	std::optional<hit_info> ret;
 	for (const auto& i : _triangles)
 	{
-		const std::optional<colour_t> colour = i.get_colour(ray);
-		if (colour.has_value())
-			return colour;
+		const auto h_i = i.get_hit_info(ray);
+		if (h_i.has_value() && 
+			(!ret.has_value() || 
+				ret.value().z > h_i.value().z))
+		{
+			ret = h_i;
+		}
 	}
 
-	return std::optional<colour_t>();
+	return ret;
 }
 
 void polygon::set_centre(const spacial_t& centre)

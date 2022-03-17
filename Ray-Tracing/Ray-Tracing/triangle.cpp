@@ -1,12 +1,9 @@
 #include "triangle.h"
 
 triangle::triangle(const vertices_t& vertices)
-	: _vertices(vertices)
-{
+	: _vertices(vertices) {}
 
-}
-
-std::optional<colour_t> triangle::get_colour(const ray_t& ray) const
+std::optional<object::hit_info> triangle::get_hit_info(const ray_t& ray) const
 {
 	// The absolute position of the triangle
 	const vertices_t absolute = { _vertices[0] + _centre, _vertices[1] + _centre, _vertices[2] + _centre };
@@ -17,21 +14,20 @@ std::optional<colour_t> triangle::get_colour(const ray_t& ray) const
 	const spacial_t side2 = absolute[2] - absolute[1];
 
 	// Calculate the normal if necessary
-	if (!_normal.has_value()) { make_normal(); }		
-	//_normal = unstd::cross_product(side0, side1);
+	if (!_normal.has_value()) { make_normal(); }
 		
 	const spacial_t& normal = _normal.value();
 
 	// Compute how aligned the normal to the triangle and the direction of the ray are (their dot product)
-	const floating_point_t alignment = unstd::dot_product(normal, ray.direction);
+	const floating_point_t alignment = -unstd::dot_product(normal, ray.direction);
 
 	// We do not count the ray as hitting if direction is almost orthoganal to the normal of the triangle, or if it
 	// is hitting the backwards face of the triangle
 	constexpr floating_point_t epsilon = 1e-8;
-	if (alignment < -epsilon) return std::optional<colour_t>();
+	if (alignment < epsilon) return std::optional<colour_t>();
 
 	// Compute the distance along the ray which intersects with the plane
-	const floating_point_t t = -unstd::dot_product(normal, ray.origin - absolute[0]) / alignment;
+	const floating_point_t t = unstd::dot_product(normal, ray.origin - absolute[0]) / alignment;
 
 	// If t is negative the triangle is behind the camera
 	if (t < 0) return std::optional<colour_t>();
@@ -48,7 +44,7 @@ std::optional<colour_t> triangle::get_colour(const ray_t& ray) const
 	// Are we right of the third side?
 	if (unstd::scalar_triple_product(normal, side2, intersection - absolute[1]) < 0) return std::optional<colour_t>();
 
-	return _colour;
+	return hit_info(_colour * alignment, (intersection - ray.origin).length());
 }
 
 triangle::vertex_t& triangle::operator[](size_t i)
@@ -66,4 +62,5 @@ const triangle::vertex_t& triangle::operator[](size_t i) const
 void triangle::make_normal() const
 {
 	_normal = unstd::cross_product(_vertices[0] - _vertices[2], _vertices[1] - _vertices[0]);
+	_normal.value().normalise();
 }

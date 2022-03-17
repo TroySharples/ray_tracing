@@ -30,7 +30,7 @@ private:
 
 	floating_point_t cam_height = floating_point_t(2.0);
 	floating_point_t cam_width = ASPECT_RATIO * cam_height;
-	floating_point_t focal_length = floating_point_t(1.0);
+	floating_point_t focal_length = floating_point_t(10.0);
 
 	// Default camera position.
 	spacial_t origin = { 0, 0, 0 };

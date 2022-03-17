@@ -9,7 +9,19 @@ class object
 public:
 	virtual ~object() = default;
 
-	virtual std::optional<colour_t> get_colour(const ray_t& ray) const = 0;
+	struct hit_info
+	{
+		hit_info() = default;
+		hit_info(colour_t col)
+			:colour(col) {}
+		hit_info(colour_t col_, floating_point_t z_)
+			:colour(col_), z(z_) {}
+		~hit_info() = default;
+		colour_t colour;
+		floating_point_t z;
+	};
+
+	virtual std::optional<hit_info> get_hit_info(const ray_t& ray) const = 0;
 
 	virtual void set_centre(const spacial_t& centre) { _centre = centre; }
 	const spacial_t& get_centre() const { return _centre; }

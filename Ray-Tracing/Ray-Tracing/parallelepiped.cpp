@@ -10,16 +10,16 @@ parallelepiped::parallelepiped(const spacial_t& x, const spacial_t& y, const spa
 	_parallelograms[5] = parallelogram({ _centre + x + y + z, _centre + x + y, _centre + y + z });
 }
 
-std::optional<colour_t> parallelepiped::get_colour(const ray_t& ray) const
+std::optional<object::hit_info> parallelepiped::get_hit_info(const ray_t& ray) const
 {
 	for (const auto& i : _parallelograms)
 	{
-		const std::optional<colour_t> colour = i.get_colour(ray);
+		const std::optional<hit_info> colour = i.get_hit_info(ray);
 		if (colour.has_value())
 			return colour;
 	}
 
-	return std::optional<colour_t>();
+	return std::optional<hit_info>();
 }
 
 void parallelepiped::set_centre(const spacial_t& centre)

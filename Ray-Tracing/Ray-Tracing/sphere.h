@@ -7,7 +7,7 @@ class sphere : public object
 public:
 	sphere(floating_point_t radius_);
 
-	std::optional<colour_t> get_colour(const ray_t& ray) const override;
+	std::optional<hit_info> get_hit_info(const ray_t& ray) const override;
 	
 	const floating_point_t radius;
 };

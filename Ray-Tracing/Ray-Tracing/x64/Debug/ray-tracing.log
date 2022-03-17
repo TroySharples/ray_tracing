@@ -1,2 +1,10 @@
-﻿  main.cpp
+﻿  config.cpp
+  main.cpp
+  parallelepiped.cpp
+  parallelogram.cpp
+  polygon.cpp
+  renderer.cpp
+  sphere.cpp
+  triangle.cpp
+  Generating Code...
   ray-tracing.vcxproj -> D:\Code\Ray-Tracing\Ray-Tracing\x64\Debug\ray-tracing.exe
