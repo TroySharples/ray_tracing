@@ -1,5 +1,7 @@
 #include "renderer.h"
 
+#include "objects/object.h"
+
 void renderer::render(const objects_t& objects, image_t& img, const camera cam)
 {
 	timer t("Render");

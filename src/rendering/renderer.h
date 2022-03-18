@@ -1,8 +1,13 @@
 #pragma once
+
+#include "rendering/camera.h"
+#include "utils/timer.h"
+
 #include "config.h"
-#include "camera.h"
-#include "object.h"
-#include "timer.h"
+
+#include <memory>
+
+class object;
 
 typedef std::vector<std::unique_ptr<object>> objects_t;
 

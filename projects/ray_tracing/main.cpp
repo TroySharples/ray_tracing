@@ -1,8 +1,10 @@
-#include "polygon.h"
-#include "sphere.h"
-#include "camera.h"
-#include "timer.h"
-#include "renderer.h"
+#include "objects/polygon.h"
+#include "objects/sphere.h"
+
+#include "rendering/camera.h"
+#include "rendering/renderer.h"
+
+#include "utils/timer.h"
 
 #include <memory>
 #include <fstream>

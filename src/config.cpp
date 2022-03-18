@@ -1,5 +1,5 @@
 #include "config.h"
-#include "utils.h"
+#include "utils/utils.h"
 
 std::ostream& operator << (std::ostream& os, const image_t& image)
 {

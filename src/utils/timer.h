@@ -25,7 +25,7 @@ public:
 			<< "Timer "
 			<< s
 			<< " took "
-			<< diff
+			<< diff.count()
 			<< " to complete."
 			<< std::endl;
 	}

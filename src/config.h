@@ -1,7 +1,7 @@
 #pragma once
 
-#include "line.h"
-#include "utils.h"
+#include "utils/line.h"
+#include "utils/utils.h"
 
 #include <random>
 #include <cstdint>

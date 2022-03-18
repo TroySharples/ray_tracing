@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="objects" displayName="objects" projectFiles="true">
+        <itemPath>../../src/objects/object.h</itemPath>
+        <itemPath>../../src/objects/parallelepiped.cpp</itemPath>
+        <itemPath>../../src/objects/parallelepiped.h</itemPath>
+        <itemPath>../../src/objects/parallelogram.cpp</itemPath>
+        <itemPath>../../src/objects/parallelogram.h</itemPath>
+        <itemPath>../../src/objects/polygon.cpp</itemPath>
+        <itemPath>../../src/objects/polygon.h</itemPath>
+        <itemPath>../../src/objects/sphere.cpp</itemPath>
+        <itemPath>../../src/objects/sphere.h</itemPath>
+        <itemPath>../../src/objects/triangle.cpp</itemPath>
+        <itemPath>../../src/objects/triangle.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="rendering" displayName="rendering" projectFiles="true">
+        <itemPath>../../src/rendering/camera.h</itemPath>
+        <itemPath>../../src/rendering/renderer.cpp</itemPath>
+        <itemPath>../../src/rendering/renderer.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="utils" displayName="utils" projectFiles="true">
+        <itemPath>../../src/utils/line.h</itemPath>
+        <itemPath>../../src/utils/logging.h</itemPath>
+        <itemPath>../../src/utils/timer.h</itemPath>
+        <itemPath>../../src/utils/utils.h</itemPath>
+        <itemPath>../../src/utils/vector.h</itemPath>
+      </logicalFolder>
+      <itemPath>../../src/config.cpp</itemPath>
+      <itemPath>../../src/config.h</itemPath>
+      <itemPath>main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>../../src</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <incDir>
+            <pElem>../../src</pElem>
+          </incDir>
+          <commandLine>-Wall -std=c++20</commandLine>
+        </ccTool>
+      </compileType>
+      <item path="../../src/config.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../src/config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/objects/object.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/objects/parallelepiped.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/objects/parallelepiped.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/objects/parallelogram.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/objects/parallelogram.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/objects/polygon.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../src/objects/polygon.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/objects/sphere.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../src/objects/sphere.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/objects/triangle.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../src/objects/triangle.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/rendering/camera.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/rendering/renderer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../src/rendering/renderer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/utils/line.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/utils/logging.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/utils/timer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/utils/utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/utils/vector.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>../../src</pElem>
+          </incDir>
+          <commandLine>-Wall -std=c++20</commandLine>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="../../src/config.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../src/config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/objects/object.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/objects/parallelepiped.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/objects/parallelepiped.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/objects/parallelogram.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/objects/parallelogram.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/objects/polygon.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../src/objects/polygon.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/objects/sphere.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../src/objects/sphere.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/objects/triangle.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../src/objects/triangle.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/rendering/camera.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/rendering/renderer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../src/rendering/renderer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/utils/line.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/utils/logging.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/utils/timer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/utils/utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/utils/vector.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
