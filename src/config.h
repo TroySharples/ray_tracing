@@ -4,6 +4,7 @@
 #include "utils/utils.h"
 
 #include <random>
+#include <filesystem>
 #include <cstdint>
 
 typedef uint8_t rgb_t;
@@ -13,8 +14,8 @@ typedef double floating_point_t;
 constexpr rgb_t RGB_MAX = unstd::unsigned_max<rgb_t>();
 
 // Image.
-constexpr size_t IMAGE_WIDTH = 1920;
-constexpr size_t IMAGE_HEIGHT = 1080;
+constexpr size_t IMAGE_WIDTH = 192;
+constexpr size_t IMAGE_HEIGHT = 108;
 constexpr floating_point_t ASPECT_RATIO = floating_point_t(IMAGE_WIDTH) / floating_point_t(IMAGE_HEIGHT);
 
 typedef unstd::line<floating_point_t, 3> ray_t;
@@ -31,6 +32,10 @@ constexpr colour_t RED = RGB_MAX * colour_t({ 1, 0, 0 });
 constexpr colour_t GREEN = RGB_MAX * colour_t({ 0, 1, 0 });
 constexpr colour_t BLUE = RGB_MAX * colour_t({ 0, 0, 1 });
 constexpr colour_t WHITE = RGB_MAX * colour_t({ 1, 1, 1 });
+
+static const std::filesystem::path ROOT_PATH = "../../../../../";
+static const std::filesystem::path OBJECTS_PATH = ROOT_PATH / "objects";
+static const std::filesystem::path RENDERS_PATH = ROOT_PATH / "renders";
 
 // Writes an image to ostream in PPM format
 std::ostream& operator << (std::ostream& os, const image_t& image);
