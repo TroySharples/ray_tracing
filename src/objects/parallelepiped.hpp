@@ -1,6 +1,6 @@
 #pragma once
 
-#include "parallelogram.h"
+#include "parallelogram.hpp"
 
 class parallelepiped: public object
 {

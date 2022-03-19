@@ -1,8 +1,8 @@
-#include "timer.h"
+#include "timer.hpp"
 
 #include <iostream>
 
-#include "utils/logging.h"
+#include "utils/logging.hpp"
 
 static void default_callback(std::string label, double time)
 {

@@ -1,4 +1,4 @@
-#include "sphere.h"
+#include "sphere.hpp"
 
 sphere::sphere(floating_point_t radius_)
 	: radius(radius_)

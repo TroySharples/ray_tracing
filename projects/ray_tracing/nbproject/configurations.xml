@@ -9,33 +9,33 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="objects" displayName="objects" projectFiles="true">
-        <itemPath>../../src/objects/object.h</itemPath>
+        <itemPath>../../src/objects/object.hpp</itemPath>
         <itemPath>../../src/objects/parallelepiped.cpp</itemPath>
-        <itemPath>../../src/objects/parallelepiped.h</itemPath>
+        <itemPath>../../src/objects/parallelepiped.hpp</itemPath>
         <itemPath>../../src/objects/parallelogram.cpp</itemPath>
-        <itemPath>../../src/objects/parallelogram.h</itemPath>
+        <itemPath>../../src/objects/parallelogram.hpp</itemPath>
         <itemPath>../../src/objects/polygon.cpp</itemPath>
-        <itemPath>../../src/objects/polygon.h</itemPath>
+        <itemPath>../../src/objects/polygon.hpp</itemPath>
         <itemPath>../../src/objects/sphere.cpp</itemPath>
-        <itemPath>../../src/objects/sphere.h</itemPath>
+        <itemPath>../../src/objects/sphere.hpp</itemPath>
         <itemPath>../../src/objects/triangle.cpp</itemPath>
-        <itemPath>../../src/objects/triangle.h</itemPath>
+        <itemPath>../../src/objects/triangle.hpp</itemPath>
       </logicalFolder>
       <logicalFolder name="rendering" displayName="rendering" projectFiles="true">
-        <itemPath>../../src/rendering/camera.h</itemPath>
+        <itemPath>../../src/rendering/camera.hpp</itemPath>
         <itemPath>../../src/rendering/renderer.cpp</itemPath>
-        <itemPath>../../src/rendering/renderer.h</itemPath>
+        <itemPath>../../src/rendering/renderer.hpp</itemPath>
       </logicalFolder>
       <logicalFolder name="utils" displayName="utils" projectFiles="true">
-        <itemPath>../../src/utils/line.h</itemPath>
-        <itemPath>../../src/utils/logging.h</itemPath>
+        <itemPath>../../src/utils/line.hpp</itemPath>
+        <itemPath>../../src/utils/logging.hpp</itemPath>
         <itemPath>../../src/utils/timer.cpp</itemPath>
-        <itemPath>../../src/utils/timer.h</itemPath>
-        <itemPath>../../src/utils/utils.h</itemPath>
-        <itemPath>../../src/utils/vector.h</itemPath>
+        <itemPath>../../src/utils/timer.hpp</itemPath>
+        <itemPath>../../src/utils/utils.hpp</itemPath>
+        <itemPath>../../src/utils/vector.hpp</itemPath>
       </logicalFolder>
       <itemPath>../../src/config.cpp</itemPath>
-      <itemPath>../../src/config.h</itemPath>
+      <itemPath>../../src/config.hpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -71,53 +71,59 @@
       </compileType>
       <item path="../../src/config.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../../src/config.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/config.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../../src/objects/object.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/objects/object.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../src/objects/parallelepiped.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="../../src/objects/parallelepiped.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/objects/parallelepiped.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../src/objects/parallelogram.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="../../src/objects/parallelogram.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/objects/parallelogram.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../src/objects/polygon.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../../src/objects/polygon.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/objects/polygon.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../src/objects/sphere.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../../src/objects/sphere.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/objects/sphere.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../src/objects/triangle.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../../src/objects/triangle.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/objects/triangle.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../../src/rendering/camera.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/rendering/camera.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../src/rendering/renderer.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../../src/rendering/renderer.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/rendering/renderer.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../../src/utils/line.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/utils/line.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../../src/utils/logging.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/utils/logging.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../src/utils/timer.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../../src/utils/timer.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/utils/timer.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../../src/utils/utils.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/utils/utils.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../../src/utils/vector.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/utils/vector.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -148,53 +154,59 @@
       </compileType>
       <item path="../../src/config.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../../src/config.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/config.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../../src/objects/object.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/objects/object.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../src/objects/parallelepiped.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="../../src/objects/parallelepiped.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/objects/parallelepiped.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../src/objects/parallelogram.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="../../src/objects/parallelogram.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/objects/parallelogram.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../src/objects/polygon.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../../src/objects/polygon.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/objects/polygon.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../src/objects/sphere.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../../src/objects/sphere.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/objects/sphere.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../src/objects/triangle.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../../src/objects/triangle.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/objects/triangle.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../../src/rendering/camera.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/rendering/camera.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../src/rendering/renderer.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../../src/rendering/renderer.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/rendering/renderer.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../../src/utils/line.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/utils/line.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../../src/utils/logging.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/utils/logging.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../src/utils/timer.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../../src/utils/timer.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/utils/timer.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../../src/utils/utils.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/utils/utils.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../../src/utils/vector.h" ex="false" tool="3" flavor2="0">
+      <item path="../../src/utils/vector.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

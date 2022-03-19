@@ -1,7 +1,7 @@
 #pragma once
 
-#include "utils/line.h"
-#include "utils/utils.h"
+#include "utils/line.hpp"
+#include "utils/utils.hpp"
 
 #include <random>
 #include <filesystem>

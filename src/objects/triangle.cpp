@@ -1,4 +1,4 @@
-#include "triangle.h"
+#include "triangle.hpp"
 
 triangle::triangle(const vertices_t& vertices)
 	: _vertices(vertices) {}

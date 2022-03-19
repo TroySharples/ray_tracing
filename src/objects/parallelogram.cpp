@@ -1,4 +1,4 @@
-#include "parallelogram.h"
+#include "parallelogram.hpp"
 
 parallelogram::parallelogram(const vertices_t& vertices)
 	: _vertices(vertices)

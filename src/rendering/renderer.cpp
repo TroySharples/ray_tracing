@@ -1,6 +1,6 @@
-#include "renderer.h"
+#include "renderer.hpp"
 
-#include "objects/object.h"
+#include "objects/object.hpp"
 
 void renderer::render(const objects_t& objects, image_t& img, const camera cam)
 {

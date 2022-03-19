@@ -1,4 +1,4 @@
-#include "parallelepiped.h"
+#include "parallelepiped.hpp"
 
 parallelepiped::parallelepiped(const spacial_t& x, const spacial_t& y, const spacial_t& z)
 {

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "triangle.h"
-#include "parallelepiped.h"
+#include "triangle.hpp"
+#include "parallelepiped.hpp"
 
 #include <vector>
 

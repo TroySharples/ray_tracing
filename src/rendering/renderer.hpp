@@ -1,9 +1,9 @@
 #pragma once
 
-#include "rendering/camera.h"
-#include "utils/timer.h"
+#include "rendering/camera.hpp"
+#include "utils/timer.hpp"
 
-#include "config.h"
+#include "config.hpp"
 
 #include <memory>
 
