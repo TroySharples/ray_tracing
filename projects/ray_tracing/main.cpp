@@ -1,4 +1,4 @@
-#include "objects/polygon.hpp"
+#include "objects/complex_polygon.hpp"
 #include "objects/sphere.hpp"
 
 #include "rendering/camera.hpp"
@@ -26,7 +26,6 @@ static bool load_objects(objects_t& objects)
     {
         std::unique_ptr<sphere> obj = std::make_unique<sphere>(5.0);
         obj->set_centre({ 0.0, 0.0, -65.0 });
-        obj->colour = WHITE;
 
         objects.emplace_back(std::move(obj));
     }
@@ -37,7 +36,6 @@ static bool load_objects(objects_t& objects)
     {
         std::unique_ptr<sphere> obj = std::make_unique<sphere>(1.0);
         obj->set_centre({ 4.0, 2.0, -35.0 });
-        obj->colour = BLUE;
 
         objects.emplace_back(std::move(obj));
     }
@@ -46,7 +44,7 @@ static bool load_objects(objects_t& objects)
     // Pushes back a cow
 #if 1
     {
-        std::unique_ptr<polygon> obj = std::make_unique<polygon>();
+        std::unique_ptr<complex_polygon> obj = std::make_unique<complex_polygon>();
 
         std::fstream fs((OBJECTS_PATH / "cow.obj").c_str());
         if (!fs)
@@ -54,7 +52,6 @@ static bool load_objects(objects_t& objects)
 
         fs >> *obj;
         obj->set_centre({ -4.0, 0.0, -55.0 });
-        obj->set_colour(RED);
 
         objects.emplace_back(std::move(obj));
     }
@@ -63,7 +60,7 @@ static bool load_objects(objects_t& objects)
     // Pushes back a teapot
 #if 1
     {
-        std::unique_ptr<polygon> obj = std::make_unique<polygon>();
+        std::unique_ptr<complex_polygon> obj = std::make_unique<complex_polygon>();
 
         std::fstream fs((OBJECTS_PATH / "teapot.obj").c_str());
         if (!fs)
@@ -71,7 +68,6 @@ static bool load_objects(objects_t& objects)
 
         fs >> *obj;
         obj->set_centre({ 5.0, -3.0, -45.0 });
-        obj->set_colour(GREEN);
 
         objects.emplace_back(std::move(obj));
     }

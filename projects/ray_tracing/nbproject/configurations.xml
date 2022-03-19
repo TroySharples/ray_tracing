@@ -9,6 +9,8 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="objects" displayName="objects" projectFiles="true">
+        <itemPath>../../src/objects/complex_polygon.cpp</itemPath>
+        <itemPath>../../src/objects/complex_polygon.hpp</itemPath>
         <itemPath>../../src/objects/object.hpp</itemPath>
         <itemPath>../../src/objects/parallelepiped.cpp</itemPath>
         <itemPath>../../src/objects/parallelepiped.hpp</itemPath>
@@ -72,6 +74,16 @@
       <item path="../../src/config.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../../src/config.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/objects/complex_polygon.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/objects/complex_polygon.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../src/objects/object.hpp" ex="false" tool="3" flavor2="0">
       </item>
@@ -155,6 +167,16 @@
       <item path="../../src/config.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../../src/config.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/objects/complex_polygon.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/objects/complex_polygon.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="../../src/objects/object.hpp" ex="false" tool="3" flavor2="0">
       </item>

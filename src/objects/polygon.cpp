@@ -24,12 +24,23 @@ std::optional<object::hit_info> polygon::get_hit_info(const ray_t& ray) const
     return ret;
 }
 
+polygon::triangles_t& polygon::get_triangles()
+{
+    _bounding_box.reset();
+    return _triangles;
+}
+
+const polygon::triangles_t& polygon::get_triangles() const
+{
+    return _triangles;
+}
+
 void polygon::set_centre(const spacial_t& centre)
 {
     // Also reset centre for each of our triangles and parallelepiped as well
     _centre = centre;
     for (auto& i : _triangles)
-        i.set_centre(_centre);
+        i.set_centre(centre);
 
     _bounding_box.reset();
 }

@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/_ext/56252444/config.o \
+	${OBJECTDIR}/_ext/1259a249/complex_polygon.o \
 	${OBJECTDIR}/_ext/1259a249/parallelepiped.o \
 	${OBJECTDIR}/_ext/1259a249/parallelogram.o \
 	${OBJECTDIR}/_ext/1259a249/polygon.o \
@@ -74,6 +75,11 @@ ${OBJECTDIR}/_ext/56252444/config.o: ../../src/config.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/56252444
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/56252444/config.o ../../src/config.cpp
+
+${OBJECTDIR}/_ext/1259a249/complex_polygon.o: ../../src/objects/complex_polygon.cpp
+	${MKDIR} -p ${OBJECTDIR}/_ext/1259a249
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1259a249/complex_polygon.o ../../src/objects/complex_polygon.cpp
 
 ${OBJECTDIR}/_ext/1259a249/parallelepiped.o: ../../src/objects/parallelepiped.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/1259a249
