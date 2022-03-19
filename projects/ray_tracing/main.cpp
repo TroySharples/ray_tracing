@@ -24,9 +24,9 @@ static bool load_objects(objects_t& objects)
     // Pushes back a sphere
 #if 1
     {
-        std::unique_ptr<sphere> obj = std::make_unique<sphere>(2.5);
-        obj->set_centre({ 3.0, 0.0, -55.0 });
-        obj->colour = RED;
+        std::unique_ptr<sphere> obj = std::make_unique<sphere>(5.0);
+        obj->set_centre({ 0.0, 0.0, -65.0 });
+        obj->colour = WHITE;
 
         objects.emplace_back(std::move(obj));
     }
@@ -35,16 +35,16 @@ static bool load_objects(objects_t& objects)
     // Pushes back another sphere
 #if 1
     {
-        std::unique_ptr<sphere> obj = std::make_unique<sphere>(2.5);
-        obj->set_centre({ -3.0, 0.0, -50.0 });
-        obj->colour = GREEN;
+        std::unique_ptr<sphere> obj = std::make_unique<sphere>(1.0);
+        obj->set_centre({ 4.0, 2.0, -35.0 });
+        obj->colour = BLUE;
 
         objects.emplace_back(std::move(obj));
     }
 #endif
 
     // Pushes back a cow
-#if 0
+#if 1
     {
         std::unique_ptr<polygon> obj = std::make_unique<polygon>();
 
@@ -53,14 +53,15 @@ static bool load_objects(objects_t& objects)
                 return false;
 
         fs >> *obj;
-        obj->set_centre({ -1.0, 0.0, -75.0 });
+        obj->set_centre({ -4.0, 0.0, -55.0 });
+        obj->set_colour(RED);
 
         objects.emplace_back(std::move(obj));
     }
 #endif
 
     // Pushes back a teapot
-#if 0
+#if 1
     {
         std::unique_ptr<polygon> obj = std::make_unique<polygon>();
 
@@ -69,7 +70,8 @@ static bool load_objects(objects_t& objects)
                 return false;
 
         fs >> *obj;
-        obj->set_centre({ 1.0, -3.0, -65.0 });
+        obj->set_centre({ 5.0, -3.0, -45.0 });
+        obj->set_colour(GREEN);
 
         objects.emplace_back(std::move(obj));
     }

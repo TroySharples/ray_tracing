@@ -16,9 +16,9 @@ std::optional<object::hit_info> polygon::get_hit_info(const ray_t& ray) const
     std::optional<hit_info> ret;
     for (const auto& i : _triangles)
     {
-        const auto h_i = i.get_hit_info(ray);
-        if (h_i.has_value() && (!ret.has_value() || ret.value().z > h_i.value().z))
-            ret = h_i;
+        const auto info = i.get_hit_info(ray);
+        if (info.has_value() && (!ret.has_value() || ret.value().z > info.value().z))
+            ret = info;
     }
 
     return ret;
@@ -32,6 +32,13 @@ void polygon::set_centre(const spacial_t& centre)
         i.set_centre(_centre);
 
     _bounding_box.reset();
+}
+
+void polygon::set_colour(const colour_t& colour)
+{
+    _colour = colour;
+    for (auto& i : _triangles)
+        i.colour = colour;
 }
 
 std::istream& operator>>(std::istream& is, polygon& v)
@@ -80,8 +87,9 @@ std::istream& operator>>(std::istream& is, polygon& v)
             triangle[j] = vertexes[net[j] - 1];
     }
 
-    // Reset the centres of all the triangles
+    // Reset the centre and colours of all the triangles
     v.set_centre(v._centre);
+    v.set_colour(v._colour);
 
     return is;
 }

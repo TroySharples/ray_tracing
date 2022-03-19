@@ -16,7 +16,7 @@ public:
 
         colour_t colour;
         floating_point_t z;
-        floating_point_t albedo = 0.8;
+        floating_point_t albedo = 1.0;
         ray_t next_ray;
     };
 

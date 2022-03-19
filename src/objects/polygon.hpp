@@ -11,10 +11,15 @@ public:
     std::optional<hit_info> get_hit_info(const ray_t& ray) const override;
 
     void set_centre(const spacial_t& centre) override;
+    
+    void set_colour(const colour_t& colour);
+    const colour_t& get_colour() const { return _colour; }
 
 private:
     typedef std::vector<triangle> triangles_t;
     triangles_t _triangles;
+    
+    colour_t _colour = random_colour();
 
     mutable std::optional<parallelepiped> _bounding_box;
 
