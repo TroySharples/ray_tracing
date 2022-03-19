@@ -42,6 +42,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1259a249/sphere.o \
 	${OBJECTDIR}/_ext/1259a249/triangle.o \
 	${OBJECTDIR}/_ext/a8ea4a81/renderer.o \
+	${OBJECTDIR}/_ext/2abcb726/timer.o \
 	${OBJECTDIR}/main.o
 
 
@@ -103,6 +104,11 @@ ${OBJECTDIR}/_ext/a8ea4a81/renderer.o: ../../src/rendering/renderer.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/a8ea4a81
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a8ea4a81/renderer.o ../../src/rendering/renderer.cpp
+
+${OBJECTDIR}/_ext/2abcb726/timer.o: ../../src/utils/timer.cpp
+	${MKDIR} -p ${OBJECTDIR}/_ext/2abcb726
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2abcb726/timer.o ../../src/utils/timer.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}

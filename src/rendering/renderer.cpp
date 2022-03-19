@@ -4,7 +4,7 @@
 
 void renderer::render(const objects_t& objects, image_t& img, const camera cam)
 {
-	timer t("Render");
+	life_timer t("Render");
 	std::cout << "Starting render loop..." << std::endl;
 
 	// Render loop

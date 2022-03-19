@@ -12,13 +12,12 @@ public:
 	struct hit_info
 	{
 		hit_info() = default;
-		hit_info(colour_t col)
-			:colour(col) {}
-		hit_info(colour_t col_, floating_point_t z_)
-			:colour(col_), z(z_) {}
-		~hit_info() = default;
+		hit_info(colour_t col_, floating_point_t z_) : colour(col_), z(z_) { }
+                
 		colour_t colour;
 		floating_point_t z;
+		floating_point_t albedo;
+                ray_t next_ray;
 	};
 
 	virtual std::optional<hit_info> get_hit_info(const ray_t& ray) const = 0;

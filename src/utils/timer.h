@@ -1,37 +1,38 @@
 #pragma once
-#include <chrono>
-#include <string>
-#include <iostream>
 
-class timer
+#include <functional>
+#include <string_view>
+#include <string>
+#include <chrono>
+#include <atomic>
+#include <memory>
+
+class life_timer
 {
 public:
-	timer(std::string str)
-		:s(str)
-	{
-		start_time = std::chrono::system_clock::now();
-		std::cout
-			<< s
-			<< " -> "
-			<< "Timer started...\n"
-			<< std::endl;
-	}
-
-	~timer()
-	{
-		end_time = std::chrono::system_clock::now();
-		std::chrono::duration<double> diff = end_time - start_time;
-		std::cout
-			<< "Timer "
-			<< s
-			<< " took "
-			<< diff.count()
-			<< " to complete."
-			<< std::endl;
-	}
+    life_timer(std::string_view label);
+    life_timer(std::function<void(double)> callback);
+    ~life_timer();
 
 private:
-	std::chrono::system_clock::time_point start_time;
-	std::chrono::system_clock::time_point end_time;
-	std::string s;
+    const std::chrono::system_clock::time_point _start_time {std::chrono::system_clock::now()};
+    
+    const std::function<void(double)> _callback;
+};
+
+class total_timer
+{
+public:
+    total_timer(std::string_view label);
+    ~total_timer();
+    
+    std::unique_ptr<life_timer> add_timer();
+    
+private:
+    std::atomic<double> _total_time = 0;
+    
+    const std::string _label;
+    
+private:
+    void add_time(double time);
 };
