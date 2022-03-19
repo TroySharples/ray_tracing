@@ -27,7 +27,9 @@ typedef unstd::vector<floating_point_t, 2> texord_t;
 typedef std::array<colour_t, IMAGE_WIDTH*IMAGE_HEIGHT> image_t;
 inline colour_t random_colour() { return colour_t({ rgb_t(rand()), rgb_t(rand()), rgb_t(rand()) }); }
 
-constexpr size_t MAX_SCATTER_DEPTH = 2;
+constexpr floating_point_t EPSILON = 1e-8;
+
+constexpr size_t MAX_SCATTER_DEPTH = 4;
 
 constexpr colour_t BLACK = RGB_MAX * colour_t({ 0, 0, 0 });
 constexpr colour_t RED = RGB_MAX * colour_t({ 1, 0, 0 });

@@ -25,16 +25,15 @@ std::optional<object::hit_info> triangle::get_hit_info(const ray_t& ray) const
 
     // We do not count the ray as hitting if direction is almost orthoganal to the normal of the triangle, or if it
     // is hitting the backwards face of the triangle
-    constexpr floating_point_t epsilon = 1e-8;
-    if (alignment < epsilon) return ret;
+    if (alignment < EPSILON) return ret;
 
     // Compute the distance along the ray which intersects with the plane
     const floating_point_t t = unstd::dot_product(normal, ray.origin - absolute[0]) / alignment;
 
     // If t is negative the triangle is behind the camera
-    if (t < 0) return ret;
+    if (t < EPSILON) return ret;
 
-    // Compute the actual point of interesection and the displacement vector to this point
+    // Compute the actual point of intersection and the displacement vector to this point
     const spacial_t intersection = ray[t];
 
     // Are we right of the first side?

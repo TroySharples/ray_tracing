@@ -25,7 +25,19 @@ static bool load_objects(objects_t& objects)
 #if 1
     {
         std::unique_ptr<sphere> obj = std::make_unique<sphere>(2.5);
-        obj->set_centre({ 0.0, 0.0, -55.0 });
+        obj->set_centre({ 3.0, 0.0, -55.0 });
+        obj->colour = RED;
+
+        objects.emplace_back(std::move(obj));
+    }
+#endif
+    
+    // Pushes back another sphere
+#if 1
+    {
+        std::unique_ptr<sphere> obj = std::make_unique<sphere>(2.5);
+        obj->set_centre({ -3.0, 0.0, -50.0 });
+        obj->colour = GREEN;
 
         objects.emplace_back(std::move(obj));
     }
