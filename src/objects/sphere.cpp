@@ -7,13 +7,10 @@ sphere::sphere(floating_point_t radius_)
 }
 
 std::optional<object::hit_info> sphere::get_hit_info(const ray_t& ray) const
-{
+{    
     const spacial_t oc = ray.origin - _centre;
-    const floating_point_t a = ray.direction.square_length();
-    const floating_point_t b = floating_point_t(2.0)*unstd::dot_product(oc, ray.direction);
-    const floating_point_t c = oc.square_length() - radius*radius;
+    const floating_point_t oc_dot_n = unstd::dot_product(oc, ray.direction);
+    const floating_point_t alignment = (oc.square_length() - std::pow(oc_dot_n, 2))/std::pow(radius, 2);
 
-    const floating_point_t alignment = 1 - unstd::cross_product(oc, ray.direction).length() / radius;
-    
-    return (b * b - 4 * a * c > 0) ? hit_info(colour*alignment, oc.length() - radius) : std::optional<hit_info>();
+    return alignment < 1 ? hit_info(colour*std::cos(M_PI*alignment/2), oc.length() - radius, ray_t()) : std::optional<hit_info>();
 }
