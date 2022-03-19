@@ -4,6 +4,34 @@
 
 #include "objects/object.hpp"
 
+using namespace rendering;
+
+static colour_t mix_colours(const colour_t& colour1, const colour_t& colour2, floating_point_t albedo)
+{
+    return colour1*0.5 + colour2*0.5*albedo;
+}
+
+static colour_t get_colour(const objects_t& objects, const ray_t& ray, size_t depth = 0)
+{    
+    // BLACK is the default colour (the colour of rays that don't hit the object)
+    colour_t ret = BLACK;
+    
+    // Return if we are too deep
+    if (depth > MAX_SCATTER_DEPTH)
+        return ret;
+    
+    // Loop over all the objects and set the final hit info to be the closest hit
+    std::optional<object::hit_info> info;
+    for (const auto& object : objects)
+        if (const auto i = object->get_hit_info(ray); i.has_value() && (!info.has_value() || info.value().z > i.value().z))
+            info = i.value();
+        
+    if (info.has_value())
+        ret = mix_colours(info.value().colour, get_colour(objects, info.value().next_ray, ++depth), info.value().albedo);
+        
+    return ret;
+}
+
 void rendering::render(const objects_t& objects, const camera& cam, image_t& img)
 {
     life_timer t("render loop");
@@ -25,17 +53,7 @@ void rendering::render(const objects_t& objects, const camera& cam, image_t& img
                 cam.getVertical() - cam.getOrigin());
             ray.direction.normalise();
             
-            // Loop over all the objects and set the final hit info to be the closest hit
-            std::optional<object::hit_info> info;
-            for (const auto& object : objects)
-            {
-                auto i = object->get_hit_info(ray);
-                if (i.has_value() && (!info.has_value() || info.value().z > i.value().z))
-                    info = i.value();
-            }
-            
-            // Set this pixel in the image to the colour of the final hit info if it exists and to BLACK otherwise
-            img[IMAGE_WIDTH * h + w] = info.has_value() ? info.value().colour : BLACK;
+            img[IMAGE_WIDTH * h + w] = get_colour(objects, ray);
         }
     }
 }
