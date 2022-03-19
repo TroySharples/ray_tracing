@@ -15,7 +15,7 @@ public:
     ~life_timer();
 
 private:
-    const std::chrono::system_clock::time_point _start_time {std::chrono::system_clock::now()};
+    const std::chrono::system_clock::time_point _start_time { std::chrono::system_clock::now() };
     
     const std::function<void(double)> _callback;
 };
