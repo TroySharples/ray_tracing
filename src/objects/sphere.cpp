@@ -13,5 +13,7 @@ std::optional<object::hit_info> sphere::get_hit_info(const ray_t& ray) const
     const floating_point_t b = floating_point_t(2.0)*unstd::dot_product(oc, ray.direction);
     const floating_point_t c = oc.square_length() - radius*radius;
 
-    return (b * b - 4 * a * c > 0) ? hit_info(RED, oc.length() - radius) : std::optional<hit_info>();
+    const floating_point_t alignment = 1 - unstd::cross_product(oc, ray.direction).length() / radius;
+    
+    return (b * b - 4 * a * c > 0) ? hit_info(colour*alignment, oc.length() - radius) : std::optional<hit_info>();
 }

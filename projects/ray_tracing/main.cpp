@@ -22,7 +22,7 @@ static std::string make_output_name()
 static bool load_objects(objects_t& objects)
 {
     // Pushes back a sphere
-#if 0
+#if 1
     {
         std::unique_ptr<sphere> obj = std::make_unique<sphere>(2.5);
         obj->set_centre({ 0.0, 0.0, -55.0 });
@@ -32,7 +32,7 @@ static bool load_objects(objects_t& objects)
 #endif
 
     // Pushes back a cow
-#if 1
+#if 0
     {
         std::unique_ptr<polygon> obj = std::make_unique<polygon>();
 
@@ -48,7 +48,7 @@ static bool load_objects(objects_t& objects)
 #endif
 
     // Pushes back a teapot
-#if 1
+#if 0
     {
         std::unique_ptr<polygon> obj = std::make_unique<polygon>();
 
