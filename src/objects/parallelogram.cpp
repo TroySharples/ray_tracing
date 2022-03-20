@@ -22,17 +22,16 @@ std::optional<object::hit_info> parallelogram::get_hit_info(const ray_t& ray) co
     const spacial_t& normal = _normal.value();
 
     // Compute how aligned the normal to the parallelogram and the direction of the ray are (their dot product)
-    const floating_point_t alignment = unstd::dot_product(normal, ray.direction);
+    const floating_point_t alignment = -unstd::dot_product(normal, ray.direction);
 
     // The ray will never hit if its direction is orthoganal to the normal of the parallelogram
-    constexpr floating_point_t epsilon = 1e-8;
-    if (std::abs(alignment) < epsilon) return ret;
+    if (std::abs(alignment) < EPSILON) return ret;
 
     // Compute the distance along the ray which intersects with the plane
-    const floating_point_t t = -unstd::dot_product(normal, ray.origin - absolute[0]) / alignment;
+    const floating_point_t t = unstd::dot_product(normal, ray.origin - absolute[0]) / alignment;
 
     // If t is negative the parallelogram is behind the camera
-    if (t < 0) return ret;
+    if (t < EPSILON) return ret;
 
     // Compute the actual point of interesection and the displacement vector to this point
     const spacial_t intersection = ray[t];
@@ -49,8 +48,8 @@ std::optional<object::hit_info> parallelogram::get_hit_info(const ray_t& ray) co
     // Are we right of the fourth side?
     if (unstd::scalar_triple_product(normal, side1, intersection - absolute[2]) > 0) return ret;
 
-    // We hit the parallelogram if we made it here. We don't care about returning a colour, z2, etc...
-    ret = hit_info();
+    // We hit the parallelogram if we made it here.
+    ret = { colour * alignment, (intersection - ray.origin).square_length(), ray_t(intersection, (intersection - 2*unstd::dot_product(intersection, normal)*normal).normalise()) };
     
     return ret;
 }

@@ -4,22 +4,36 @@
 
 std::optional<object::hit_info> polygon::get_hit_info(const ray_t& ray) const
 {
+    std::optional<hit_info> ret;
+    
     // Make our bounding box if we haven't already
     if (!_bounding_box.has_value())
         make_bounding_box();
     const parallelepiped& bounding_box = _bounding_box.value();
 
     // Return false straight away if we don't hit the bounding box
-    if (!bounding_box.get_hit_info(ray).has_value())
-        return std::optional<hit_info>();
+    const auto info = bounding_box.get_hit_info(ray);
+    if (!info.has_value())
+        return ret;
 
-    std::optional<hit_info> ret;
+#if 0
+    // Render the triangles
     for (const auto& i : _triangles)
     {
         const auto info = i.get_hit_info(ray);
         if (info.has_value() && (!ret.has_value() || ret.value().z2 > info.value().z2))
             ret = info;
     }
+#endif
+    
+#if 1
+    // Return a glass-like texture if we miss the polygon but hit its bounding bow
+    if (!ret.has_value())
+    {
+        ret = info;
+        ret.value().next_ray.direction = ray.direction;
+    }
+#endif
 
     return ret;
 }

@@ -12,14 +12,15 @@ parallelepiped::parallelepiped(const spacial_t& x, const spacial_t& y, const spa
 
 std::optional<object::hit_info> parallelepiped::get_hit_info(const ray_t& ray) const
 {
+    std::optional<hit_info> ret;
     for (const auto& i : _parallelograms)
     {
         const auto info = i.get_hit_info(ray);
-        if (info.has_value())
-            return info;
+        if (info.has_value() && (!ret.has_value() || ret.value().z2 > info.value().z2))
+            ret = info;
     }
 
-    return std::optional<hit_info>();
+    return ret;
 }
 
 void parallelepiped::set_centre(const spacial_t& centre)

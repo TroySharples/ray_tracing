@@ -13,12 +13,15 @@ typedef double floating_point_t;
 constexpr rgb_t RGB_MAX = unstd::unsigned_max<rgb_t>();
 
 #if 0
+constexpr size_t IMAGE_WIDTH = 7680;
+constexpr size_t IMAGE_HEIGHT = 4320;
+#elif 0
 constexpr size_t IMAGE_WIDTH = 3840;
 constexpr size_t IMAGE_HEIGHT = 2160;
 #elif 1
 constexpr size_t IMAGE_WIDTH = 1920;
 constexpr size_t IMAGE_HEIGHT = 1080;
-#elif 0
+#elif 1
 constexpr size_t IMAGE_WIDTH = 640;
 constexpr size_t IMAGE_HEIGHT = 480;
 #else
@@ -38,7 +41,7 @@ inline colour_t random_colour() { return colour_t({ rgb_t(rand()), rgb_t(rand())
 
 constexpr floating_point_t EPSILON = 1e-8;
 
-constexpr size_t MAX_SCATTER_DEPTH = 4;
+constexpr size_t MAX_SCATTER_DEPTH = 8;
 
 constexpr size_t MSAA = 4;
 
