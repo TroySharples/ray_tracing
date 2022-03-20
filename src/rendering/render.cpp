@@ -11,7 +11,7 @@ using namespace rendering;
 
 static colour_t mix_colours(const colour_t& colour1, const colour_t& colour2, floating_point_t albedo)
 {
-    return colour1*(1 - albedo) + colour2*albedo*albedo;
+    return colour1*(1 - albedo) + colour2*albedo;
 }
 
 static colour_t get_colour(const objects_t& objects, const ray_t& ray, size_t depth = 0)
@@ -45,7 +45,7 @@ static void fill_image(const objects_t& objects, const camera& cam, image_t& img
             const floating_point_t u = floating_point_t(w) / floating_point_t(IMAGE_WIDTH - 1);
             const floating_point_t v = floating_point_t(h) / floating_point_t(IMAGE_HEIGHT - 1);
             
-            constexpr floating_point_t fuzz = std::min(camera::cam_width/IMAGE_WIDTH, camera::cam_height/IMAGE_HEIGHT);
+            constexpr floating_point_t fuzz = 0.5*std::min(camera::cam_width/IMAGE_WIDTH, camera::cam_height/IMAGE_HEIGHT);
             
             // Make the ray
             ray_t ray(cam.origin, cam.lower_left_corner + u*cam.horizontal + v*cam.vertical - cam.origin);
@@ -77,9 +77,13 @@ void rendering::render(const objects_t& objects, const camera& cam, image_t& img
     // Makes the final image as an average of the FXAA images
     for (size_t i = 0; i < std::size(img); i++)
     {
-        colour_t colour = {0, 0, 0};
+        // We change to a vector of longs (instead of rgb_ts) to create a better average
+        unstd::vector<long unsigned int, 3> colour = {0, 0, 0};
         for (const auto& image : images)
-            colour += ((*image)[i] / floating_point_t(FXAA));
-        img[i] = colour;
+            for (size_t j = 0; j < 3; j++)
+                colour[j] += (*image)[i][j];
+        colour /= floating_point_t(FXAA);
+        
+        img[i] = {rgb_t(colour[0]), rgb_t(colour[1]), rgb_t(colour[2])};
     }
 }
