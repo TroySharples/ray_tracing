@@ -12,29 +12,23 @@ std::optional<object::hit_info> polygon::get_hit_info(const ray_t& ray) const
     const parallelepiped& bounding_box = _bounding_box.value();
 
     // Return false straight away if we don't hit the bounding box
-    const auto info = bounding_box.get_hit_info(ray);
-    if (!info.has_value())
+    const auto bounding_box_info = bounding_box.get_hit_info(ray);
+    if (!bounding_box_info.has_value())
         return ret;
+    
+#if 0
+    // Return a glass-like texture if we miss the polygon but hit its bounding bow
+    ret = bounding_box_info;
+    ret.value().next_ray.direction = ray.direction;
+#endif
 
 #if 1
     // Render the triangles
     for (const auto& i : _triangles)
-    {
-        const auto info = i.get_hit_info(ray);
-        if (info.has_value() && (!ret.has_value() || ret.value().z2 > info.value().z2))
-            ret = info;
-    }
+        if (const auto triangle_info = i.get_hit_info(ray); triangle_info.has_value() && (!ret.has_value() || ret.value().z2 > triangle_info.value().z2))
+            ret = triangle_info;
 #endif
     
-#if 0
-    // Return a glass-like texture if we miss the polygon but hit its bounding bow
-    if (!ret.has_value())
-    {
-        ret = info;
-        ret.value().next_ray.direction = ray.direction;
-    }
-#endif
-
     return ret;
 }
 
@@ -59,11 +53,11 @@ void polygon::set_centre(const spacial_t& centre)
     _bounding_box.reset();
 }
 
-void polygon::set_colour(const colour_t& colour)
+void polygon::set_material(const material& mat)
 {
-    _colour = colour;
+    _mat = mat;
     for (auto& i : _triangles)
-        i.colour = colour;
+        i.mat = mat;
 }
 
 std::istream& operator>>(std::istream& is, polygon& v)
@@ -114,7 +108,7 @@ std::istream& operator>>(std::istream& is, polygon& v)
 
     // Reset the centre and colours of all the triangles
     v.set_centre(v._centre);
-    v.set_colour(v._colour);
+    v.set_material(v._mat);
 
     return is;
 }

@@ -22,7 +22,7 @@ public:
     floating_point_t get_area() const;
     spacial_t get_centre() const;
 
-    colour_t colour = random_colour();
+    material mat;
 
 private:
     vertices_t _vertices;

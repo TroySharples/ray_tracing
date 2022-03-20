@@ -49,7 +49,7 @@ std::optional<object::hit_info> parallelogram::get_hit_info(const ray_t& ray) co
     if (unstd::scalar_triple_product(normal, side1, intersection - absolute[2]) > 0) return ret;
 
     // We hit the parallelogram if we made it here.
-    ret = { colour * alignment, (intersection - ray.origin).square_length(), ray_t(intersection, (intersection - 2*unstd::dot_product(intersection, normal)*normal).normalise()) };
+    ret = { mat.colour*alignment, (intersection - ray.origin).square_length(), mat.albedo, ray_t(intersection, (intersection - 2*unstd::dot_product(intersection, normal)*normal).normalise()) };
     
     return ret;
 }

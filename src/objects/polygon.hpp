@@ -16,14 +16,14 @@ public:
 
     void set_centre(const spacial_t& centre) override;
     
-    void set_colour(const colour_t& colour);
-    const colour_t& get_colour() const { return _colour; }
+    void set_material(const material& mat);
+    const material& get_material() const { return _mat; }
     
 private:
     triangles_t _triangles;
     mutable std::optional<parallelepiped> _bounding_box;
     
-    colour_t _colour = random_colour();
+    material _mat;
 
     friend std::istream& operator>>(std::istream& is, polygon& v);
     friend std::ostream& operator<<(std::ostream& os, const polygon& v);

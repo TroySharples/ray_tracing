@@ -45,7 +45,7 @@ std::optional<object::hit_info> triangle::get_hit_info(const ray_t& ray) const
     if (unstd::scalar_triple_product(normal, side2, intersection - absolute[1]) < 0) return ret;
 
     // If we reach here we have hit the triangle
-    ret = { colour * alignment, (intersection - ray.origin).square_length(), ray_t(intersection, (intersection - 2*unstd::dot_product(intersection, normal)*normal).normalise()) };
+    ret = { mat.colour*alignment, (intersection - ray.origin).square_length(), mat.albedo, ray_t(intersection, (intersection - 2*unstd::dot_product(intersection, normal)*normal).normalise()) };
     
     return ret;
 }

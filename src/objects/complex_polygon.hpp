@@ -9,14 +9,14 @@ public:
 
     void set_centre(const spacial_t& centre) override;
     
-    void set_colour(const colour_t& colour);
-    const colour_t& get_colour() const { return _colour; }
+    void set_material(const material& mat);
+    const material& get_material() const { return _material; }
 
 private:
     typedef std::vector<polygon> polygons_t;
     polygons_t _polygons;
     
-    colour_t _colour = random_colour();
+    material _material;
     
     friend std::istream& operator>>(std::istream& is, complex_polygon& v);
     friend std::ostream& operator<<(std::ostream& os, const complex_polygon& v);

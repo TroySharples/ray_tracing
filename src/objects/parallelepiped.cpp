@@ -14,11 +14,8 @@ std::optional<object::hit_info> parallelepiped::get_hit_info(const ray_t& ray) c
 {
     std::optional<hit_info> ret;
     for (const auto& i : _parallelograms)
-    {
-        const auto info = i.get_hit_info(ray);
-        if (info.has_value() && (!ret.has_value() || ret.value().z2 > info.value().z2))
+        if (const auto info = i.get_hit_info(ray); info.has_value() && (!ret.has_value() || ret.value().z2 > info.value().z2))
             ret = info;
-    }
 
     return ret;
 }

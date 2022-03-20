@@ -118,11 +118,11 @@ void complex_polygon::set_centre(const spacial_t& centre)
         i.set_centre(centre);
 }
 
-void complex_polygon::set_colour(const colour_t& colour)
+void complex_polygon::set_material(const material& mat)
 {
-    _colour = colour;
+    _material = mat;
     for (auto& i : _polygons)
-        i.set_colour(colour);
+        i.set_material(mat);
 }
 
 std::istream& operator>>(std::istream& is, complex_polygon& v)
@@ -139,7 +139,7 @@ std::istream& operator>>(std::istream& is, complex_polygon& v)
         fragment.get_triangles() = std::move(i);
         
         // DEBUG
-        fragment.set_colour(fragment.get_colour());
+        fragment.set_material(fragment.get_material());
     }
     
     return is;

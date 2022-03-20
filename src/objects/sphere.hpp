@@ -9,6 +9,7 @@ public:
 
     std::optional<hit_info> get_hit_info(const ray_t& ray) const override;
 
-    colour_t colour = random_colour();
     floating_point_t radius;
+    
+    material mat;
 };
