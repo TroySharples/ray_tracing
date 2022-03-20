@@ -16,7 +16,7 @@ std::optional<object::hit_info> polygon::get_hit_info(const ray_t& ray) const
     if (!info.has_value())
         return ret;
 
-#if 0
+#if 1
     // Render the triangles
     for (const auto& i : _triangles)
     {
@@ -26,7 +26,7 @@ std::optional<object::hit_info> polygon::get_hit_info(const ray_t& ray) const
     }
 #endif
     
-#if 1
+#if 0
     // Return a glass-like texture if we miss the polygon but hit its bounding bow
     if (!ret.has_value())
     {

@@ -2,6 +2,7 @@
 
 #include "utils/utils.hpp"
 
+#include <ranges>
 #include <random>
 
 spacial_t random_spacial(floating_point_t r)
@@ -18,8 +19,12 @@ spacial_t random_spacial(floating_point_t r)
 
 std::ostream& operator << (std::ostream& os, const image_t& image)
 {
+    // The header
     os << "P3\n" << IMAGE_WIDTH << " " << IMAGE_HEIGHT << "\n" << (int)unstd::unsigned_max<colour_t::value_type>() << "\n";
-    for (const colour_t& i : image) { os << i; }
+    
+    // Print in reverse order (starting from bottom right)
+    for (const colour_t& i : image | std::views::reverse) 
+        os << i;
     os << "\n";
 
     return os;
