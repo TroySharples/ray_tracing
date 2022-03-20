@@ -35,7 +35,7 @@ static colour_t get_colour(const objects_t& objects, const ray_t& ray, size_t de
     return ret;
 }
 
-static void fill_image(const objects_t& objects, const camera& cam, image_t& img)
+void rendering::render(const objects_t& objects, const camera& cam, image_t& img)
 {    
     // Render loop
     for (size_t h = 0; h < IMAGE_HEIGHT; h++)
@@ -57,24 +57,24 @@ static void fill_image(const objects_t& objects, const camera& cam, image_t& img
     }
 }
 
-void rendering::render(const objects_t& objects, const camera& cam, image_t& img)
+void rendering::render_msaa(const objects_t& objects, const camera& cam, image_t& img)
 {
     life_timer t("render loop");
     
-    // Creates a set of images for FXAA. We allocate the images on the heap because they are too big for the stack
-    std::array<std::unique_ptr<image_t>, FXAA> images;
+    // Creates a set of images for MSAA. We allocate the images on the heap because they are too big for the stack
+    std::array<std::unique_ptr<image_t>, MSAA> images;
     
-    // Create a different thread using async for each FXAA pass
+    // Create a different thread using async for each MSAA pass
     {
-        std::array<std::future<void>, FXAA> futures;
-        for (size_t i = 0; i < FXAA; i++)
+        std::array<std::future<void>, MSAA> futures;
+        for (size_t i = 0; i < MSAA; i++)
         {
             images[i] = std::make_unique<image_t>();
-            futures[i] = std::async(std::launch::async, fill_image, std::ref(objects), std::ref(cam), std::ref(*images[i]));
+            futures[i] = std::async(std::launch::async, render, std::ref(objects), std::ref(cam), std::ref(*images[i]));
         }
     }
     
-    // Makes the final image as an average of the FXAA images
+    // Makes the final image as an average of the MSAA images
     for (size_t i = 0; i < std::size(img); i++)
     {
         // We change to a vector of longs (instead of rgb_ts) to create a better average
@@ -82,7 +82,7 @@ void rendering::render(const objects_t& objects, const camera& cam, image_t& img
         for (const auto& image : images)
             for (size_t j = 0; j < 3; j++)
                 colour[j] += (*image)[i][j];
-        colour /= floating_point_t(FXAA);
+        colour /= floating_point_t(MSAA);
         
         img[i] = {rgb_t(colour[0]), rgb_t(colour[1]), rgb_t(colour[2])};
     }

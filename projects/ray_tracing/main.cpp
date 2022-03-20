@@ -96,7 +96,7 @@ int main()
     camera cam;
 
     // Does the rendering
-    render(objects, cam, img);
+    render_msaa(objects, cam, img);
 
     // Outputs the rendered PPM
     std::ofstream of(RENDERS_PATH / make_output_name());
