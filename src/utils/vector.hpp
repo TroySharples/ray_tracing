@@ -3,6 +3,7 @@
 #include <cmath>
 #include <array>
 #include <iostream>
+#include <concepts>
 
 namespace unstd 
 {
@@ -58,8 +59,6 @@ namespace unstd
         return (_T(1.0) / t)*v;
     }
 
-#include <concepts>
-
     template <typename _T, size_t _S, typename _F>
     requires std::floating_point<_F>
     constexpr vector<_T, _S> operator*(const vector<_T, _S>& v, const _F& t)
@@ -67,6 +66,17 @@ namespace unstd
         vector<_T, _S> ret;
         for (size_t i = 0; i < _S; i++)
             ret[i] = _T(_F(v[i]*t));
+
+        return ret;
+    }
+
+    template <typename _T, size_t _S, typename _F>
+    requires std::floating_point<_F>
+    constexpr vector<_T, _S> operator/(const vector<_T, _S>& v, const _F& t)
+    {
+        vector<_T, _S> ret;
+        for (size_t i = 0; i < _S; i++)
+            ret[i] = _T(_F(v[i]/t));
 
         return ret;
     }

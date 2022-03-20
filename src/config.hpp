@@ -40,6 +40,10 @@ constexpr floating_point_t EPSILON = 1e-8;
 
 constexpr size_t MAX_SCATTER_DEPTH = 4;
 
+constexpr size_t FXAA = 4;
+
+spacial_t random_spacial(floating_point_t r);
+
 constexpr colour_t BLACK = RGB_MAX*colour_t({ 0, 0, 0 });
 constexpr colour_t RED   = RGB_MAX*colour_t({ 1, 0, 0 });
 constexpr colour_t GREEN = RGB_MAX*colour_t({ 0, 1, 0 });
