@@ -112,6 +112,13 @@ std::ostream& operator<<(std::ostream& os, const polygon& v)
 
 void polygon::make_bounding_box() const
 {
+    // Just make a random bounding box if we are empty
+    if (_triangles.empty())
+    {
+        _bounding_box = parallelepiped();
+        return;
+    }
+        
     // Find the minimum and maximum x / y / z coordinates
     spacial_t min = _triangles[0][0];
     spacial_t max = _triangles[0][0];
