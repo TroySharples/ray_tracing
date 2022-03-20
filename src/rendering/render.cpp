@@ -8,13 +8,13 @@ using namespace rendering;
 
 static colour_t mix_colours(const colour_t& colour1, const colour_t& colour2, floating_point_t albedo)
 {
-    return colour1*0.5 + colour2*0.5*albedo;
+    return colour1*(1 - albedo) + colour2*albedo*albedo;
 }
 
 static colour_t get_colour(const objects_t& objects, const ray_t& ray, size_t depth = 0)
 {    
-    // BLACK is the default colour (the colour of rays that don't hit the object)
-    colour_t ret = BLACK;
+    // Set the default colour (the colour of rays that don't hit the object)
+    colour_t ret = BACKGROUND_COLOUR;
     
     // Return if we are too deep
     if (depth > MAX_SCATTER_DEPTH)

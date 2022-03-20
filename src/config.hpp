@@ -12,10 +12,10 @@ typedef double floating_point_t;
 
 constexpr rgb_t RGB_MAX = unstd::unsigned_max<rgb_t>();
 
-#if 1
+#if 0
 constexpr size_t IMAGE_WIDTH = 3840;
 constexpr size_t IMAGE_HEIGHT = 2160;
-#elif 0
+#elif 1
 constexpr size_t IMAGE_WIDTH = 1920;
 constexpr size_t IMAGE_HEIGHT = 1080;
 #elif 0
@@ -40,11 +40,14 @@ constexpr floating_point_t EPSILON = 1e-8;
 
 constexpr size_t MAX_SCATTER_DEPTH = 4;
 
-constexpr colour_t BLACK = RGB_MAX * colour_t({ 0, 0, 0 });
-constexpr colour_t RED = RGB_MAX * colour_t({ 1, 0, 0 });
-constexpr colour_t GREEN = RGB_MAX * colour_t({ 0, 1, 0 });
-constexpr colour_t BLUE = RGB_MAX * colour_t({ 0, 0, 1 });
-constexpr colour_t WHITE = RGB_MAX * colour_t({ 1, 1, 1 });
+constexpr colour_t BLACK = RGB_MAX*colour_t({ 0, 0, 0 });
+constexpr colour_t RED   = RGB_MAX*colour_t({ 1, 0, 0 });
+constexpr colour_t GREEN = RGB_MAX*colour_t({ 0, 1, 0 });
+constexpr colour_t BLUE  = RGB_MAX*colour_t({ 0, 0, 1 });
+constexpr colour_t WHITE = RGB_MAX*colour_t({ 1, 1, 1 });
+constexpr colour_t GREY  = WHITE*0.5;
+
+constexpr colour_t BACKGROUND_COLOUR = BLACK;
 
 static const std::filesystem::path ROOT_PATH = "../../../../../";
 static const std::filesystem::path OBJECTS_PATH = ROOT_PATH / "objects";
