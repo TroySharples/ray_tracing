@@ -21,7 +21,7 @@ static std::string make_output_name()
 
 static bool load_objects(objects_t& objects)
 {
-    // Pushes back a sphere
+    // Pushes back a background sphere
 #if 1
     {
         std::unique_ptr<sphere> obj = std::make_unique<sphere>(5.0);
@@ -31,11 +31,17 @@ static bool load_objects(objects_t& objects)
     }
 #endif
     
-    // Pushes back another sphere
+    // Pushes back another couple spheres
 #if 1
     {
         std::unique_ptr<sphere> obj = std::make_unique<sphere>(1.0);
         obj->set_centre({ 4.0, 2.0, -35.0 });
+
+        objects.emplace_back(std::move(obj));
+    }
+    {
+        std::unique_ptr<sphere> obj = std::make_unique<sphere>(0.25);
+        obj->set_centre({ -1.0, -0.5, -20.0 });
 
         objects.emplace_back(std::move(obj));
     }

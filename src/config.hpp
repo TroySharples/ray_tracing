@@ -10,12 +10,17 @@
 typedef uint8_t rgb_t;
 typedef double floating_point_t;
 
-
 constexpr rgb_t RGB_MAX = unstd::unsigned_max<rgb_t>();
 
 #if 1
+constexpr size_t IMAGE_WIDTH = 3840;
+constexpr size_t IMAGE_HEIGHT = 2160;
+#elif 0
 constexpr size_t IMAGE_WIDTH = 1920;
 constexpr size_t IMAGE_HEIGHT = 1080;
+#elif 0
+constexpr size_t IMAGE_WIDTH = 640;
+constexpr size_t IMAGE_HEIGHT = 480;
 #else
 constexpr size_t IMAGE_WIDTH = 192;
 constexpr size_t IMAGE_HEIGHT = 108;
@@ -50,8 +55,8 @@ std::ostream& operator << (std::ostream& os, const image_t& image);
 
 struct virtex
 {
-	spacial_t position;
-	colour_t  colour;
-	texord_t  texcoord;
-	spacial_t normal;
+    spacial_t position;
+    colour_t  colour;
+    texord_t  texcoord;
+    spacial_t normal;
 };
