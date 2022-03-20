@@ -25,13 +25,13 @@ static bool load_objects(objects_t& objects)
 #if 1
     {
         std::unique_ptr<sphere> obj = std::make_unique<sphere>(5.0);
-        obj->set_centre({ 0.0, 0.0, -65.0 });
+        obj->set_centre({ 0.0, 0.0, -70.0 });
 
         objects.emplace_back(std::move(obj));
     }
 #endif
     
-    // Pushes back another couple spheres
+    // Pushes back another few spheres
 #if 1
     {
         std::unique_ptr<sphere> obj = std::make_unique<sphere>(1.0);
@@ -42,6 +42,12 @@ static bool load_objects(objects_t& objects)
     {
         std::unique_ptr<sphere> obj = std::make_unique<sphere>(0.25);
         obj->set_centre({ -1.0, -0.5, -20.0 });
+
+        objects.emplace_back(std::move(obj));
+    }
+    {
+        std::unique_ptr<sphere> obj = std::make_unique<sphere>(1.5);
+        obj->set_centre({ -1.0, -2.0, -60.0 });
 
         objects.emplace_back(std::move(obj));
     }
@@ -73,7 +79,7 @@ static bool load_objects(objects_t& objects)
                 return false;
 
         fs >> *obj;
-        obj->set_centre({ 5.0, -3.0, -45.0 });
+        obj->set_centre({ 4.0, -3.0, -45.0 });
 
         objects.emplace_back(std::move(obj));
     }

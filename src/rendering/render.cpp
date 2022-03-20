@@ -48,7 +48,7 @@ void rendering::render(const objects_t& objects, const camera& cam, image_t& img
             constexpr floating_point_t fuzz = 0.5*std::min(camera::cam_width/IMAGE_WIDTH, camera::cam_height/IMAGE_HEIGHT);
             
             // Make the ray
-            ray_t ray(cam.origin, cam.lower_left_corner + u*cam.horizontal + v*cam.vertical - cam.origin);
+            ray_t ray(cam.origin, cam.upper_left_corner + u*cam.horizontal - v*cam.vertical - cam.origin);
             ray.direction += random_spacial(fuzz);
             ray.direction.normalise();
             
