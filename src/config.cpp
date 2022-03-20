@@ -2,11 +2,16 @@
 
 #include "utils/utils.hpp"
 
+#include <random>
+
 spacial_t random_spacial(floating_point_t r)
 {
+    static thread_local std::mt19937 generator(std::random_device{ }());
+    std::uniform_real_distribution<floating_point_t> unif(0, 1);
+    
     spacial_t ret;
     for (auto& i : ret)
-        i = r*floating_point_t(rand())/RAND_MAX;
+        i = r*unif(generator);
     
     return ret;
 }
