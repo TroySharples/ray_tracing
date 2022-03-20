@@ -1,7 +1,7 @@
 #include "triangle.hpp"
 
 triangle::triangle(const vertices_t& vertices)
-    : _vertices(vertices) {}
+    : _vertices(vertices) { }
 
 std::optional<object::hit_info> triangle::get_hit_info(const ray_t& ray) const
 {
@@ -45,21 +45,21 @@ std::optional<object::hit_info> triangle::get_hit_info(const ray_t& ray) const
     if (unstd::scalar_triple_product(normal, side2, intersection - absolute[1]) < 0) return ret;
 
     // If we reach here we have hit the triangle
-    ret = { colour * alignment, (intersection - ray.origin).length(), ray_t(intersection, (intersection - 2*unstd::dot_product(intersection, normal)*normal).normalise()) };
+    ret = { colour * alignment, (intersection - ray.origin).square_length(), ray_t(intersection, (intersection - 2*unstd::dot_product(intersection, normal)*normal).normalise()) };
     
     return ret;
 }
 
 triangle::vertex_t& triangle::operator[](size_t i)
 { 
-	// We have to assume the vertices will be changed
-	_normal.reset();
-	return _vertices[i]; 
+    // We have to assume the vertices will be changed
+    _normal.reset();
+    return _vertices[i]; 
 }
 
 const triangle::vertex_t& triangle::operator[](size_t i) const
 { 
-	return _vertices[i]; 
+    return _vertices[i]; 
 }
 
 floating_point_t triangle::get_area() const

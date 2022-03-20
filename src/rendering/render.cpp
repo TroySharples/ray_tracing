@@ -23,7 +23,7 @@ static colour_t get_colour(const objects_t& objects, const ray_t& ray, size_t de
     // Loop over all the objects and set the final hit info to be the closest hit
     std::optional<object::hit_info> info;
     for (const auto& object : objects)
-        if (const auto i = object->get_hit_info(ray); i.has_value() && (!info.has_value() || info.value().z > i.value().z))
+        if (const auto i = object->get_hit_info(ray); i.has_value() && (!info.has_value() || info.value().z2 > i.value().z2))
             info = i.value();
         
     if (info.has_value())

@@ -104,7 +104,7 @@ std::optional<object::hit_info> complex_polygon::get_hit_info(const ray_t& ray) 
     for (const auto& i : _polygons)
     {
         const auto info = i.get_hit_info(ray);
-        if (info.has_value() && (!ret.has_value() || ret.value().z > info.value().z))
+        if (info.has_value() && (!ret.has_value() || ret.value().z2 > info.value().z2))
             ret = info;
     }
 

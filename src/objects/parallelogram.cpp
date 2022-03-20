@@ -49,7 +49,7 @@ std::optional<object::hit_info> parallelogram::get_hit_info(const ray_t& ray) co
     // Are we right of the fourth side?
     if (unstd::scalar_triple_product(normal, side1, intersection - absolute[2]) > 0) return ret;
 
-    // We hit the parallelogram if we made it here
+    // We hit the parallelogram if we made it here. We don't care about returning a colour, z2, etc...
     ret = hit_info();
     
     return ret;

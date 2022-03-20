@@ -12,10 +12,10 @@ public:
     struct hit_info
     {
         hit_info() = default;
-        hit_info(const colour_t& col_, floating_point_t z_, const ray_t& next_ray_) : colour(col_), z(z_), next_ray(next_ray_) { }
+        hit_info(const colour_t& col_, floating_point_t z2_, const ray_t& next_ray_) : colour(col_), z2(z2_), next_ray(next_ray_) { }
 
         colour_t colour;
-        floating_point_t z;
+        floating_point_t z2;
         floating_point_t albedo = 0.6;
         ray_t next_ray;
     };
