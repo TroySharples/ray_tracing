@@ -18,6 +18,9 @@ public:
 
     vertices_t::const_iterator begin() const { return _vertices.begin(); }
     vertices_t::const_iterator end() const { return _vertices.end(); }
+    
+    floating_point_t get_area() const;
+    spacial_t get_centre() const;
 
     colour_t colour = random_colour();
 

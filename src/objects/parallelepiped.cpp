@@ -29,3 +29,14 @@ void parallelepiped::set_centre(const spacial_t& centre)
     for (auto& i : _parallelograms)
         i.set_centre(_centre);
 }
+
+floating_point_t parallelepiped::get_volume() const
+{
+    return unstd::scalar_triple_product(_parallelograms[0][1] - _parallelograms[0][0], _parallelograms[1][1] - _parallelograms[1][0], _parallelograms[2][1] - _parallelograms[2][0]);
+}
+
+spacial_t parallelepiped::get_centre() const
+{
+    // Just returns the point between thew two opposite vertices
+    return (_parallelograms[0][0] + _parallelograms[3][1] + _parallelograms[3][2]) / floating_point_t(2);
+}

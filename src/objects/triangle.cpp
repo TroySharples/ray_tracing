@@ -17,7 +17,6 @@ std::optional<object::hit_info> triangle::get_hit_info(const ray_t& ray) const
 
     // Calculate the normal if necessary
     if (!_normal.has_value()) { make_normal(); }
-
     const spacial_t& normal = _normal.value();
 
     // Compute how aligned the normal to the triangle and the direction of the ray are (their dot product)
@@ -63,8 +62,20 @@ const triangle::vertex_t& triangle::operator[](size_t i) const
 	return _vertices[i]; 
 }
 
+floating_point_t triangle::get_area() const
+{
+    // The area is just half the magnitude of the cross of two adjacent sides
+    return 0.5*unstd::cross_product(_vertices[0] - _vertices[2], _vertices[1] - _vertices[0]).length();
+}
+
+spacial_t triangle::get_centre() const
+{
+    // Just returns the average of the vertices
+    return (_vertices[0] + _vertices[1] + _vertices[2]) / floating_point_t(3);
+}
+
 void triangle::make_normal() const
 {
-	_normal = unstd::cross_product(_vertices[0] - _vertices[2], _vertices[1] - _vertices[0]);
-	_normal.value().normalise();
+    _normal = unstd::cross_product(_vertices[0] - _vertices[2], _vertices[1] - _vertices[0]);
+    _normal.value().normalise();
 }

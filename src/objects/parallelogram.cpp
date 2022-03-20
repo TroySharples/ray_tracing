@@ -18,8 +18,7 @@ std::optional<object::hit_info> parallelogram::get_hit_info(const ray_t& ray) co
     const spacial_t side1 = absolute[1] - absolute[0];
 
     // Calculate the normal if necessary
-    if (!_normal.has_value())
-            _normal = unstd::cross_product(side0, side1);
+    if (!_normal.has_value()) { make_normal(); }
     const spacial_t& normal = _normal.value();
 
     // Compute how aligned the normal to the parallelogram and the direction of the ray are (their dot product)
@@ -66,4 +65,21 @@ parallelogram::vertex_t& parallelogram::operator[](size_t i)
 const parallelogram::vertex_t& parallelogram::operator[](size_t i) const
 {
     return _vertices[i];
+}
+
+floating_point_t parallelogram::get_area() const
+{
+    return 0.5*unstd::cross_product(_vertices[0] - _vertices[2], _vertices[1] - _vertices[0]).length();
+}
+
+spacial_t parallelogram::get_centre() const
+{
+    // Just returns the point between thew two opposite vertices
+    return (_vertices[0] + _vertices[2]) / floating_point_t(2);
+}
+
+void parallelogram::make_normal() const
+{
+    _normal = unstd::cross_product(_vertices[0] - _vertices[2], _vertices[1] - _vertices[0]);
+    _normal.value().normalise();
 }

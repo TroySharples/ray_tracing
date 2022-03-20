@@ -17,8 +17,14 @@ public:
 
     vertex_t& operator[](size_t i);
     const vertex_t& operator[](size_t i) const;
+    
+    floating_point_t get_area() const;
+    spacial_t get_centre() const;
 
 private:
     vertices_t _vertices;
     mutable std::optional<spacial_t> _normal;
+
+private:
+    void make_normal() const;
 };
