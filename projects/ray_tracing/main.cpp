@@ -60,7 +60,7 @@ static bool load_objects(objects_t& objects)
 
         std::fstream fs((OBJECTS_PATH / "cow.obj").c_str());
         if (!fs)
-                return false;
+            return false;
 
         fs >> *obj;
         obj->set_centre({ -4.0, 0.0, -55.0 });
@@ -76,10 +76,26 @@ static bool load_objects(objects_t& objects)
 
         std::fstream fs((OBJECTS_PATH / "teapot.obj").c_str());
         if (!fs)
-                return false;
+            return false;
 
         fs >> *obj;
         obj->set_centre({ 4.0, -3.0, -45.0 });
+
+        objects.emplace_back(std::move(obj));
+    }
+#endif
+
+    // Pushes back a face
+#if 0
+    {
+        std::unique_ptr<complex_polygon> obj = std::make_unique<complex_polygon>();
+
+        std::fstream fs((OBJECTS_PATH / "face.obj").c_str());
+        if (!fs)
+            return false;
+
+        fs >> *obj;
+        obj->set_centre({ 0.0, -0.0, -8.0 });
 
         objects.emplace_back(std::move(obj));
     }

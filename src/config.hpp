@@ -13,6 +13,9 @@ typedef double floating_point_t;
 constexpr rgb_t RGB_MAX = unstd::unsigned_max<rgb_t>();
 
 #if 0
+constexpr size_t IMAGE_WIDTH = 15360;
+constexpr size_t IMAGE_HEIGHT = 8630;
+#elif 0
 constexpr size_t IMAGE_WIDTH = 7680;
 constexpr size_t IMAGE_HEIGHT = 4320;
 #elif 0
@@ -43,7 +46,7 @@ constexpr floating_point_t EPSILON = 1e-8;
 
 constexpr size_t MAX_SCATTER_DEPTH = 8;
 
-constexpr size_t MSAA = 4;
+constexpr size_t MSAA = 1;
 
 spacial_t random_spacial(floating_point_t r);
 

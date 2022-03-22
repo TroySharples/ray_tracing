@@ -93,8 +93,10 @@ static std::vector<polygon::triangles_t> fragment_triangles(polygon::triangles_t
     return octant(std::forward<polygon::triangles_t>(triangles));
 #elif 0
     return sort_then_stack(std::forward<polygon::triangles_t>(triangles));
-#else
+#elif 0
     return stack(std::forward<polygon::triangles_t>(triangles));
+#else
+    return { std::forward<polygon::triangles_t>(triangles) };
 #endif
 }
 
