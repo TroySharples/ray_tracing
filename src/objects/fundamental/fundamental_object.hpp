@@ -11,8 +11,8 @@ public:
     {
         colour_t colour = random_colour();
         floating_point_t albedo = 0.6;
-        floating_point_t roughness = 0.03;
-        floating_point_t reflectivity = 0.0;
+        floating_point_t roughness = 0.0;
+        floating_point_t reflectivity = 0.5;
     };
 
     material mat;

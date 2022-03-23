@@ -4,8 +4,6 @@
 #include "rendering/camera.hpp"
 #include "rendering/render.hpp"
 
-#include "utils/timer.hpp"
-
 #include <memory>
 #include <fstream>
 
@@ -113,8 +111,6 @@ int main()
 
     // Too big to be allocated on the stack
     static image_t img;
-
-    // Camera 
     camera cam;
 
     // Does the rendering

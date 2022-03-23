@@ -27,7 +27,7 @@ constexpr size_t IMAGE_HEIGHT = 1080;
 #elif 1
 constexpr size_t IMAGE_WIDTH = 640;
 constexpr size_t IMAGE_HEIGHT = 480;
-#else
+#else 
 constexpr size_t IMAGE_WIDTH = 192;
 constexpr size_t IMAGE_HEIGHT = 108;
 #endif

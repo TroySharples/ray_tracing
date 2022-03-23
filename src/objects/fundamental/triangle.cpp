@@ -24,7 +24,11 @@ std::optional<object::hit_info> triangle::get_hit_info(const ray_t& ray) const
 
     // We do not count the ray as hitting if direction is almost orthoganal to the normal of the triangle, or if it
     // is hitting the backwards face of the triangle
+#if 1
+    if (std::abs(alignment) < EPSILON) return ret;
+#else
     if (alignment < EPSILON) return ret;
+#endif
 
     // Compute the distance along the ray which intersects with the plane
     const floating_point_t t = unstd::dot_product(normal, ray.origin - absolute[0]) / alignment;

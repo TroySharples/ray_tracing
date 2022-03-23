@@ -9,9 +9,9 @@
 
 using namespace rendering;
 
-static colour_t mix_colours(const colour_t& colour1, const colour_t& colour2, floating_point_t albedo)
+static colour_t mix_colours(const colour_t& hit, const colour_t& reflection, const colour_t& refraction, floating_point_t albedo, floating_point_t transparency)
 {
-    return colour1*(1 - albedo) + colour2*albedo;
+    return (hit*(1 - albedo) + reflection*albedo)*(1 - transparency) + refraction*transparency;
 }
 
 static colour_t get_colour(const objects_t& objects, const ray_t& ray, size_t depth = 0)
@@ -29,8 +29,10 @@ static colour_t get_colour(const objects_t& objects, const ray_t& ray, size_t de
         if (const auto i = object->get_hit_info(ray); i.has_value() && (!info.has_value() || info.value().z2 > i.value().z2))
             info = i.value();
         
+    // Calculate 
+    depth++;
     if (info.has_value())
-        ret = mix_colours(info.value().colour, get_colour(objects, info.value().next_ray, ++depth), info.value().albedo);
+        ret = mix_colours(info.value().colour, get_colour(objects, info.value().next_ray, depth), get_colour(objects, { info.value().next_ray.origin, ray.direction }, depth), info.value().albedo, info.value().transparency);
         
     return ret;
 }

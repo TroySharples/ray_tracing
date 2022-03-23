@@ -12,11 +12,13 @@ public:
     struct hit_info
     {
         hit_info() = default;
-        hit_info(const colour_t& col_, floating_point_t z2_, floating_point_t albedo_, const ray_t& next_ray_) : colour(col_), z2(z2_), albedo(albedo_), next_ray(next_ray_) { }
+        hit_info(const colour_t& col_, floating_point_t z2_, floating_point_t albedo_, floating_point_t transparency_, const ray_t& next_ray_) 
+                : colour(col_), z2(z2_), albedo(albedo_), transparency(transparency_), next_ray(next_ray_) { }
 
         colour_t colour;
         floating_point_t z2;
         floating_point_t albedo;
+        floating_point_t transparency;
         ray_t next_ray;
     };
 
