@@ -7,7 +7,7 @@
 spacial_t random_spacial(floating_point_t r)
 {
     static thread_local std::mt19937 generator(std::random_device{ }());
-    std::uniform_real_distribution<floating_point_t> unif(0, 1);
+    std::uniform_real_distribution<floating_point_t> unif(0, std::sqrt(1.0/3.0));
     
     spacial_t ret;
     for (auto& i : ret)
