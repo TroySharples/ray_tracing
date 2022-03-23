@@ -121,8 +121,13 @@ int main()
     render_msaa(objects, cam, img);
 
     // Outputs the rendered PPM
-    std::ofstream of(RENDERS_PATH / make_output_name());
-    of << img;
+    {
+        std::ofstream of(make_output_name());
+        of << img;
+    }
+    
+    // Hacky convert any PPMs to PNGs. A much nicer way of doing this would be to use libpng
+    std::system(("find -name \'*.ppm\' -exec bash -c \'convert \"$0\" \"${0/ppm/png}\"\' {} \\;; rm *ppm; mv *png " + std::filesystem::absolute((RENDERS_PATH)).string()).c_str());
 
     return 0;
 }
