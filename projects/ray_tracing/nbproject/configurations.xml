@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="100">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <logicalFolder name="ResourceFiles"
-                   displayName="Resource Files"
-                   projectFiles="true">
-    </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="objects" displayName="objects" projectFiles="true">
+        <logicalFolder name="fundamental" displayName="fundamental" projectFiles="true">
+          <itemPath>../../src/objects/fundamental/fundamental_object.cpp</itemPath>
+          <itemPath>../../src/objects/fundamental/fundamental_object.hpp</itemPath>
+          <itemPath>../../src/objects/fundamental/parallelogram.cpp</itemPath>
+          <itemPath>../../src/objects/fundamental/parallelogram.hpp</itemPath>
+          <itemPath>../../src/objects/fundamental/sphere.cpp</itemPath>
+          <itemPath>../../src/objects/fundamental/sphere.hpp</itemPath>
+          <itemPath>../../src/objects/fundamental/triangle.cpp</itemPath>
+          <itemPath>../../src/objects/fundamental/triangle.hpp</itemPath>
+        </logicalFolder>
         <itemPath>../../src/objects/complex_polygon.cpp</itemPath>
         <itemPath>../../src/objects/complex_polygon.hpp</itemPath>
         <itemPath>../../src/objects/object.hpp</itemPath>
         <itemPath>../../src/objects/parallelepiped.cpp</itemPath>
         <itemPath>../../src/objects/parallelepiped.hpp</itemPath>
-        <itemPath>../../src/objects/parallelogram.cpp</itemPath>
-        <itemPath>../../src/objects/parallelogram.hpp</itemPath>
         <itemPath>../../src/objects/polygon.cpp</itemPath>
         <itemPath>../../src/objects/polygon.hpp</itemPath>
-        <itemPath>../../src/objects/sphere.cpp</itemPath>
-        <itemPath>../../src/objects/sphere.hpp</itemPath>
-        <itemPath>../../src/objects/triangle.cpp</itemPath>
-        <itemPath>../../src/objects/triangle.hpp</itemPath>
       </logicalFolder>
       <logicalFolder name="rendering" displayName="rendering" projectFiles="true">
         <itemPath>../../src/rendering/camera.hpp</itemPath>
         <itemPath>../../src/rendering/render.cpp</itemPath>
         <itemPath>../../src/rendering/render.hpp</itemPath>
       </logicalFolder>
-      <logicalFolder name="utils" displayName="unstd" projectFiles="true">
+      <logicalFolder name="utils" displayName="utils" projectFiles="true">
         <itemPath>../../src/utils/line.hpp</itemPath>
         <itemPath>../../src/utils/logging.hpp</itemPath>
         <itemPath>../../src/utils/timer.cpp</itemPath>
@@ -88,6 +88,46 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../../src/objects/fundamental/fundamental_object.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/objects/fundamental/fundamental_object.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/objects/fundamental/parallelogram.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/objects/fundamental/parallelogram.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/objects/fundamental/sphere.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/objects/fundamental/sphere.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/objects/fundamental/triangle.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/objects/fundamental/triangle.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../src/objects/object.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../src/objects/parallelepiped.cpp"
@@ -100,27 +140,9 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="../../src/objects/parallelogram.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="../../src/objects/parallelogram.hpp"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="../../src/objects/polygon.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../../src/objects/polygon.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../src/objects/sphere.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../../src/objects/sphere.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../src/objects/triangle.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../../src/objects/triangle.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../src/rendering/camera.hpp" ex="false" tool="3" flavor2="0">
       </item>
@@ -184,6 +206,46 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="../../src/objects/fundamental/fundamental_object.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/objects/fundamental/fundamental_object.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/objects/fundamental/parallelogram.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/objects/fundamental/parallelogram.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/objects/fundamental/sphere.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/objects/fundamental/sphere.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../src/objects/fundamental/triangle.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../src/objects/fundamental/triangle.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="../../src/objects/object.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../src/objects/parallelepiped.cpp"
@@ -196,27 +258,9 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="../../src/objects/parallelogram.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="../../src/objects/parallelogram.hpp"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="../../src/objects/polygon.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../../src/objects/polygon.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../src/objects/sphere.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../../src/objects/sphere.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../src/objects/triangle.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="../../src/objects/triangle.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../src/rendering/camera.hpp" ex="false" tool="3" flavor2="0">
       </item>

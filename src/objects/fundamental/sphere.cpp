@@ -26,13 +26,10 @@ std::optional<object::hit_info> sphere::get_hit_info(const ray_t& ray) const
     // If t is negative the triangle is behind the camera
     if (t < EPSILON) return ret;
     
-    // Compute the actual point of intersection and the displacement vector to this point
+    // We hit if we made it here
     const spacial_t intersection = ray[t];
-    
-    // The normal to the point of intersection
     const spacial_t normal = intersection - _centre;
-    
-    ret = hit_info(mat.colour*std::cos(M_PI*alignment/2), (intersection - ray.origin).square_length(), mat.albedo, ray_t(intersection, (intersection - 2*unstd::dot_product(intersection, normal)*normal).normalise()));
+    ret = calculate_hit_info(intersection, ray.direction, normal, std::pow(t, 2), std::cos(M_PI*alignment/2));
     
     return ret;
 }

@@ -19,14 +19,6 @@ public:
         floating_point_t albedo;
         ray_t next_ray;
     };
-    
-    struct material
-    {
-        colour_t colour = random_colour();
-        floating_point_t albedo = 0.6;
-        floating_point_t roughness = 0.0;
-        floating_point_t reflectivity = 0.0;
-    };
 
     virtual std::optional<hit_info> get_hit_info(const ray_t& ray) const = 0;
 

@@ -120,7 +120,7 @@ void complex_polygon::set_centre(const spacial_t& centre)
         i.set_centre(centre);
 }
 
-void complex_polygon::set_material(const material& mat)
+void complex_polygon::set_material(const fundamental_object::material& mat)
 {
     _material = mat;
     for (auto& i : _polygons)

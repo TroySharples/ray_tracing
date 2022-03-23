@@ -1,5 +1,5 @@
 #include "objects/complex_polygon.hpp"
-#include "objects/sphere.hpp"
+#include "objects/fundamental/sphere.hpp"
 
 #include "rendering/camera.hpp"
 #include "rendering/render.hpp"

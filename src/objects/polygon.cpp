@@ -53,7 +53,7 @@ void polygon::set_centre(const spacial_t& centre)
     _bounding_box.reset();
 }
 
-void polygon::set_material(const material& mat)
+void polygon::set_material(const fundamental_object::material& mat)
 {
     _mat = mat;
     for (auto& i : _triangles)

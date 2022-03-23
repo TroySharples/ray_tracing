@@ -37,11 +37,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/_ext/56252444/config.o \
 	${OBJECTDIR}/_ext/1259a249/complex_polygon.o \
+	${OBJECTDIR}/_ext/b8fdb47f/fundamental_object.o \
+	${OBJECTDIR}/_ext/b8fdb47f/parallelogram.o \
+	${OBJECTDIR}/_ext/b8fdb47f/sphere.o \
+	${OBJECTDIR}/_ext/b8fdb47f/triangle.o \
 	${OBJECTDIR}/_ext/1259a249/parallelepiped.o \
-	${OBJECTDIR}/_ext/1259a249/parallelogram.o \
 	${OBJECTDIR}/_ext/1259a249/polygon.o \
-	${OBJECTDIR}/_ext/1259a249/sphere.o \
-	${OBJECTDIR}/_ext/1259a249/triangle.o \
 	${OBJECTDIR}/_ext/a8ea4a81/render.o \
 	${OBJECTDIR}/_ext/2abcb726/timer.o \
 	${OBJECTDIR}/main.o
@@ -81,30 +82,35 @@ ${OBJECTDIR}/_ext/1259a249/complex_polygon.o: ../../src/objects/complex_polygon.
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1259a249/complex_polygon.o ../../src/objects/complex_polygon.cpp
 
+${OBJECTDIR}/_ext/b8fdb47f/fundamental_object.o: ../../src/objects/fundamental/fundamental_object.cpp
+	${MKDIR} -p ${OBJECTDIR}/_ext/b8fdb47f
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/b8fdb47f/fundamental_object.o ../../src/objects/fundamental/fundamental_object.cpp
+
+${OBJECTDIR}/_ext/b8fdb47f/parallelogram.o: ../../src/objects/fundamental/parallelogram.cpp
+	${MKDIR} -p ${OBJECTDIR}/_ext/b8fdb47f
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/b8fdb47f/parallelogram.o ../../src/objects/fundamental/parallelogram.cpp
+
+${OBJECTDIR}/_ext/b8fdb47f/sphere.o: ../../src/objects/fundamental/sphere.cpp
+	${MKDIR} -p ${OBJECTDIR}/_ext/b8fdb47f
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/b8fdb47f/sphere.o ../../src/objects/fundamental/sphere.cpp
+
+${OBJECTDIR}/_ext/b8fdb47f/triangle.o: ../../src/objects/fundamental/triangle.cpp
+	${MKDIR} -p ${OBJECTDIR}/_ext/b8fdb47f
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/b8fdb47f/triangle.o ../../src/objects/fundamental/triangle.cpp
+
 ${OBJECTDIR}/_ext/1259a249/parallelepiped.o: ../../src/objects/parallelepiped.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/1259a249
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1259a249/parallelepiped.o ../../src/objects/parallelepiped.cpp
 
-${OBJECTDIR}/_ext/1259a249/parallelogram.o: ../../src/objects/parallelogram.cpp
-	${MKDIR} -p ${OBJECTDIR}/_ext/1259a249
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1259a249/parallelogram.o ../../src/objects/parallelogram.cpp
-
 ${OBJECTDIR}/_ext/1259a249/polygon.o: ../../src/objects/polygon.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/1259a249
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1259a249/polygon.o ../../src/objects/polygon.cpp
-
-${OBJECTDIR}/_ext/1259a249/sphere.o: ../../src/objects/sphere.cpp
-	${MKDIR} -p ${OBJECTDIR}/_ext/1259a249
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1259a249/sphere.o ../../src/objects/sphere.cpp
-
-${OBJECTDIR}/_ext/1259a249/triangle.o: ../../src/objects/triangle.cpp
-	${MKDIR} -p ${OBJECTDIR}/_ext/1259a249
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1259a249/triangle.o ../../src/objects/triangle.cpp
 
 ${OBJECTDIR}/_ext/a8ea4a81/render.o: ../../src/rendering/render.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/a8ea4a81

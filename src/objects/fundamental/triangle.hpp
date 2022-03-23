@@ -1,8 +1,8 @@
 #pragma once
 
-#include "object.hpp"
+#include "fundamental_object.hpp"
 
-class triangle : public object
+class triangle : public fundamental_object
 {
 public:
     typedef spacial_t vertex_t;
@@ -21,8 +21,6 @@ public:
     
     floating_point_t get_area() const;
     spacial_t get_centre() const;
-
-    material mat;
 
 private:
     vertices_t _vertices;
