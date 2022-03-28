@@ -78,6 +78,18 @@ spacial_t triangle::get_centre() const
     return (_vertices[0] + _vertices[1] + _vertices[2]) / floating_point_t(3);
 }
 
+void triangle::set_scale(floating_point_t scale)
+{
+    const floating_point_t factor = scale / get_scale();
+    for (auto& vertex : _vertices)
+        vertex *= factor;
+}
+
+floating_point_t triangle::get_scale() const
+{
+    return std::sqrt(get_area());
+}
+
 void triangle::make_normal() const
 {
     _normal = unstd::cross_product(_vertices[0] - _vertices[2], _vertices[1] - _vertices[0]);

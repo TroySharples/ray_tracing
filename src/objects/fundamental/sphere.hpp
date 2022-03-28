@@ -5,9 +5,10 @@
 class sphere : public fundamental_object
 {
 public:
-    sphere(floating_point_t radius_);
-
     std::optional<hit_info> get_hit_info(const ray_t& ray) const override;
+    
+    void set_scale(floating_point_t scale) override;
+    floating_point_t get_scale() const override;
 
     floating_point_t radius;
 };

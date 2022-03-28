@@ -14,7 +14,10 @@ public:
     triangles_t& get_triangles();
     const triangles_t& get_triangles() const;
 
-    void set_centre(const spacial_t& centre) override;
+    void set_centre(spacial_t centre) override;
+    
+    void set_scale(floating_point_t scale) override;
+    floating_point_t get_scale() const override;
     
     void set_material(const fundamental_object::material& mat);
     const fundamental_object::material& get_material() const { return _mat; }

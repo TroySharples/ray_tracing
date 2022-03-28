@@ -8,7 +8,7 @@
 #include <cstdint>
 
 typedef uint8_t rgb_t;
-typedef double floating_point_t;
+typedef float floating_point_t;
 
 constexpr rgb_t RGB_MAX = unstd::unsigned_max<rgb_t>();
 
@@ -44,7 +44,7 @@ inline colour_t random_colour() { return colour_t({ rgb_t(rand()), rgb_t(rand())
 
 constexpr floating_point_t EPSILON = 1e-8;
 
-constexpr size_t MAX_SCATTER_DEPTH = 8;
+constexpr size_t MAX_SCATTER_DEPTH = 0;
 
 constexpr size_t MSAA = 4;
 

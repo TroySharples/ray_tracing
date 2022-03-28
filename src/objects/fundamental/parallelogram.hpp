@@ -19,7 +19,11 @@ public:
     const vertex_t& operator[](size_t i) const;
     
     floating_point_t get_area() const;
+    
     spacial_t get_centre() const;
+    
+    void set_scale(floating_point_t scale) override;
+    floating_point_t get_scale() const override;
 
 private:
     vertices_t _vertices;

@@ -113,11 +113,29 @@ std::optional<object::hit_info> complex_polygon::get_hit_info(const ray_t& ray) 
     return ret;
 }
 
-void complex_polygon::set_centre(const spacial_t& centre)
+void complex_polygon::set_centre(spacial_t centre)
 {
     _centre = centre;
     for (auto& i : _polygons)
         i.set_centre(centre);
+}
+
+void complex_polygon::set_scale(floating_point_t scale)
+{
+    const floating_point_t factor = scale / get_scale();
+    for (auto& polygon : _polygons)
+        polygon.enlarge(factor);
+}
+
+floating_point_t complex_polygon::get_scale() const
+{
+    // For now we just take the scale as the average of our owned polygons. We should later give ourselves a bounding box and set the scale to the bounding boxes scale
+    floating_point_t sum = 0;
+    for (const auto& polygon : _polygons)
+        sum += polygon.get_scale();
+    sum /= _polygons.size();
+    
+    return sum;
 }
 
 void complex_polygon::set_material(const fundamental_object::material& mat)

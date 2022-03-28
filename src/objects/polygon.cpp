@@ -43,7 +43,7 @@ const polygon::triangles_t& polygon::get_triangles() const
     return _triangles;
 }
 
-void polygon::set_centre(const spacial_t& centre)
+void polygon::set_centre(spacial_t centre)
 {
     // Also reset centre for each of our triangles and parallelepiped as well
     _centre = centre;
@@ -51,6 +51,24 @@ void polygon::set_centre(const spacial_t& centre)
         i.set_centre(centre);
 
     _bounding_box.reset();
+}
+
+void polygon::set_scale(floating_point_t scale)
+{
+    const floating_point_t factor = scale / get_scale();
+    for (auto& triangle : _triangles)
+        triangle.enlarge(factor);
+    
+    _bounding_box.reset();
+}
+
+floating_point_t polygon::get_scale() const
+{
+    if (!_bounding_box.has_value())
+        make_bounding_box();
+    const parallelepiped& bounding_box = _bounding_box.value();
+    
+    return bounding_box.get_scale();
 }
 
 void polygon::set_material(const fundamental_object::material& mat)
@@ -123,7 +141,7 @@ void polygon::make_bounding_box() const
     // Just make a random bounding box if we are empty
     if (_triangles.empty())
     {
-        _bounding_box = parallelepiped();
+        _bounding_box = {};
         return;
     }
         

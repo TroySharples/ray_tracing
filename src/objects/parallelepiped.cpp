@@ -20,7 +20,7 @@ std::optional<object::hit_info> parallelepiped::get_hit_info(const ray_t& ray) c
     return ret;
 }
 
-void parallelepiped::set_centre(const spacial_t& centre)
+void parallelepiped::set_centre(spacial_t centre)
 {
     // Also reset centre for each of our parallelograms as well
     _centre = centre;
@@ -37,4 +37,16 @@ spacial_t parallelepiped::get_centre() const
 {
     // Just returns the point between thew two opposite vertices
     return (_parallelograms[0][0] + _parallelograms[3][1] + _parallelograms[3][2]) / floating_point_t(2);
+}
+
+void parallelepiped::set_scale(floating_point_t scale)
+{
+    const floating_point_t factor = scale / get_scale();
+    for (auto& parallelogram : _parallelograms)
+        parallelogram.enlarge(factor);;
+}
+
+floating_point_t parallelepiped::get_scale() const
+{
+    return std::cbrt(get_volume());
 }

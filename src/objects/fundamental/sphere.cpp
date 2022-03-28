@@ -2,12 +2,6 @@
 
 #include "utils/logging.hpp"
 
-sphere::sphere(floating_point_t radius_)
-    : radius(radius_)
-{
-
-}
-
 std::optional<object::hit_info> sphere::get_hit_info(const ray_t& ray) const
 {    
     std::optional<hit_info> ret;
@@ -32,4 +26,14 @@ std::optional<object::hit_info> sphere::get_hit_info(const ray_t& ray) const
     ret = calculate_hit_info(intersection, ray.direction, normal, std::pow(t, 2), std::cos(M_PI*alignment/2));
     
     return ret;
+}
+
+void sphere::set_scale(floating_point_t scale) 
+{ 
+    radius = scale; 
+}
+
+floating_point_t sphere::get_scale() const
+{ 
+    return radius; 
 }
