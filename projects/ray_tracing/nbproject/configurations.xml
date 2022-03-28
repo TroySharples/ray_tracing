@@ -31,6 +31,7 @@
       <logicalFolder name="utils" displayName="utils" projectFiles="true">
         <itemPath>../../src/utils/line.hpp</itemPath>
         <itemPath>../../src/utils/logging.hpp</itemPath>
+        <itemPath>../../src/utils/matrix.hpp</itemPath>
         <itemPath>../../src/utils/timer.cpp</itemPath>
         <itemPath>../../src/utils/timer.hpp</itemPath>
         <itemPath>../../src/utils/utils.hpp</itemPath>
@@ -154,6 +155,8 @@
       </item>
       <item path="../../src/utils/logging.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="../../src/utils/matrix.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="../../src/utils/timer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../../src/utils/timer.hpp" ex="false" tool="3" flavor2="0">
@@ -271,6 +274,8 @@
       <item path="../../src/utils/line.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../src/utils/logging.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/utils/matrix.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../src/utils/timer.cpp" ex="false" tool="1" flavor2="0">
       </item>

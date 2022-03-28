@@ -1,9 +1,6 @@
 #pragma once
 
-#include <cmath>
-#include <array>
-#include <iostream>
-#include <concepts>
+#include "matrix.hpp"
 
 namespace unstd 
 {
@@ -93,7 +90,7 @@ namespace unstd
     template <typename _T, size_t _S>
     constexpr vector<_T, _S> cross_product(const vector<_T, _S>& v, const vector<_T, _S>& w)
     {
-        static_assert(_S == 3,"The cross product is only defined in three dimensions");
+        static_assert(_S == 3, "The cross product is only defined in three dimensions");
         return { v[1] * w[2] - v[2] * w[1], v[2] * w[0] - v[0] * w[2], v[0] * w[1] - v[1] * w[0] };
     }
 
@@ -101,6 +98,14 @@ namespace unstd
     constexpr _T scalar_triple_product(const vector<_T, _S>& v, const vector<_T, _S>& w, const vector<_T, _S>& u)
     {
         return unstd::dot_product(v, unstd::cross_product(w, u));
+    }
+    
+    template <typename _T, size_t _M, size_t _N>
+    constexpr vector<_T, _M> operator*(const matrix<_T, _M, _N>& A, const vector<_T, _N>& v)
+    {
+        vector<_T, _N> ret = { 0 };
+        for (size_t i = 0; i < _N; i++) for (size_t j = 0; j < _M; j++) ret[i] += A(i, j)*v[j];
+        return ret;
     }
 
     // Ostream overload
