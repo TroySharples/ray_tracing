@@ -46,7 +46,7 @@ constexpr floating_point_t EPSILON = 1e-8;
 
 constexpr size_t MAX_SCATTER_DEPTH = 0;
 
-constexpr size_t MSAA = 4;
+constexpr size_t MSAA = 1;
 
 spacial_t random_spacial(floating_point_t r);
 

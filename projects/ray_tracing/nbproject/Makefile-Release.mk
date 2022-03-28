@@ -52,8 +52,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-Wall -std=c++20
-CXXFLAGS=-Wall -std=c++20
+CCFLAGS=-Wall -std=c++20 -ffast-math
+CXXFLAGS=-Wall -std=c++20 -ffast-math
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -75,57 +75,57 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ray_tracing: ${OBJECTFILES}
 ${OBJECTDIR}/_ext/56252444/config.o: ../../src/config.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/56252444
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/56252444/config.o ../../src/config.cpp
+	$(COMPILE.cc) -O3 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/56252444/config.o ../../src/config.cpp
 
 ${OBJECTDIR}/_ext/1259a249/complex_polygon.o: ../../src/objects/complex_polygon.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/1259a249
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1259a249/complex_polygon.o ../../src/objects/complex_polygon.cpp
+	$(COMPILE.cc) -O3 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1259a249/complex_polygon.o ../../src/objects/complex_polygon.cpp
 
 ${OBJECTDIR}/_ext/b8fdb47f/fundamental_object.o: ../../src/objects/fundamental/fundamental_object.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/b8fdb47f
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/b8fdb47f/fundamental_object.o ../../src/objects/fundamental/fundamental_object.cpp
+	$(COMPILE.cc) -O3 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/b8fdb47f/fundamental_object.o ../../src/objects/fundamental/fundamental_object.cpp
 
 ${OBJECTDIR}/_ext/b8fdb47f/parallelogram.o: ../../src/objects/fundamental/parallelogram.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/b8fdb47f
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/b8fdb47f/parallelogram.o ../../src/objects/fundamental/parallelogram.cpp
+	$(COMPILE.cc) -O3 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/b8fdb47f/parallelogram.o ../../src/objects/fundamental/parallelogram.cpp
 
 ${OBJECTDIR}/_ext/b8fdb47f/sphere.o: ../../src/objects/fundamental/sphere.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/b8fdb47f
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/b8fdb47f/sphere.o ../../src/objects/fundamental/sphere.cpp
+	$(COMPILE.cc) -O3 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/b8fdb47f/sphere.o ../../src/objects/fundamental/sphere.cpp
 
 ${OBJECTDIR}/_ext/b8fdb47f/triangle.o: ../../src/objects/fundamental/triangle.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/b8fdb47f
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/b8fdb47f/triangle.o ../../src/objects/fundamental/triangle.cpp
+	$(COMPILE.cc) -O3 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/b8fdb47f/triangle.o ../../src/objects/fundamental/triangle.cpp
 
 ${OBJECTDIR}/_ext/1259a249/parallelepiped.o: ../../src/objects/parallelepiped.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/1259a249
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1259a249/parallelepiped.o ../../src/objects/parallelepiped.cpp
+	$(COMPILE.cc) -O3 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1259a249/parallelepiped.o ../../src/objects/parallelepiped.cpp
 
 ${OBJECTDIR}/_ext/1259a249/polygon.o: ../../src/objects/polygon.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/1259a249
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1259a249/polygon.o ../../src/objects/polygon.cpp
+	$(COMPILE.cc) -O3 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1259a249/polygon.o ../../src/objects/polygon.cpp
 
 ${OBJECTDIR}/_ext/a8ea4a81/render.o: ../../src/rendering/render.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/a8ea4a81
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a8ea4a81/render.o ../../src/rendering/render.cpp
+	$(COMPILE.cc) -O3 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a8ea4a81/render.o ../../src/rendering/render.cpp
 
 ${OBJECTDIR}/_ext/2abcb726/timer.o: ../../src/utils/timer.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/2abcb726
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2abcb726/timer.o ../../src/utils/timer.cpp
+	$(COMPILE.cc) -O3 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2abcb726/timer.o ../../src/utils/timer.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -O3 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:

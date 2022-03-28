@@ -14,7 +14,7 @@ namespace unstd
         bool operator==(const vector& v) const { return std::equal(this->begin(), this->end(), v.begin()); }
         bool operator!=(const vector& v) const { return !(*this == v); }
 
-        // Arithmatic overloads
+        // Arithmetic overloads
         const vector& operator+() const { return *this; }
         constexpr vector operator-() const { return _T(- 1) * vector<_T, _S>(*this); }
         vector& operator*=(const _T& t) { for (auto& i : *this) i *= t; return *this; }
@@ -30,7 +30,7 @@ namespace unstd
         vector& normalise() { return operator*=(inverse_length()); }
     };
 
-    // Non-member arithmatic overloads
+    // Non-member arithmetic overloads
     template <typename _T, size_t _S>
     constexpr vector<_T, _S> operator+(const vector<_T, _S>& v, const vector<_T, _S>& w)
     {

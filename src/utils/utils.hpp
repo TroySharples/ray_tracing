@@ -15,7 +15,6 @@ namespace unstd
             return ret;
     }
 
-
     template <typename _T>
     constexpr _T unsigned_max() 
     {

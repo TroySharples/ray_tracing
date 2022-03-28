@@ -176,11 +176,11 @@
           <developmentMode>5</developmentMode>
         </cTool>
         <ccTool>
-          <developmentMode>5</developmentMode>
+          <developmentMode>6</developmentMode>
           <incDir>
             <pElem>../../src</pElem>
           </incDir>
-          <commandLine>-Wall -std=c++20</commandLine>
+          <commandLine>-Wall -std=c++20 -ffast-math</commandLine>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
