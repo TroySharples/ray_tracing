@@ -70,6 +70,14 @@ floating_point_t polygon::get_scale() const
     
     return bounding_box.get_scale();
 }
+    
+void polygon::rotate(floating_point_t a, floating_point_t b, floating_point_t c)
+{
+    for (auto& triangle : _triangles)
+        triangle.rotate(a, b, c);
+    
+    _bounding_box.reset();
+}
 
 void polygon::set_material(const fundamental_object::material& mat)
 {

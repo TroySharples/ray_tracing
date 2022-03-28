@@ -50,3 +50,9 @@ floating_point_t parallelepiped::get_scale() const
 {
     return std::cbrt(get_volume());
 }
+    
+void parallelepiped::rotate(floating_point_t a, floating_point_t b, floating_point_t c)
+{
+    for (auto& parallelogram : _parallelograms)
+        parallelogram.rotate(a, b, c);
+}

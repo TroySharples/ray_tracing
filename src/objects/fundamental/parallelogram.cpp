@@ -89,6 +89,15 @@ floating_point_t parallelogram::get_scale() const
     return std::sqrt(get_area());
 }
 
+void parallelogram::rotate(floating_point_t a, floating_point_t b, floating_point_t c)
+{
+    const transform_t A = unstd::rotation(a, b, c);
+    for (auto& vertex : _vertices)
+        vertex = A*vertex;
+    
+    _normal.reset();
+}
+
 void parallelogram::make_normal() const
 {
     _normal = unstd::cross_product(_vertices[0] - _vertices[2], _vertices[1] - _vertices[0]);

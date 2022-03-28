@@ -66,7 +66,8 @@ static bool load_objects(objects_t& objects)
 
         fs >> *obj;
         obj->enlarge(0.5);
-        obj->set_centre({ -4.0, 0.0, -55.0 });
+        obj->rotate(0, 3*M_PI/2, 0);
+        obj->set_centre({ -4.0, 3.0, -55.0 });
 
         objects.emplace_back(std::move(obj));
     }
@@ -83,7 +84,8 @@ static bool load_objects(objects_t& objects)
 
         fs >> *obj;
         obj->enlarge(1.5);
-        obj->set_centre({ 4.0, -3.0, -45.0 });
+        obj->rotate(0, 0, M_PI);
+        obj->set_centre({ 4.0, 2.0, -45.0 });
 
         objects.emplace_back(std::move(obj));
     }

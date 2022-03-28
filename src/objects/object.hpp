@@ -27,6 +27,8 @@ public:
     virtual floating_point_t get_scale() const = 0;
     
     void enlarge(floating_point_t factor) { set_scale(factor*get_scale()); }
+    
+    virtual void rotate(floating_point_t a, floating_point_t b, floating_point_t c) = 0;
 
 protected:
     spacial_t _centre{ 0, 0, 0 };

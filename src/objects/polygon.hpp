@@ -19,6 +19,8 @@ public:
     void set_scale(floating_point_t scale) override;
     floating_point_t get_scale() const override;
     
+    void rotate(floating_point_t a, floating_point_t b, floating_point_t c) override;
+    
     void set_material(const fundamental_object::material& mat);
     const fundamental_object::material& get_material() const { return _mat; }
     

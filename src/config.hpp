@@ -37,6 +37,7 @@ typedef unstd::line<floating_point_t, 3> ray_t;
 
 typedef unstd::vector<rgb_t, 3> colour_t;
 typedef unstd::vector<floating_point_t, 3> spacial_t;
+typedef unstd::matrix<floating_point_t, 3, 3> transform_t;
 typedef unstd::vector<floating_point_t, 2> texord_t;
 
 typedef std::array<colour_t, IMAGE_WIDTH*IMAGE_HEIGHT> image_t;

@@ -25,6 +25,8 @@ public:
     
     void set_scale(floating_point_t scale) override;
     floating_point_t get_scale() const override;
+    
+    void rotate(floating_point_t a, floating_point_t b, floating_point_t c) override;
 
 private:
     vertices_t _vertices;

@@ -37,3 +37,8 @@ floating_point_t sphere::get_scale() const
 { 
     return radius; 
 }
+
+void sphere::rotate(floating_point_t a, floating_point_t b, floating_point_t c)
+{
+    // Spheres are symmetrical so we don't have to do anything
+}

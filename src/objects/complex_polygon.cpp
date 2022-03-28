@@ -137,6 +137,12 @@ floating_point_t complex_polygon::get_scale() const
     
     return sum;
 }
+    
+void complex_polygon::rotate(floating_point_t a, floating_point_t b, floating_point_t c)
+{
+    for (auto& polygon : _polygons)
+        polygon.rotate(a, b, c);
+}
 
 void complex_polygon::set_material(const fundamental_object::material& mat)
 {

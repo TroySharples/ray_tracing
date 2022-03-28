@@ -1,7 +1,6 @@
 #pragma once
 
-#include <cmath>
-#include <type_traits>
+#include "matrix.hpp"
 
 namespace unstd
 {
@@ -19,5 +18,18 @@ namespace unstd
     constexpr _T unsigned_max() 
     {
             return pow<_T>(2, 8 * sizeof(_T)) - 1; 
+    }
+    
+    template <typename _T>
+    requires std::floating_point<_T>
+    matrix<_T, 3, 3> rotation(_T a, _T b, _T c)
+    {
+        using namespace std;
+        
+        // Generates the rotation matrix from the Euler angles
+        return { cos(b)*cos(c), sin(a)*sin(b)*cos(c) - cos(a)*sin(c), cos(a)*sin(b)*cos(c) + sin(a)*sin(c),
+                 cos(b)*sin(c), sin(a)*sin(b)*sin(c) + cos(a)*cos(c), cos(a)*sin(b)*sin(c) - sin(a)*cos(c),
+                 -sin(b),       sin(a)*cos(b),                        cos(a)*cos(b) };
+       
     }
 }
