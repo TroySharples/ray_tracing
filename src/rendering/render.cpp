@@ -9,18 +9,22 @@
 
 using namespace rendering;
 
-static colour_t mix_colours(const colour_t& hit, const colour_t& reflection, const colour_t& refraction, floating_point_t albedo, floating_point_t transparency)
+template <typename... _T>
+static colour_t average_colours(const _T&... t)
 {
-    return (hit*(1 - albedo) + reflection*albedo)*(1 - transparency) + refraction*transparency;
+    colour_t ret = { 0 };
+    ((ret += t/floating_point_t(sizeof...(_T))), ...);
+    
+    return ret;
 }
 
-static colour_t get_colour(const objects_t& objects, const ray_t& ray, size_t depth = 0)
+static colour_t get_colour(const objects_t& objects, const ray_t& ray, floating_point_t contribution = 1.0)
 {    
     // Set the default colour (the colour of rays that don't hit the object)
     colour_t ret = BACKGROUND_COLOUR;
     
-    // Return if we are too deep
-    if (depth > MAX_SCATTER_DEPTH)
+    // Return if we are too deep (our returned colour will affect the brightness of the pixel by less than 1%)
+    if (contribution < DEPTH_THRESHOLD)
         return ret;
     
     // Loop over all the objects and set the final hit info to be the closest hit
@@ -29,10 +33,20 @@ static colour_t get_colour(const objects_t& objects, const ray_t& ray, size_t de
         if (const auto i = object->get_hit_info(ray); i.has_value() && (!info.has_value() || info.value().z2 > i.value().z2))
             info = i.value();
         
-    // Calculate 
-    depth++;
-    if (info.has_value())
-        ret = mix_colours(info.value().colour, get_colour(objects, info.value().next_ray, depth), get_colour(objects, { info.value().next_ray.origin, ray.direction }, depth), info.value().albedo, info.value().transparency);
+    // Return if we didn't hit anything
+    if (!info.has_value())
+        return ret;
+    object::hit_info& hit = info.value();
+        
+    // Calculate the colour mixing coefficients
+    const floating_point_t black_body_coefficient = hit.alignment;
+    const floating_point_t reflection_coefficient = hit.albedo;
+    const floating_point_t refraction_coefficient = hit.transparency;
+    
+    // Calculate the colour
+    ret = average_colours(hit.colour*black_body_coefficient, 
+            get_colour(objects, { hit.intersection, hit.reflection.normalise() }, contribution*reflection_coefficient)*reflection_coefficient,
+            get_colour(objects, { hit.intersection, hit.refraction.normalise() }, contribution*refraction_coefficient)*refraction_coefficient);
         
     return ret;
 }

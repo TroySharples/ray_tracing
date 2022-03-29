@@ -12,10 +12,14 @@ public:
     struct hit_info
     {
         colour_t colour;
-        floating_point_t z2;
+        floating_point_t alignment;
         floating_point_t albedo;
         floating_point_t transparency;
-        ray_t next_ray;
+        floating_point_t roughness;
+        floating_point_t z2;
+        spacial_t intersection;
+        spacial_t reflection;
+        spacial_t refraction;
     };
 
     virtual std::optional<hit_info> get_hit_info(const ray_t& ray) const = 0;

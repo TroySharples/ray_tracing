@@ -1,24 +1,15 @@
 #include "fundamental_object.hpp"
 
-static colour_t calculate_shader(const colour_t& colour, floating_point_t alignment)
+static spacial_t calculate_reflection(const spacial_t& direction, const spacial_t& normal, floating_point_t alignment)
 {
-    return colour*alignment;
+//    ret += unstd::cross_product(normal, random_spacial(roughness*ret.length()));
+    return direction - 2*alignment*normal;
 }
 
-static spacial_t calculate_reflection(const spacial_t& direction, const spacial_t& normal, floating_point_t alignment, floating_point_t roughness)
+static spacial_t calculate_refraction(const spacial_t& direction, const spacial_t& normal, floating_point_t alignment, floating_point_t refractive_index)
 {
-    spacial_t ret = direction - 2*alignment*normal;
-    
-#if 1
-    ret += unstd::cross_product(normal, random_spacial(roughness*ret.length()));
-#endif    
-    
-    return ret.normalise();
-}
-
-static floating_point_t calculate_transparency(floating_point_t alignment, floating_point_t reflectivity)
-{
-    return alignment*reflectivity;
+    // For now ignore the actual refractive effect
+    return direction;
 }
 
 object::hit_info fundamental_object::calculate_hit_info(const spacial_t& intersection, const spacial_t& direction, const spacial_t& normal, floating_point_t z2) const
@@ -29,5 +20,5 @@ object::hit_info fundamental_object::calculate_hit_info(const spacial_t& interse
 
 object::hit_info fundamental_object::calculate_hit_info(const spacial_t& intersection, const spacial_t& direction, const spacial_t& normal, floating_point_t z2, floating_point_t alignment) const
 {
-    return { calculate_shader(mat.colour, alignment), z2, mat.albedo, calculate_transparency(alignment, mat.reflectivity), { intersection, calculate_reflection(direction, normal, alignment, mat.roughness) } };
+    return { mat.colour, std::abs(alignment), mat.albedo, mat.transparancy, mat.roughness, z2, intersection, calculate_reflection(direction, normal, alignment), calculate_refraction(direction, normal, alignment, mat.refractive_index) };
 }    

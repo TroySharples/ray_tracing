@@ -45,9 +45,9 @@ inline colour_t random_colour() { return colour_t({ rgb_t(rand()), rgb_t(rand())
 
 constexpr floating_point_t EPSILON = 1e-8;
 
-constexpr size_t MAX_SCATTER_DEPTH = 0;
+constexpr floating_point_t DEPTH_THRESHOLD = 0.1;
 
-constexpr size_t MSAA = 1;
+constexpr size_t MSAA = 4;
 
 spacial_t random_spacial(floating_point_t r);
 
