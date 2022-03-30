@@ -38,7 +38,6 @@ typedef unstd::line<floating_point_t, 3> ray_t;
 typedef unstd::vector<rgb_t, 3> colour_t;
 typedef unstd::vector<floating_point_t, 3> spacial_t;
 typedef unstd::matrix<floating_point_t, 3, 3> transform_t;
-typedef unstd::vector<floating_point_t, 2> texord_t;
 
 typedef std::array<colour_t, IMAGE_WIDTH*IMAGE_HEIGHT> image_t;
 inline colour_t random_colour() { return colour_t({ rgb_t(rand()), rgb_t(rand()), rgb_t(rand()) }); }
@@ -47,7 +46,7 @@ constexpr floating_point_t EPSILON = 1e-8;
 
 constexpr floating_point_t DEPTH_THRESHOLD = 0.1;
 
-constexpr size_t MSAA = 4;
+constexpr size_t MSAA = 1;
 
 spacial_t random_spacial(floating_point_t r);
 
@@ -66,11 +65,3 @@ static const std::filesystem::path RENDERS_PATH = ROOT_PATH / "renders";
 
 // Writes an image to ostream in PPM format
 std::ostream& operator << (std::ostream& os, const image_t& image);
-
-struct virtex
-{
-    spacial_t position;
-    colour_t  colour;
-    texord_t  texcoord;
-    spacial_t normal;
-};

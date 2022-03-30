@@ -10,7 +10,7 @@ public:
     struct material
     {
         colour_t colour = random_colour();
-        floating_point_t albedo = 0.6;
+        floating_point_t albedo = 0.9;
         floating_point_t transparancy = 0.0;
         floating_point_t roughness = 0.0;
         floating_point_t refractive_index = 0.0;
