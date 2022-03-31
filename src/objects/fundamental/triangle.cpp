@@ -20,18 +20,18 @@ std::optional<object::hit_info> triangle::get_hit_info(const ray_t& ray) const
     const spacial_t& normal = _normal.value();
 
     // Compute how aligned the normal to the triangle and the direction of the ray are (their dot product)
-    const floating_point_t nalignment = -unstd::dot_product(normal, ray.direction);
+    const floating_point_t alignment = -unstd::dot_product(normal, ray.direction);
 
     // We do not count the ray as hitting if direction is almost orthoganal to the normal of the triangle, or if it
     // is hitting the backwards face of the triangle
-#if 0
-    if (std::abs(nalignment) < EPSILON) return ret;
+#if 1
+    if (std::abs(alignment) < EPSILON) return ret;
 #else
-    if (nalignment < EPSILON) return ret;
+    if (alignment < EPSILON) return ret;
 #endif
 
     // Compute the distance along the ray which intersects with the plane
-    const floating_point_t t = unstd::dot_product(normal, ray.origin - absolute[0]) / nalignment;
+    const floating_point_t t = unstd::dot_product(normal, ray.origin - absolute[0]) / alignment;
 
     // If t is negative the triangle is behind the camera
     if (t < EPSILON) return ret;
@@ -49,7 +49,7 @@ std::optional<object::hit_info> triangle::get_hit_info(const ray_t& ray) const
     if (unstd::scalar_triple_product(normal, side2, intersection - absolute[1]) < 0) return ret;
 
     // If we reach here we have hit the triangle    
-    ret = calculate_hit_info(intersection, ray.direction, normal, std::pow(t, 2), -nalignment);
+    ret = calculate_hit_info(intersection, ray.direction, normal, std::pow(t, 2), alignment);
     
     return ret;
 }
