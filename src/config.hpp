@@ -42,7 +42,7 @@ typedef unstd::matrix<floating_point_t, 3, 3> transform_t;
 typedef std::array<colour_t, IMAGE_WIDTH*IMAGE_HEIGHT> image_t;
 inline colour_t random_colour() { return colour_t({ rgb_t(rand()), rgb_t(rand()), rgb_t(rand()) }); }
 
-constexpr floating_point_t EPSILON = 1e-8;
+constexpr floating_point_t EPSILON = 1e-4;
 
 constexpr floating_point_t DEPTH_THRESHOLD = 0.1;
 
