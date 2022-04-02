@@ -45,8 +45,8 @@ static colour_t get_colour(const objects_t& objects, const ray_t& ray, floating_
     
     // Calculate the colour
     ret = average_colours(hit.colour*black_body_coefficient, 
-            get_colour(objects, { hit.intersection, hit.reflection.normalise() }, contribution*reflection_coefficient)*reflection_coefficient,
-            get_colour(objects, { hit.intersection, hit.refraction.normalise() }, contribution*refraction_coefficient)*refraction_coefficient);
+            get_colour(objects, { hit.intersection, hit.reflection.normalise(), ray.orientation }, contribution*reflection_coefficient)*reflection_coefficient,
+            get_colour(objects, { hit.intersection, hit.refraction.normalise(), !ray.orientation }, contribution*refraction_coefficient)*refraction_coefficient);
         
     return ret;
 }

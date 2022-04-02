@@ -13,5 +13,7 @@ namespace unstd
 
         spacial_t origin;
         spacial_t direction;
+        
+        bool orientation = true;
     };
 }

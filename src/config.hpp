@@ -8,11 +8,14 @@
 #include <cstdint>
 
 typedef uint8_t rgb_t;
-typedef float floating_point_t;
+typedef double floating_point_t;
 
 constexpr rgb_t RGB_MAX = unstd::unsigned_max<rgb_t>();
 
 #if 0
+constexpr size_t IMAGE_WIDTH = 30720;
+constexpr size_t IMAGE_HEIGHT = 17260;
+#elif 0
 constexpr size_t IMAGE_WIDTH = 15360;
 constexpr size_t IMAGE_HEIGHT = 8630;
 #elif 0
@@ -42,11 +45,11 @@ typedef unstd::matrix<floating_point_t, 3, 3> transform_t;
 typedef std::array<colour_t, IMAGE_WIDTH*IMAGE_HEIGHT> image_t;
 inline colour_t random_colour() { return colour_t({ rgb_t(rand()), rgb_t(rand()), rgb_t(rand()) }); }
 
-constexpr floating_point_t EPSILON = 1e-4;
+constexpr floating_point_t EPSILON = 1e-8;
 
-constexpr floating_point_t DEPTH_THRESHOLD = 0.1;
+constexpr floating_point_t DEPTH_THRESHOLD = 0.01;
 
-constexpr size_t MSAA = 1;
+constexpr size_t MSAA = 4;
 
 spacial_t random_spacial(floating_point_t r);
 
