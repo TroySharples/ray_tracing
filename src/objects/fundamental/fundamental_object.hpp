@@ -11,7 +11,7 @@ public:
     {
         colour_t colour = random_colour();
         floating_point_t brightness = 1.0;
-        floating_point_t reflectivity = 1.0;
+        floating_point_t reflectivity = 0.0;
         floating_point_t transparancy = 1.0;
         floating_point_t roughness = 0.0;
         floating_point_t refractive_index = 0.5;

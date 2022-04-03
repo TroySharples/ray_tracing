@@ -18,6 +18,29 @@ static colour_t average_colours(const _T&... t)
     return ret;
 }
 
+static floating_point_t black_body_shader(floating_point_t alignment)
+{
+    return std::abs(alignment);
+}
+
+static floating_point_t reflection_shader(floating_point_t alignment)
+{
+#if 0
+    return 1.0 - 0.5*std::abs(alignment);
+#else
+    return 0.8;
+#endif
+}
+
+static floating_point_t refraction_shader(floating_point_t alignment)
+{
+#if 0
+    return 0.5 +  0.5*std::abs(alignment);
+#else
+    return 0.8;
+#endif
+}
+
 static colour_t get_colour(const objects_t& objects, const ray_t& ray, floating_point_t contribution = 1.0)
 {    
     // Set the default colour (the colour of rays that don't hit the object)
@@ -39,19 +62,9 @@ static colour_t get_colour(const objects_t& objects, const ray_t& ray, floating_
     object::hit_info& hit = info.value();
     
     // Calculate the colour mixing coefficients
-    const floating_point_t black_body_coefficient = hit.alignment*hit.brightness;
-    const floating_point_t reflection_coefficient = (1 - hit.alignment)*hit.reflectivity;
-    const floating_point_t refraction_coefficient = hit.alignment*hit.transparency;
-    
-    // DEBUG
-    std::cout << "alignment       - " << hit.alignment << std::endl;
-    std::cout << "brightness      - " << hit.brightness << std::endl;
-    std::cout << "reflectivity    - " << hit.reflectivity << std::endl;
-    std::cout << "transparency    - " << hit.transparency << std::endl;
-    std::cout << "black body coef - " << black_body_coefficient << std::endl;
-    std::cout << "reflection coef - " << reflection_coefficient << std::endl;
-    std::cout << "refraction coef - " << refraction_coefficient << std::endl;
-    std::cout << std::endl;
+    const floating_point_t black_body_coefficient = black_body_shader(hit.alignment)*hit.brightness;
+    const floating_point_t reflection_coefficient = reflection_shader(hit.alignment)*hit.reflectivity;
+    const floating_point_t refraction_coefficient = refraction_shader(hit.alignment)*hit.transparency;
             
     // Calculate the colour
     ret = average_colours(hit.colour*black_body_coefficient, 

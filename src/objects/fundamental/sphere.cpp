@@ -24,10 +24,15 @@ std::optional<object::hit_info> sphere::get_hit_info(const ray_t& ray) const
     }
     else
     {
+        // Return if we are not already inside this sphere. We add a EPSILON buffer as most of these rays will be coming from an inbound ray originating from the spheres surface so we would expect
+        // OC have a length of radius exactly
+        if (oc.square_length() > std::pow(radius, 2) + EPSILON)
+            return ret;
+        
         t = 2.0*oc_dot_d;
     }
     
-    // If t is negative the triangle is behind the camera
+    // If t is negative the sphere is behind the camera
     if (t < EPSILON) return ret;
     
     // We hit if we made it here
