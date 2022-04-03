@@ -7,15 +7,25 @@ std::optional<object::hit_info> sphere::get_hit_info(const ray_t& ray) const
     std::optional<hit_info> ret;
     
     const spacial_t oc = _centre - ray.origin;
-    const floating_point_t oc_dot_n = unstd::dot_product(oc, ray.direction);
-    const floating_point_t discriminant = (oc.square_length() - std::pow(oc_dot_n, 2))/std::pow(radius, 2);
-
-    // Return if we didn't hit
-    if (discriminant > 1 - EPSILON)
-        return ret;
+    const floating_point_t oc_dot_d = unstd::dot_product(oc, ray.direction);
     
-    // Compute the distance along the ray which intersects with the plane
-    const floating_point_t t = oc_dot_n - std::sqrt((1 - discriminant)*std::pow(radius, 2));
+    // We handle whether we hit or not differently depending on whether our ray is aligned
+    floating_point_t t;
+    if (ray.orientation)
+    {
+        const floating_point_t discriminant = oc.square_length() - std::pow(oc_dot_d, 2);
+
+        // Return if we didn't hit
+        if (discriminant > std::pow(radius, 2) - EPSILON)
+            return ret;
+        
+        // Compute the distance along the ray which intersects with the plane
+        t = oc_dot_d - std::sqrt((std::pow(radius, 2) - discriminant));
+    }
+    else
+    {
+        t = 2.0*oc_dot_d;
+    }
     
     // If t is negative the triangle is behind the camera
     if (t < EPSILON) return ret;

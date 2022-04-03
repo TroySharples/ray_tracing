@@ -36,6 +36,7 @@ static bool load_objects(objects_t& objects)
         std::unique_ptr<sphere> obj = std::make_unique<sphere>();
         obj->set_scale(1.0);
         obj->set_centre({ 4.0, 2.0, -35.0 });
+        obj->mat.brightness = 0.3;
 
         objects.emplace_back(std::move(obj));
     }
@@ -43,6 +44,7 @@ static bool load_objects(objects_t& objects)
         std::unique_ptr<sphere> obj = std::make_unique<sphere>();
         obj->set_scale(0.25);
         obj->set_centre({ -1.0, -0.5, -20.0 });
+        obj->mat.brightness = 0.2;
 
         objects.emplace_back(std::move(obj));
     }
@@ -50,13 +52,14 @@ static bool load_objects(objects_t& objects)
         std::unique_ptr<sphere> obj = std::make_unique<sphere>();
         obj->set_scale(1.5);
         obj->set_centre({ -1.0, -2.0, -60.0 });
+        obj->mat.brightness = 0.6;
 
         objects.emplace_back(std::move(obj));
     }
 #endif
 
     // Pushes back a cow
-#if 1
+#if 0
     {
         std::unique_ptr<complex_polygon> obj = std::make_unique<complex_polygon>();
 
@@ -74,7 +77,7 @@ static bool load_objects(objects_t& objects)
 #endif
 
     // Pushes back a teapot
-#if 1
+#if 0
     {
         std::unique_ptr<complex_polygon> obj = std::make_unique<complex_polygon>();
 

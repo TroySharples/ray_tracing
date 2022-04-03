@@ -13,7 +13,8 @@ public:
     {
         colour_t colour;
         floating_point_t alignment;
-        floating_point_t albedo;
+        floating_point_t brightness;
+        floating_point_t reflectivity;
         floating_point_t transparency;
         floating_point_t roughness;
         floating_point_t z2;

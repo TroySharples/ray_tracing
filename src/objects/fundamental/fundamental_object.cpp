@@ -9,7 +9,7 @@ static spacial_t calculate_reflection(const spacial_t& direction, const spacial_
 static spacial_t calculate_refraction(const spacial_t& direction, const spacial_t& normal, floating_point_t alignment, floating_point_t refractive_index)
 {
     // For now ignore the actual refractive effect
-    return direction;
+    return direction -2*alignment*refractive_index*normal;
 }
 
 object::hit_info fundamental_object::calculate_hit_info(const spacial_t& intersection, const spacial_t& direction, const spacial_t& normal, floating_point_t z2) const
@@ -20,5 +20,5 @@ object::hit_info fundamental_object::calculate_hit_info(const spacial_t& interse
 
 object::hit_info fundamental_object::calculate_hit_info(const spacial_t& intersection, const spacial_t& direction, const spacial_t& normal, floating_point_t z2, floating_point_t alignment) const
 {
-    return { mat.colour, alignment, mat.albedo, mat.transparancy, mat.roughness, z2, intersection, calculate_reflection(direction, normal, alignment), calculate_refraction(direction, normal, alignment, mat.refractive_index) };
+    return { mat.colour, alignment, mat.brightness, mat.reflectivity, mat.transparancy, mat.roughness, z2, intersection, calculate_reflection(direction, normal, alignment), calculate_refraction(direction, normal, alignment, mat.refractive_index) };
 }    

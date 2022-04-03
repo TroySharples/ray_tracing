@@ -49,7 +49,7 @@ constexpr floating_point_t EPSILON = 1e-8;
 
 constexpr floating_point_t DEPTH_THRESHOLD = 0.01;
 
-constexpr size_t MSAA = 4;
+constexpr size_t MSAA = 1;
 
 spacial_t random_spacial(floating_point_t r);
 

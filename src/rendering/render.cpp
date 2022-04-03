@@ -37,12 +37,22 @@ static colour_t get_colour(const objects_t& objects, const ray_t& ray, floating_
     if (!info.has_value())
         return ret;
     object::hit_info& hit = info.value();
-        
-    // Calculate the colour mixing coefficients
-    const floating_point_t black_body_coefficient = hit.alignment;
-    const floating_point_t reflection_coefficient = hit.albedo;
-    const floating_point_t refraction_coefficient = hit.transparency;
     
+    // Calculate the colour mixing coefficients
+    const floating_point_t black_body_coefficient = hit.alignment*hit.brightness;
+    const floating_point_t reflection_coefficient = (1 - hit.alignment)*hit.reflectivity;
+    const floating_point_t refraction_coefficient = hit.alignment*hit.transparency;
+    
+    // DEBUG
+    std::cout << "alignment       - " << hit.alignment << std::endl;
+    std::cout << "brightness      - " << hit.brightness << std::endl;
+    std::cout << "reflectivity    - " << hit.reflectivity << std::endl;
+    std::cout << "transparency    - " << hit.transparency << std::endl;
+    std::cout << "black body coef - " << black_body_coefficient << std::endl;
+    std::cout << "reflection coef - " << reflection_coefficient << std::endl;
+    std::cout << "refraction coef - " << refraction_coefficient << std::endl;
+    std::cout << std::endl;
+            
     // Calculate the colour
     ret = average_colours(hit.colour*black_body_coefficient, 
             get_colour(objects, { hit.intersection, hit.reflection.normalise(), ray.orientation }, contribution*reflection_coefficient)*reflection_coefficient,
