@@ -7,7 +7,7 @@
 #include <filesystem>
 #include <cstdint>
 
-typedef uint8_t rgb_t;
+typedef uint16_t rgb_t;
 typedef double floating_point_t;
 
 constexpr rgb_t RGB_MAX = unstd::unsigned_max<rgb_t>();
@@ -43,13 +43,13 @@ typedef unstd::vector<floating_point_t, 3> spacial_t;
 typedef unstd::matrix<floating_point_t, 3, 3> transform_t;
 
 typedef std::array<colour_t, IMAGE_WIDTH*IMAGE_HEIGHT> image_t;
-inline colour_t random_colour() { return colour_t({ rgb_t(rand()), rgb_t(rand()), rgb_t(rand()) }); }
+inline colour_t random_colour() { return RGB_MAX*colour_t({ rgb_t(rand() % 2), rgb_t(rand() % 2), rgb_t(rand() & 2) }); }
 
 constexpr floating_point_t EPSILON = 1e-8;
 
 constexpr floating_point_t DEPTH_THRESHOLD = 0.01;
 
-constexpr size_t MSAA = 1;
+constexpr size_t MSAA = 4;
 
 spacial_t random_spacial(floating_point_t r);
 

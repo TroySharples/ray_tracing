@@ -84,11 +84,11 @@ void rendering::render(const objects_t& objects, const camera& cam, image_t& img
             const floating_point_t u = floating_point_t(w) / floating_point_t(IMAGE_WIDTH - 1);
             const floating_point_t v = floating_point_t(h) / floating_point_t(IMAGE_HEIGHT - 1);
             
-            constexpr floating_point_t fuzz = 0.5*std::min(camera::cam_width/IMAGE_WIDTH, camera::cam_height/IMAGE_HEIGHT);
+            constexpr floating_point_t fuzz = 0.25*std::min(camera::cam_width/IMAGE_WIDTH, camera::cam_height/IMAGE_HEIGHT);
             
             // Make the ray
             ray_t ray(cam.origin, cam.upper_left_corner + u*cam.horizontal - v*cam.vertical - cam.origin);
-            ray.direction += random_spacial(fuzz);
+            ray.direction += unstd::cross_product(ray.direction, random_spacial(fuzz));
             ray.direction.normalise();
             
             img[IMAGE_WIDTH * h + w] = get_colour(objects, ray);

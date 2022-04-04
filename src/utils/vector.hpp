@@ -53,7 +53,7 @@ namespace unstd
     template <typename _T, size_t _S>
     constexpr vector<_T, _S> operator/(const vector<_T, _S>& v, const _T& t)
     {
-        return (_T(1.0) / t)*v;
+        return (1 / t)*v;
     }
 
     template <typename _T, size_t _S, typename _F>
@@ -62,7 +62,7 @@ namespace unstd
     {
         vector<_T, _S> ret;
         for (size_t i = 0; i < _S; i++)
-            ret[i] = _T(_F(v[i]*t));
+            ret[i] = std::round(v[i]*t);
 
         return ret;
     }
@@ -73,7 +73,7 @@ namespace unstd
     {
         vector<_T, _S> ret;
         for (size_t i = 0; i < _S; i++)
-            ret[i] = _T(_F(v[i]/t));
+            ret[i] = std::round(v[i]/t);
 
         return ret;
     }
