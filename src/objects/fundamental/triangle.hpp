@@ -12,7 +12,9 @@ public:
     triangle(const vertices_t& vertices);
 
     std::optional<hit_info> get_hit_info(const ray_t& ray) const override;
-
+    
+    boundary get_boundary() const override;
+    
     vertex_t& operator[](size_t i);
     const vertex_t& operator[](size_t i) const;
 

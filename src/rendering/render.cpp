@@ -41,7 +41,7 @@ static floating_point_t refraction_shader(floating_point_t alignment)
 #endif
 }
 
-static colour_t get_colour(const objects_t& objects, const ray_t& ray, floating_point_t contribution = 1.0)
+static colour_t get_colour(const object& obj, const ray_t& ray, floating_point_t contribution = 1.0)
 {    
     // Set the default colour (the colour of rays that don't hit the object)
     colour_t ret = BACKGROUND_COLOUR;
@@ -50,11 +50,8 @@ static colour_t get_colour(const objects_t& objects, const ray_t& ray, floating_
     if (contribution < DEPTH_THRESHOLD)
         return ret;
     
-    // Loop over all the objects and set the final hit info to be the closest hit
-    std::optional<object::hit_info> info;
-    for (const auto& object : objects)
-        if (const auto i = object->get_hit_info(ray); i.has_value() && (!info.has_value() || info.value().z2 > i.value().z2))
-            info = i.value();
+    // See if we hit the object
+    std::optional<object::hit_info> info = obj.get_hit_info(ray);
         
     // Return if we didn't hit anything
     if (!info.has_value())
@@ -68,13 +65,13 @@ static colour_t get_colour(const objects_t& objects, const ray_t& ray, floating_
             
     // Calculate the colour
     ret = average_colours(hit.colour*black_body_coefficient, 
-            get_colour(objects, { hit.intersection, hit.reflection.normalise(), ray.orientation }, contribution*reflection_coefficient)*reflection_coefficient,
-            get_colour(objects, { hit.intersection, hit.refraction.normalise(), !ray.orientation }, contribution*refraction_coefficient)*refraction_coefficient);
+            get_colour(obj, { hit.intersection, hit.reflection.normalise(), ray.orientation }, contribution*reflection_coefficient)*reflection_coefficient,
+            get_colour(obj, { hit.intersection, hit.refraction.normalise(), !ray.orientation }, contribution*refraction_coefficient)*refraction_coefficient);
         
     return ret;
 }
 
-void rendering::render(const objects_t& objects, const camera& cam, image_t& img)
+void rendering::render(const object& obj, const camera& cam, image_t& img)
 {    
     // Render loop
     for (size_t h = 0; h < IMAGE_HEIGHT; h++)
@@ -91,12 +88,12 @@ void rendering::render(const objects_t& objects, const camera& cam, image_t& img
             ray.direction += unstd::cross_product(ray.direction, random_spacial(fuzz));
             ray.direction.normalise();
             
-            img[IMAGE_WIDTH * h + w] = get_colour(objects, ray);
+            img[IMAGE_WIDTH * h + w] = get_colour(obj, ray);
         }
     }
 }
 
-void rendering::render_msaa(const objects_t& objects, const camera& cam, image_t& img)
+void rendering::render_msaa(const object& obj, const camera& cam, image_t& img)
 {
     life_timer t("render loop");
     
@@ -109,7 +106,7 @@ void rendering::render_msaa(const objects_t& objects, const camera& cam, image_t
         for (size_t i = 0; i < MSAA; i++)
         {
             images[i] = std::make_unique<image_t>();
-            futures[i] = std::async(std::launch::async, render, std::ref(objects), std::ref(cam), std::ref(*images[i]));
+            futures[i] = std::async(std::launch::async, render, std::ref(obj), std::ref(cam), std::ref(*images[i]));
         }
     }
     

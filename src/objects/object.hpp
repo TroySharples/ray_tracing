@@ -24,6 +24,14 @@ public:
     };
 
     virtual std::optional<hit_info> get_hit_info(const ray_t& ray) const = 0;
+    
+    struct boundary
+    {
+        spacial_t min;
+        spacial_t max;
+    };
+    
+    virtual boundary get_boundary() const = 0;
 
     virtual void set_centre(spacial_t centre) { _centre = centre; }
     const spacial_t get_centre() const { return _centre; }

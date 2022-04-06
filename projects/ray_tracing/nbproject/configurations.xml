@@ -15,13 +15,13 @@
           <itemPath>../../src/objects/fundamental/triangle.cpp</itemPath>
           <itemPath>../../src/objects/fundamental/triangle.hpp</itemPath>
         </logicalFolder>
-        <itemPath>../../src/objects/complex_polygon.cpp</itemPath>
-        <itemPath>../../src/objects/complex_polygon.hpp</itemPath>
         <itemPath>../../src/objects/object.hpp</itemPath>
         <itemPath>../../src/objects/parallelepiped.cpp</itemPath>
         <itemPath>../../src/objects/parallelepiped.hpp</itemPath>
         <itemPath>../../src/objects/polygon.cpp</itemPath>
         <itemPath>../../src/objects/polygon.hpp</itemPath>
+        <itemPath>../../src/objects/scene.cpp</itemPath>
+        <itemPath>../../src/objects/scene.hpp</itemPath>
       </logicalFolder>
       <logicalFolder name="rendering" displayName="rendering" projectFiles="true">
         <itemPath>../../src/rendering/camera.hpp</itemPath>
@@ -79,16 +79,6 @@
       </item>
       <item path="../../src/config.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../../src/objects/complex_polygon.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="../../src/objects/complex_polygon.hpp"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="../../src/objects/fundamental/fundamental_object.cpp"
             ex="false"
             tool="1"
@@ -144,6 +134,10 @@
       <item path="../../src/objects/polygon.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../../src/objects/polygon.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/objects/scene.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../src/objects/scene.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../src/rendering/camera.hpp" ex="false" tool="3" flavor2="0">
       </item>
@@ -199,16 +193,6 @@
       </item>
       <item path="../../src/config.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../../src/objects/complex_polygon.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="../../src/objects/complex_polygon.hpp"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="../../src/objects/fundamental/fundamental_object.cpp"
             ex="false"
             tool="1"
@@ -264,6 +248,10 @@
       <item path="../../src/objects/polygon.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../../src/objects/polygon.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../src/objects/scene.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../../src/objects/scene.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../../src/rendering/camera.hpp" ex="false" tool="3" flavor2="0">
       </item>

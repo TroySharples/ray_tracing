@@ -1,4 +1,5 @@
-#include "objects/complex_polygon.hpp"
+#include "objects/scene.hpp"
+#include "objects/polygon.hpp"
 #include "objects/fundamental/sphere.hpp"
 
 #include "rendering/camera.hpp"
@@ -9,15 +10,21 @@
 
 using namespace rendering;
 
-typedef std::vector<std::unique_ptr<object>> objects_t;
-
 static std::string make_output_name()
 {
     // Our output PPM file is just the unix time for now
     return std::to_string(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch()).count()) + ".ppm";
 }
 
-static bool load_objects(objects_t& objects)
+static void push_polgon(const polygon& poly, scene& s)
+{
+    auto& triangles = poly.get_triangles();
+    
+    for (auto& obj : triangles)
+        s.push_object(std::make_unique<triangle>(obj));
+}
+
+static bool load_objects(scene& s)
 {
     // Pushes back a background sphere
 #if 1
@@ -26,7 +33,7 @@ static bool load_objects(objects_t& objects)
         obj->set_scale(5.0);
         obj->set_centre({ 0.0, 0.0, -70.0 });
 
-        objects.emplace_back(std::move(obj));
+        s.push_object(std::move(obj));
     }
 #endif
     
@@ -37,28 +44,28 @@ static bool load_objects(objects_t& objects)
         obj->set_scale(1.0);
         obj->set_centre({ 4.0, 2.0, -35.0 });
 
-        objects.emplace_back(std::move(obj));
+        s.push_object(std::move(obj));
     }
     {
         std::unique_ptr<sphere> obj = std::make_unique<sphere>();
         obj->set_scale(0.25);
         obj->set_centre({ -1.0, -0.5, -20.0 });
 
-        objects.emplace_back(std::move(obj));
+        s.push_object(std::move(obj));
     }
     {
         std::unique_ptr<sphere> obj = std::make_unique<sphere>();
         obj->set_scale(1.5);
         obj->set_centre({ -1.0, -2.0, -60.0 });
 
-        objects.emplace_back(std::move(obj));
+        s.push_object(std::move(obj));
     }
 #endif
 
     // Pushes back a cow
 #if 1
     {
-        std::unique_ptr<complex_polygon> obj = std::make_unique<complex_polygon>();
+        std::unique_ptr<polygon> obj = std::make_unique<polygon>();
 
         std::fstream fs((OBJECTS_PATH / "cow.obj").c_str());
         if (!fs)
@@ -69,14 +76,14 @@ static bool load_objects(objects_t& objects)
         obj->rotate(0, 3*M_PI/2, 0);
         obj->set_centre({ -4.0, 3.0, -55.0 });
 
-        objects.emplace_back(std::move(obj));
+        push_polgon(*obj, s);
     }
 #endif
 
     // Pushes back a teapot
 #if 1
     {
-        std::unique_ptr<complex_polygon> obj = std::make_unique<complex_polygon>();
+        std::unique_ptr<polygon> obj = std::make_unique<polygon>();
 
         std::fstream fs((OBJECTS_PATH / "teapot.obj").c_str());
         if (!fs)
@@ -87,14 +94,14 @@ static bool load_objects(objects_t& objects)
         obj->rotate(0, 0, M_PI);
         obj->set_centre({ 4.0, 2.0, -45.0 });
 
-        objects.emplace_back(std::move(obj));
+        push_polgon(*obj, s);
     }
 #endif
 
     // Pushes back a face
 #if 0
     {
-        std::unique_ptr<complex_polygon> obj = std::make_unique<complex_polygon>();
+        std::unique_ptr<polygon> obj = std::make_unique<polygon>();
 
         std::fstream fs((OBJECTS_PATH / "face.obj").c_str());
         if (!fs)
@@ -103,18 +110,20 @@ static bool load_objects(objects_t& objects)
         fs >> *obj;
         obj->set_centre({ 0.0, -0.0, -8.0 });
 
-        objects.emplace_back(std::move(obj));
+        push_polgon(*obj, s);
     }
 #endif
+    
+    s.fragment();
 
     return true;
 }
 
 int main()
 {
-    // Creates an objects vector and loads it up
-    objects_t objects;
-    if (!load_objects(objects))
+    // Creates an scene and loads it up
+    scene s;
+    if (!load_objects(s))
             return 1;
 
     // Too big to be allocated on the stack
@@ -122,7 +131,7 @@ int main()
     camera cam;
 
     // Does the rendering
-    render_msaa(objects, cam, img);
+    render_msaa(s, cam, img);
 
     // Outputs the rendered PPM
     {

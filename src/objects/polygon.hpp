@@ -9,6 +9,8 @@ class polygon : public object
 {
 public:
     std::optional<hit_info> get_hit_info(const ray_t& ray) const override;
+    
+    boundary get_boundary() const override;
 
     typedef std::vector<triangle> triangles_t;
     triangles_t& get_triangles();
@@ -26,13 +28,9 @@ public:
     
 private:
     triangles_t _triangles;
-    mutable std::optional<parallelepiped> _bounding_box;
     
     fundamental_object::material _mat;
 
     friend std::istream& operator>>(std::istream& is, polygon& v);
     friend std::ostream& operator<<(std::ostream& os, const polygon& v);
-
-private:
-    void make_bounding_box() const;
 };

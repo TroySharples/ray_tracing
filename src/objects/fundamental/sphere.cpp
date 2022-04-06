@@ -43,6 +43,11 @@ std::optional<object::hit_info> sphere::get_hit_info(const ray_t& ray) const
     return ret;
 }
 
+sphere::boundary sphere::get_boundary() const
+{
+    return { .min = _centre - radius*spacial_t({ 1, 1, 1}), .max = _centre + radius*spacial_t({ 1, 1, 1}) };
+}
+
 void sphere::set_scale(floating_point_t scale) 
 { 
     radius = scale; 

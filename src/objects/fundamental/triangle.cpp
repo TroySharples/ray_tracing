@@ -51,6 +51,19 @@ std::optional<object::hit_info> triangle::get_hit_info(const ray_t& ray) const
     return ret;
 }
 
+triangle::boundary triangle::get_boundary() const
+{
+    boundary ret = { _vertices[0], _vertices[0] };
+    for (const auto& vertex : _vertices)
+        for (size_t i = 0; i < std::size(_vertices); i++)
+        {
+            ret.min[i] = std::min(ret.min[i], vertex[i]); 
+            ret.max[i] = std::max(ret.max[i], vertex[i]); 
+        }
+    
+    return ret;
+}
+
 triangle::vertex_t& triangle::operator[](size_t i)
 { 
     // We have to assume the vertices will be changed

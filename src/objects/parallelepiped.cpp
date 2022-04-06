@@ -20,6 +20,22 @@ std::optional<object::hit_info> parallelepiped::get_hit_info(const ray_t& ray) c
     return ret;
 }
 
+parallelepiped::boundary parallelepiped::get_boundary() const
+{
+    boundary ret = _parallelograms[0].get_boundary();
+    for (const auto& parallelogram : _parallelograms)
+    {
+        boundary b = parallelogram.get_boundary();
+        for (size_t i = 0; i < 3; i++)
+        {
+            ret.min[i] = std::min(ret.min[i], b.min[i]); 
+            ret.max[i] = std::max(ret.max[i], b.max[i]); 
+        }
+    }
+    
+    return ret;
+}
+
 void parallelepiped::set_centre(spacial_t centre)
 {
     // Also reset centre for each of our parallelograms as well

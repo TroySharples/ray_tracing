@@ -36,13 +36,13 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/_ext/56252444/config.o \
-	${OBJECTDIR}/_ext/1259a249/complex_polygon.o \
 	${OBJECTDIR}/_ext/b8fdb47f/fundamental_object.o \
 	${OBJECTDIR}/_ext/b8fdb47f/parallelogram.o \
 	${OBJECTDIR}/_ext/b8fdb47f/sphere.o \
 	${OBJECTDIR}/_ext/b8fdb47f/triangle.o \
 	${OBJECTDIR}/_ext/1259a249/parallelepiped.o \
 	${OBJECTDIR}/_ext/1259a249/polygon.o \
+	${OBJECTDIR}/_ext/1259a249/scene.o \
 	${OBJECTDIR}/_ext/a8ea4a81/render.o \
 	${OBJECTDIR}/_ext/2abcb726/timer.o \
 	${OBJECTDIR}/main.o
@@ -77,11 +77,6 @@ ${OBJECTDIR}/_ext/56252444/config.o: ../../src/config.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O3 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/56252444/config.o ../../src/config.cpp
 
-${OBJECTDIR}/_ext/1259a249/complex_polygon.o: ../../src/objects/complex_polygon.cpp
-	${MKDIR} -p ${OBJECTDIR}/_ext/1259a249
-	${RM} "$@.d"
-	$(COMPILE.cc) -O3 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1259a249/complex_polygon.o ../../src/objects/complex_polygon.cpp
-
 ${OBJECTDIR}/_ext/b8fdb47f/fundamental_object.o: ../../src/objects/fundamental/fundamental_object.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/b8fdb47f
 	${RM} "$@.d"
@@ -111,6 +106,11 @@ ${OBJECTDIR}/_ext/1259a249/polygon.o: ../../src/objects/polygon.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/1259a249
 	${RM} "$@.d"
 	$(COMPILE.cc) -O3 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1259a249/polygon.o ../../src/objects/polygon.cpp
+
+${OBJECTDIR}/_ext/1259a249/scene.o: ../../src/objects/scene.cpp
+	${MKDIR} -p ${OBJECTDIR}/_ext/1259a249
+	${RM} "$@.d"
+	$(COMPILE.cc) -O3 -I../../src -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1259a249/scene.o ../../src/objects/scene.cpp
 
 ${OBJECTDIR}/_ext/a8ea4a81/render.o: ../../src/rendering/render.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/a8ea4a81
