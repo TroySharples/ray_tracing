@@ -16,7 +16,7 @@ static std::string make_output_name()
     return std::to_string(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch()).count()) + ".ppm";
 }
 
-static void push_polgon(const polygon& poly, scene& s)
+static void push_polygon(const polygon& poly, scene& s)
 {
     auto& triangles = poly.get_triangles();
     
@@ -76,7 +76,7 @@ static bool load_objects(scene& s)
         obj->rotate(0, 3*M_PI/2, 0);
         obj->set_centre({ -4.0, 3.0, -55.0 });
 
-        push_polgon(*obj, s);
+        push_polygon(*obj, s);
     }
 #endif
 
@@ -94,7 +94,7 @@ static bool load_objects(scene& s)
         obj->rotate(0, 0, M_PI);
         obj->set_centre({ 4.0, 2.0, -45.0 });
 
-        push_polgon(*obj, s);
+        push_polygon(*obj, s);
     }
 #endif
 
@@ -110,7 +110,7 @@ static bool load_objects(scene& s)
         fs >> *obj;
         obj->set_centre({ 0.0, -0.0, -8.0 });
 
-        push_polgon(*obj, s);
+        push_polygon(*obj, s);
     }
 #endif
     
@@ -139,8 +139,8 @@ int main()
         of << img;
     }
     
-    // Hacky convert any PPMs to PNGs. A much nicer way of doing this would be to use libpng
-    std::system(("find -name \'*.ppm\' -exec bash -c \'convert \"$0\" \"${0/ppm/png}\"\' {} \\;; rm *ppm; mv *png " + std::filesystem::absolute((RENDERS_PATH)).string()).c_str());
+    // // Hacky convert any PPMs to PNGs. A much nicer way of doing this would be to use libpng
+    // std::system(("find -name \'*.ppm\' -exec bash -c \'convert \"$0\" \"${0/ppm/png}\"\' {} \\;; rm *ppm; mv *png " + std::filesystem::absolute((RENDERS_PATH)).string()).c_str());
 
     return 0;
 }

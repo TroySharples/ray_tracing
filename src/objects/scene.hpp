@@ -16,7 +16,7 @@ public:
     
     void rotate(floating_point_t a, floating_point_t b, floating_point_t c) override;
     
-    typedef std::vector<std::unique_ptr<object>> objects_t;
+    using objects_t =  std::vector<std::unique_ptr<object>>;
     
     void push_object(std::unique_ptr<object> object);
     void fragment();
