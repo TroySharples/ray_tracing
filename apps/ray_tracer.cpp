@@ -63,7 +63,7 @@ static bool load_objects(scene& s)
 #endif
 
     // Pushes back a cow
-#if 1
+#if 0
     {
         std::unique_ptr<polygon> obj = std::make_unique<polygon>();
 
@@ -81,7 +81,7 @@ static bool load_objects(scene& s)
 #endif
 
     // Pushes back a teapot
-#if 1
+#if 0
     {
         std::unique_ptr<polygon> obj = std::make_unique<polygon>();
 
@@ -139,8 +139,8 @@ int main()
         of << img;
     }
     
-    // // Hacky convert any PPMs to PNGs. A much nicer way of doing this would be to use libpng
-    // std::system(("find -name \'*.ppm\' -exec bash -c \'convert \"$0\" \"${0/ppm/png}\"\' {} \\;; rm *ppm; mv *png " + std::filesystem::absolute((RENDERS_PATH)).string()).c_str());
+    // Hacky convert any PPMs to PNGs. A much nicer way of doing this would be to use libpng
+    std::system(("find -name \'*.ppm\' -exec bash -c \'convert \"$0\" \"${0/ppm/png}\"\' {} \\;; rm *ppm; mv *png " + std::filesystem::absolute((RENDERS_PATH)).string()).c_str());
 
     return 0;
 }

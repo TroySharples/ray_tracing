@@ -12,6 +12,6 @@ copy . /app
 WORKDIR /app
 
 RUN cmake -B build -S .
-RUN make -C build thread_test
+RUN make -C build all
 
 CMD /bin/sh /app/build/apps/thread_test
