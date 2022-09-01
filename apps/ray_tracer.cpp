@@ -13,7 +13,7 @@ using namespace rendering;
 static std::string make_output_name()
 {
     // Our output PPM file is just the unix time for now
-    return std::to_string(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch()).count()) + ".ppm";
+    return std::to_string(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch()).count());
 }
 
 static void push_polygon(const polygon& poly, scene& s)
@@ -133,14 +133,24 @@ int main()
     // Does the rendering
     render_msaa(s, cam, img);
 
+    // Creates the output name
+    const auto output_name = make_output_name();
+
     // Outputs the rendered PPM
     {
-        std::ofstream of(make_output_name());
-        of << img;
+        std::ofstream os(output_name + ".ppm");
+        os << img;
     }
     
     // Hacky convert any PPMs to PNGs. A much nicer way of doing this would be to use libpng
-    std::system(("find -name \'*.ppm\' -exec bash -c \'convert \"$0\" \"${0/ppm/png}\"\' {} \\;; rm *ppm; mv *png " + std::filesystem::absolute((RENDERS_PATH)).string()).c_str());
+    std::system("find -name \'*.ppm\' -exec bash -c \'convert \"$0\" \"${0/ppm/png}\"\' {} \\;; rm *ppm");
+
+    // Output the PPM file to stdout
+    {
+        std::ifstream is(output_name + ".png");
+        std::cout << is.rdbuf();
+    }
+    std::remove((output_name + ".png").c_str());
 
     return 0;
 }
