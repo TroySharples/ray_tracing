@@ -22,20 +22,16 @@ static void logger()
 {
     while (!stop)
     {
-        std::cout << "Waiting...\n";
+        std::cout << "Waiting for SIGINT...\n";
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
 }
 
 int main()
 {
-    signal(SIGINT, sigint_handler);
+    ::signal(SIGINT, sigint_handler);
 
     std::thread t(logger);
-
-    std::unique_lock<std::mutex> lk(m);
-    c.wait_for(lk, std::chrono::milliseconds(500), [] { return stop; });
-
     t.join();
 
     return EXIT_SUCCESS;
