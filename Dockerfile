@@ -1,17 +1,27 @@
 # syntax=docker/dockerfile:1
 
-FROM alpine:latest
+# The CMake build image
+FROM debian:bullseye-slim AS build
 
-RUN apk add --update-cache \
+RUN apt update && apt install -y \
   cmake \
   make \
   g++ \
-  && rm -rf /var/cache/apk/*
+  && rm -rf /var/lib/apt/lists/*
 
-copy . /app
+COPY . /app
 WORKDIR /app
 
 RUN cmake -B build -S .
-RUN make -C build all
+RUN make -j8 -C build all
 
-CMD /bin/sh /app/build/apps/thread_test
+# The executable image
+FROM debian:bullseye-slim
+
+RUN apt update && apt install -y \
+  imagemagick \
+  && rm -rf /var/lib/apt/lists/*
+
+COPY --from=BUILD /app/build/apps/ray_tracer /app/ray_tracer
+
+CMD /app/ray_tracer
