@@ -1,0 +1,20 @@
+{
+	"name": "Debian",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"slevesque.vscode-3dviewer",
+				"ms-vscode.cpptools",
+				"ms-vscode.cpptools-extension-pack",
+				"twxs.cmake",
+				"ms-vscode.cmake-tools",
+				"cschlosser.doxdocgen",
+				"GitHub.vscode-pull-request-github",
+				"usernamehw.todo-md"
+			]
+		}
+	}
+}
